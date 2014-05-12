@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eShopLab.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace eShopLab.Controllers
 {
     public class AdminController : Controller
     {
+        eShopDBEntities db = new eShopDBEntities();
         //
         // GET: /Admin/
 
@@ -16,5 +18,9 @@ namespace eShopLab.Controllers
             return View();
         }
 
+        public ActionResult Categories()
+        {
+            return View(db.Categories.ToList());
+        }
     }
 }
