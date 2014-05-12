@@ -22,5 +22,19 @@ namespace eShopLab.Controllers
         {
             return View(db.Categories.ToList());
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Category category)
+        {
+            db.Entry<Category>(category).State = System.Data.EntityState.Added;
+            db.SaveChanges();
+
+            return RedirectToAction("Categories");
+        }
     }
 }
