@@ -28,3 +28,6 @@ C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\bin\System.Web.W
 C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\bin\System.Web.WebPages.Razor.xml
 C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\obj\Debug\eShopLab.dll
 C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\obj\Debug\eShopLab.pdb
+C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\bin\EntityFramework.dll
+C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\bin\EntityFramework.xml
+C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eShopLab\eShopLab\obj\Debug\eShopLab.csprojResolveAssemblyReference.cache
