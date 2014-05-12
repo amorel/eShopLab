@@ -18,6 +18,9 @@ namespace eShopLab.App_Start
                 "~/Content/style.css",
                 "~/Content/font-awesome.min.css",
                 "~/Content/bootstrap.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                "~/Content/jquery.validate.js"));
         }
     }
 }

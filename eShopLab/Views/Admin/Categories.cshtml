@@ -1,0 +1,50 @@
+﻿@model IEnumerable<eShopLab.Models.Category>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryIsMenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MediaID)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryIsMenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MediaID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CategoryID })
+        </td>
+    </tr>
+}
+    
+</table>
+

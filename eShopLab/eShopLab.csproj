@@ -43,13 +43,19 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -115,9 +121,70 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adress.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Command.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommandLine.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommandStatu.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeliverableCountry.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DeliverablePrice.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eShopDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eShopDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eShopDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eShopDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>eShopDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MediaType.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Medium.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Price.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnitType.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VATCategory.cs">
+      <DependentUpon>eShopDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -125,6 +192,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\eShopDB.mdf" />
+    <Content Include="App_Data\eShopDB_log.ldf">
+      <DependentUpon>eShopDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -155,11 +226,31 @@
     <Content Include="fonts\sourcesanspro-regular-webfont.eot" />
     <Content Include="fonts\sourcesanspro-regular-webfont.ttf" />
     <Content Include="fonts\sourcesanspro-regular-webfont.woff" />
+    <EntityDeploy Include="Models\eShopDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>eShopDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\eShopDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eShopDBModel.edmx</DependentUpon>
+      <LastGenOutput>eShopDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\eShopDBModel.edmx.diagram">
+      <DependentUpon>eShopDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\eShopDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eShopDBModel.edmx</DependentUpon>
+      <LastGenOutput>eShopDBModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -171,13 +262,17 @@
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Categories.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

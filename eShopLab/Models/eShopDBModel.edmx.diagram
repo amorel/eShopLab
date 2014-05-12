@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88f5c8fd21ac4c95a60125d963b1ff35" Name="Diagram1">
+        <EntityTypeShape EntityType="eShopDBModel.Adress" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.Category" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.Command" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.CommandLine" Width="1.5" PointX="9.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.CommandStatu" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.Customer" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.DeliverableCountry" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.DeliverablePrice" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.Medium" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.MediaType" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.Price" Width="1.5" PointX="9.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.Product" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.UnitType" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.User" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eShopDBModel.VATCategory" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="eShopDBModel.FK_Adress_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Adress_DeliverableCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Command_DeliveryAdress" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Command_InvoiceAdress" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Category_Media" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Command_CommandStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_CommandLine_Command" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_CommandLine_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_CommandStatus_Media" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Customer_User" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_DeliverablePrice_DeliverableCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Media_MediaType" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Product_Media" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Price_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Product_UnitType" ManuallyRouted="false" />
+        <AssociationConnector Association="eShopDBModel.FK_Product_VATCategory" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

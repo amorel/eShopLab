@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eShopDBModelStoreContainer" CdmEntityContainer="eShopDBEntities">
+    <EntitySetMapping Name="Adresses">
+      <EntityTypeMapping TypeName="eShopDBModel.Adress">
+        <MappingFragment StoreEntitySet="Adress">
+          <ScalarProperty Name="AdressID" ColumnName="AdressID" />
+          <ScalarProperty Name="AdressCompany" ColumnName="AdressCompany" />
+          <ScalarProperty Name="AdressLine1" ColumnName="AdressLine1" />
+          <ScalarProperty Name="AdressLine2" ColumnName="AdressLine2" />
+          <ScalarProperty Name="AdressZipCode" ColumnName="AdressZipCode" />
+          <ScalarProperty Name="AdressType" ColumnName="AdressType" />
+          <ScalarProperty Name="AdressActive" ColumnName="AdressActive" />
+          <ScalarProperty Name="DeliverableCountryID" ColumnName="DeliverableCountryID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="eShopDBModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+          <ScalarProperty Name="CategoryIsMenu" ColumnName="CategoryIsMenu" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Commands">
+      <EntityTypeMapping TypeName="eShopDBModel.Command">
+        <MappingFragment StoreEntitySet="Command">
+          <ScalarProperty Name="CommandID" ColumnName="CommandID" />
+          <ScalarProperty Name="CommandDate" ColumnName="CommandDate" />
+          <ScalarProperty Name="CommandFicsalDate" ColumnName="CommandFicsalDate" />
+          <ScalarProperty Name="CommandeReference" ColumnName="CommandeReference" />
+          <ScalarProperty Name="CommandStatusID" ColumnName="CommandStatusID" />
+          <ScalarProperty Name="DeliveryAdressID" ColumnName="DeliveryAdressID" />
+          <ScalarProperty Name="InvoiceAdressID" ColumnName="InvoiceAdressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommandLines">
+      <EntityTypeMapping TypeName="eShopDBModel.CommandLine">
+        <MappingFragment StoreEntitySet="CommandLine">
+          <ScalarProperty Name="CommandLineID" ColumnName="CommandLineID" />
+          <ScalarProperty Name="CommandLineQuantity" ColumnName="CommandLineQuantity" />
+          <ScalarProperty Name="CommandLinePrice" ColumnName="CommandLinePrice" />
+          <ScalarProperty Name="CommandID" ColumnName="CommandID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommandStatus">
+      <EntityTypeMapping TypeName="eShopDBModel.CommandStatu">
+        <MappingFragment StoreEntitySet="CommandStatus">
+          <ScalarProperty Name="CommandStatusID" ColumnName="CommandStatusID" />
+          <ScalarProperty Name="CommandStatusName" ColumnName="CommandStatusName" />
+          <ScalarProperty Name="CommandStatusProgress" ColumnName="CommandStatusProgress" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="eShopDBModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+          <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+          <ScalarProperty Name="CustomerCompany" ColumnName="CustomerCompany" />
+          <ScalarProperty Name="CustomerActive" ColumnName="CustomerActive" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliverableCountries">
+      <EntityTypeMapping TypeName="eShopDBModel.DeliverableCountry">
+        <MappingFragment StoreEntitySet="DeliverableCountry">
+          <ScalarProperty Name="DeliverableCountryID" ColumnName="DeliverableCountryID" />
+          <ScalarProperty Name="DeliverableCountryName" ColumnName="DeliverableCountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliverablePrices">
+      <EntityTypeMapping TypeName="eShopDBModel.DeliverablePrice">
+        <MappingFragment StoreEntitySet="DeliverablePrice">
+          <ScalarProperty Name="DeliverablePriceID" ColumnName="DeliverablePriceID" />
+          <ScalarProperty Name="DeliverablePriceName" ColumnName="DeliverablePriceName" />
+          <ScalarProperty Name="DeliverablePriceTimeEstimation" ColumnName="DeliverablePriceTimeEstimation" />
+          <ScalarProperty Name="DeliverablePriceValue" ColumnName="DeliverablePriceValue" />
+          <ScalarProperty Name="DeliverablePriceCountryID" ColumnName="DeliverablePriceCountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Media">
+      <EntityTypeMapping TypeName="eShopDBModel.Medium">
+        <MappingFragment StoreEntitySet="Media">
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+          <ScalarProperty Name="MediaName" ColumnName="MediaName" />
+          <ScalarProperty Name="MediaAlt" ColumnName="MediaAlt" />
+          <ScalarProperty Name="MediaUrl" ColumnName="MediaUrl" />
+          <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MediaTypes">
+      <EntityTypeMapping TypeName="eShopDBModel.MediaType">
+        <MappingFragment StoreEntitySet="MediaType">
+          <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
+          <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
+          <ScalarProperty Name="MediaTypeExtension" ColumnName="MediaTypeExtension" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="eShopDBModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+          <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+          <ScalarProperty Name="PriceValue" ColumnName="PriceValue" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="eShopDBModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="ProductLongDescription" ColumnName="ProductLongDescription" />
+          <ScalarProperty Name="ProductReference" ColumnName="ProductReference" />
+          <ScalarProperty Name="ProductManufacturerReference" ColumnName="ProductManufacturerReference" />
+          <ScalarProperty Name="ProductBarCode" ColumnName="ProductBarCode" />
+          <ScalarProperty Name="ProductAddingDate" ColumnName="ProductAddingDate" />
+          <ScalarProperty Name="ProductDiscontinued" ColumnName="ProductDiscontinued" />
+          <ScalarProperty Name="VATCategoryID" ColumnName="VATCategoryID" />
+          <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitTypes">
+      <EntityTypeMapping TypeName="eShopDBModel.UnitType">
+        <MappingFragment StoreEntitySet="UnitType">
+          <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+          <ScalarProperty Name="UnitTypeName" ColumnName="UnitTypeName" />
+          <ScalarProperty Name="UnitTypeSymbol" ColumnName="UnitTypeSymbol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="eShopDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserUsername" ColumnName="UserUsername" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserSalt" ColumnName="UserSalt" />
+          <ScalarProperty Name="UserRegisterDate" ColumnName="UserRegisterDate" />
+          <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VATCategories">
+      <EntityTypeMapping TypeName="eShopDBModel.VATCategory">
+        <MappingFragment StoreEntitySet="VATCategory">
+          <ScalarProperty Name="VATCategoryID" ColumnName="VATCategoryID" />
+          <ScalarProperty Name="VATCategoryName" ColumnName="VATCategoryName" />
+          <ScalarProperty Name="VATCategoryValue" ColumnName="VATCategoryValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

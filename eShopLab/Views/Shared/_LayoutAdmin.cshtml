@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+    @Styles.Render("~/bundles/css")
+</head>
+<body>
+    <div>
+        <div class="row">
+                <!-- Categories -->
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <div class="no-padding">
+                        <span class="title">CATEGORIES</span>
+                    </div>
+                    <div class="list-group list-categ">
+                        <a href="catalogue.html" class="list-group-item">Users</a>
+                        @Html.ActionLink("Categories", "Categories", "Admin", null, new { @class = "list-group-item" })
+                        <a href="catalogue.html" class="list-group-item">Products</a>
+                        <a href="catalogue.html" class="list-group-item">Commands</a>
+                        <a href="catalogue.html" class="list-group-item">Statistics</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 padadmin">
+                    @RenderBody()
+                </div>
+
+        </div>
+    </div>
+</body>
+@Scripts.Render("~/bundles/script")
+</html>
