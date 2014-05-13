@@ -134,6 +134,7 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>eShopDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\CategoryMedia.cs" />
     <Compile Include="Models\Command.cs">
       <DependentUpon>eShopDBModel.tt</DependentUpon>
     </Compile>
@@ -274,7 +275,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

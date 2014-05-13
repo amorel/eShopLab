@@ -1,0 +1,9 @@
+diff a/eShopLab/Areas/Admin/Views/Category/Create.cshtml b/eShopLab/Areas/Admin/Views/Category/Create.cshtml	(rejected hunks)
+@@ -11,7 +11,6 @@
+     @Html.ValidationSummary(true)
+ 
+     <fieldset>
+-        <legend>Category</legend>
+ 
+         <div class="editor-label">
+             @Html.LabelFor(model => model.CategoryName)

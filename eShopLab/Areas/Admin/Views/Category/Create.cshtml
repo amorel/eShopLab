@@ -7,13 +7,13 @@
 
 <span class="title">Create Category</span>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryName)
+            <label for="CategoryName">Category Name</label>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CategoryName)
@@ -21,7 +21,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryDescription)
+            <label for="CategoryName">Category Description</label>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CategoryDescription)
@@ -29,7 +29,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryIsMenu)
+            <label for="CategoryName">Is in the menu?</label>
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.CategoryIsMenu)
@@ -37,11 +37,10 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.MediaID, "Medium")
+            <label for="CategoryName">Media</label>
         </div>
         <div class="editor-field">
-            @Html.DropDownList("MediaID", String.Empty)
-            @Html.ValidationMessageFor(model => model.MediaID)
+            <input type="file" name="File" />
         </div>
 
         <p>

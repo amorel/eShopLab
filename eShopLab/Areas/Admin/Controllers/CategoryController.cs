@@ -40,7 +40,6 @@ namespace eShopLab.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.MediaID = new SelectList(db.Media, "MediaID", "MediaName");
             return View();
         }
 
@@ -48,16 +47,22 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Category/Create
 
         [HttpPost]
-        public ActionResult Create(Category category)
+        public ActionResult Create(CategoryMedia category)
         {
-            if (ModelState.IsValid)
-            {
-                db.Categories.Add(category);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.MediaID = new SelectList(db.Media, "MediaID", "MediaName", category.MediaID);
+            //if (category.File != null && category.File.ContentLength > 0)
+            //{
+            //    category.NewCategory.Medium.MediaUrl = category.File.FileName;
+            //    category.File.SaveAs(Server.MapPath("~/Uploads/" + category.File.FileName));
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.Categories.Add(category.NewCategory);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
             return View(category);
         }
 
