@@ -8,28 +8,31 @@
 </head>
 <body>
     <div>
-        <div class="row">
-                <!-- Categories -->
+        <div id="adm-wrapper">
+            <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="no-padding">
-                        <span class="title">CATEGORIES</span>
+                    <div class="padding">
+                        <span class="title">&nbsp Administration</span>
                     </div>
                     <div class="list-group list-categ">
                         <a href="catalogue.html" class="list-group-item">Users</a>
-                        @Html.ActionLink("Categories", "Index", "Category", new { Area = "Admin" }, new { @class = "list-group-item" })
+                        @Html.ActionLink("Categories", "Index", "Category", null, new { @class = "list-group-item" })
                         <a href="catalogue.html" class="list-group-item">Products</a>
                         <a href="catalogue.html" class="list-group-item">Commands</a>
                         <a href="catalogue.html" class="list-group-item">Statistics</a>
+                        @Html.ActionLink("Retour", "Index", "Home", new { Area = "" }, new { @class = "list-group-item" })
+
                     </div>
                 </div>
 
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 padadmin">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                     @RenderBody()
                 </div>
 
+            </div>
         </div>
     </div>
 </body>
 @Scripts.Render("~/bundles/script")
-@RenderSection("Scripts",false)
+@RenderSection("Scripts", false)
 </html>

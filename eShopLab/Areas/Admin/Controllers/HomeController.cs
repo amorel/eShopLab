@@ -1,20 +1,20 @@
-﻿using eShopLab.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace eShopLab.Controllers
+namespace eShopLab.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class HomeController : Controller
     {
         //
-        // GET: /Admin/
+        // GET: /Admin/Home/
 
         public ActionResult Index()
         {
             return View();
         }
+
     }
 }

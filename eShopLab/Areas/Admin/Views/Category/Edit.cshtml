@@ -5,13 +5,12 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<span class="title">Edit Category</span>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Category</legend>
 
         @Html.HiddenFor(model => model.CategoryID)
 

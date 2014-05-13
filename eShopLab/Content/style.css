@@ -301,6 +301,9 @@ footer .copyright{
 	margin-right: 5px;
 	width: 130px;
 }
-.padadmin {
-    margin-top: 10px;
+
+#adm-wrapper {
+    max-width: 900px;
+    margin-left:auto;
+    margin-right:auto;
 }
