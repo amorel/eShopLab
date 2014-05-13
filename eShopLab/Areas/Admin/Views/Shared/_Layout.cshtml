@@ -1,8 +1,4 @@
-﻿@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -20,7 +16,7 @@
                     </div>
                     <div class="list-group list-categ">
                         <a href="catalogue.html" class="list-group-item">Users</a>
-                        @Html.ActionLink("Categories", "Categories", "Admin", null, new { @class = "list-group-item" })
+                        @Html.ActionLink("Categories", "Index", "Category", new { Area = "Admin" }, new { @class = "list-group-item" })
                         <a href="catalogue.html" class="list-group-item">Products</a>
                         <a href="catalogue.html" class="list-group-item">Commands</a>
                         <a href="catalogue.html" class="list-group-item">Statistics</a>
@@ -35,4 +31,5 @@
     </div>
 </body>
 @Scripts.Render("~/bundles/script")
+@RenderSection("Scripts",false)
 </html>
