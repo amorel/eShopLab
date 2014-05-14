@@ -1,4 +1,4 @@
-﻿@model eShopLab.Models.Category
+﻿@model eShopLab.Models.CategoryMedia
 
 @{
     ViewBag.Title = "Create";
@@ -17,31 +17,33 @@
             <label for="CategoryName">Category Name</label>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryName)
-            @Html.ValidationMessageFor(model => model.CategoryName)
+            @Html.EditorFor(model => model.NewCategory.CategoryName)
+            @Html.ValidationMessageFor(model => model.NewCategory.CategoryName)
         </div>
 
         <div class="editor-label">
             <label for="CategoryName">Category Description</label>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryDescription)
-            @Html.ValidationMessageFor(model => model.CategoryDescription)
+            @Html.EditorFor(model => model.NewCategory.CategoryDescription)
+            @Html.ValidationMessageFor(model => model.NewCategory.CategoryDescription)
         </div>
 
         <div class="editor-label">
             <label for="CategoryName">Is in the menu?</label>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CategoryIsMenu)
-            @Html.ValidationMessageFor(model => model.CategoryIsMenu)
+            @Html.EditorFor(model => model.NewCategory.CategoryIsMenu)
+            @Html.ValidationMessageFor(model => model.NewCategory.CategoryIsMenu)
         </div>
 
         <div class="editor-label">
             <label for="CategoryName">Media</label>
         </div>
         <div class="editor-field">
-            <div class="dropzone-previews"></div>
+            <div class="dropzone-previews">
+                @*<input hidden="hidden" type="file" name="File" />*@
+            </div>
         </div>
 
         <p>
@@ -49,8 +51,6 @@
         </p>
     </fieldset>
 }
-
-<button id="test">mon bouton</button>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

@@ -50,18 +50,18 @@ namespace eShopLab.Areas.Admin.Controllers
         public ActionResult Create(CategoryMedia category)
         {
 
-            //if (category.File != null && category.File.ContentLength > 0)
-            //{
-            //    category.NewCategory.Medium.MediaUrl = category.File.FileName;
-            //    category.File.SaveAs(Server.MapPath("~/Uploads/" + category.File.FileName));
-            //}
+            if (category.File != null && category.File.ContentLength > 0)
+            {
+                //category.NewCategory.Medium = category.File.FileName;
+                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.File.FileName));
+            }
 
-            //if (ModelState.IsValid)
-            //{
-            //    db.Categories.Add(category.NewCategory);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            if (ModelState.IsValid)
+            {
+                db.Categories.Add(category.NewCategory);
+                //db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
             return View(category);
         }
