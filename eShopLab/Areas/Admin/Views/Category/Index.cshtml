@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<eShopLab.Models.Category>
 
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+<span class="title">Categories list</span>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -19,11 +22,11 @@
             @Html.DisplayNameFor(model => model.CategoryIsMenu)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MediaID)
+            @Html.DisplayNameFor(model => model.Medium.MediaName)
         </th>
         <th></th>
     </tr>
-    
+
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -36,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.CategoryIsMenu)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MediaID)
+            @Html.DisplayFor(modelItem => item.Medium.MediaName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CategoryID }) |
@@ -45,6 +48,5 @@
         </td>
     </tr>
 }
-    
-</table>
 
+</table>

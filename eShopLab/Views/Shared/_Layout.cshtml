@@ -12,7 +12,6 @@
     <header>
         <div class="container">
             <div class="row">
-
                 <!-- Logo -->
                 <div class="col-lg-4 col-md-3 hidden-sm hidden-xs">
                     <div class="well logo">
@@ -99,7 +98,7 @@
                             <li><a href="typography.html">Typography</a></li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                    <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, null)</li>
                 </ul>
             </div>
         </div>

@@ -1,0 +1,46 @@
+﻿@model eShopLab.Models.Category
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<span class="title">Delete Category</span>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CategoryDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CategoryIsMenu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CategoryIsMenu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Medium.MediaName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Medium.MediaName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

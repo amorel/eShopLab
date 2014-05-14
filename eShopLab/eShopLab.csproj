@@ -121,7 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -132,6 +134,7 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>eShopDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Admin\Models\CategoryMedia.cs" />
     <Compile Include="Models\Command.cs">
       <DependentUpon>eShopDBModel.tt</DependentUpon>
     </Compile>
@@ -243,9 +246,28 @@
       <DependentUpon>eShopDBModel.edmx</DependentUpon>
       <LastGenOutput>eShopDBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Scripts\dropzone\css\basic.css" />
+    <Content Include="Scripts\dropzone\css\dropzone.css" />
+    <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
+    <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Scripts\dropzone\dropzone.js" />
+    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\dropzone\images\spritemap%402x.png" />
+    <Content Include="Scripts\dropzone\images\spritemap.png" />
+    <Content Include="Scripts\eShop.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -262,12 +284,10 @@
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Categories.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -10,17 +10,20 @@ namespace eShopLab.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/script").Include(
-                "~/Scripts/jquery-{version}.js",
-                "~/Scripts/bootstrap.js"));
-
+            
             bundles.Add(new ScriptBundle("~/bundles/css").Include(
                 "~/Content/style.css",
                 "~/Content/font-awesome.min.css",
+                "~/Scripts/dropzone/css/basic.css",
+                "~/Scripts/dropzone/css/dropzone.css",
                 "~/Content/bootstrap.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Content/jquery.validate.js"));
+            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/dropzone/dropzone.js",
+                "~/Scripts/eShop.js",
+                "~/Content/jquery.validate.js",
+                "~/Scripts/bootstrap.js"));
         }
     }
 }

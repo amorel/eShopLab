@@ -301,6 +301,22 @@ footer .copyright{
 	margin-right: 5px;
 	width: 130px;
 }
-.padadmin {
-    margin-top: 10px;
+
+#adm-wrapper {
+    max-width: 900px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 100px;
 }
+
+.dropzone-previews {
+    min-height: 100px;
+}
+
+/*.dropzone .dz-default.dz-message {
+    position:relative !important;
+    left: 200px !important;
+    -webkit-background-size: 214px 203px !important;
+    -moz-background-size: 214px 203px !important;
+    background-size: 214px 203px !important;
+}*/
