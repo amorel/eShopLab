@@ -5,9 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
 <span class="title">Create Category</span>
 
-@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
 {
     @Html.ValidationSummary(true)
 
@@ -40,7 +41,7 @@
             <label for="CategoryName">Media</label>
         </div>
         <div class="editor-field">
-            <input type="file" name="File" />
+            <div class="dropzone-previews"></div>
         </div>
 
         <p>
@@ -49,10 +50,8 @@
     </fieldset>
 }
 
+<button id="test">mon bouton</button>
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

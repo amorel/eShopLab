@@ -308,3 +308,15 @@ footer .copyright{
     margin-right:auto;
     margin-top: 100px;
 }
+
+.dropzone-previews {
+    min-height: 100px;
+}
+
+/*.dropzone .dz-default.dz-message {
+    position:relative !important;
+    left: 200px !important;
+    -webkit-background-size: 214px 203px !important;
+    -moz-background-size: 214px 203px !important;
+    background-size: 214px 203px !important;
+}*/
