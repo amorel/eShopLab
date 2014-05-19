@@ -3,6 +3,7 @@
         previewsContainer: ".dropzone-previews",
         maxFiles: 1,
         autoProcessQueue: false,
+        acceptedFiles: "image/*",
         init: function () {
             this.on("addedfile", function (file) {
                 var dz = Dropzone.forElement("#mydropzone");

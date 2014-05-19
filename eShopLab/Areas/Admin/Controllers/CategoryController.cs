@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eShopLab.Models;
+using System.IO;
 
 namespace eShopLab.Areas.Admin.Controllers
 {
@@ -49,10 +50,9 @@ namespace eShopLab.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(CategoryMedia category)
         {
-
             if (category.File != null && category.File.ContentLength > 0)
             {
-                //category.NewCategory.Medium = category.File.FileName;
+                var mediaType = db.MediaTypes.Where(m => m.MediaTypeExtension == Path.GetExtension(category.File.FileName));
                 category.File.SaveAs(Server.MapPath("~/Uploads/" + category.File.FileName));
             }
 
