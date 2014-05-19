@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eShopLab.Models;
+using System.IO;
 
 namespace eShopLab.Areas.Admin.Controllers
 {
@@ -49,21 +50,24 @@ namespace eShopLab.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(CategoryMedia category)
         {
-
             if (category.File != null && category.File.ContentLength > 0)
             {
-                //category.NewCategory.Medium = category.File.FileName;
-                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.File.FileName));
+                string ext  = Path.GetExtension(category.File.FileName);
+                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.NewCategory.CategoryName + category.NewCategory.CategoryID + ext));
+                category.NewCategory.Medium = new Medium()
+                {
+                    MediaName = category.NewCategory.CategoryName + category.NewCategory.CategoryID,
+                    MediaAlt = category.NewCategory.CategoryName,
+                    MediaUrl = "~/Uploads/" + category.NewCategory.CategoryName + category.NewCategory.CategoryID + ext
+                };
             }
 
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category.NewCategory);
-                //db.SaveChanges();
-                return RedirectToAction("Index");
+                db.SaveChanges();
             }
-
-            return View(category);
+            return RedirectToAction("Index");;
         }
 
         //
