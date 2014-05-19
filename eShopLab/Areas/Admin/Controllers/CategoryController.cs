@@ -66,10 +66,8 @@ namespace eShopLab.Areas.Admin.Controllers
             {
                 db.Categories.Add(category.NewCategory);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            return View(category);
+            return RedirectToAction("Index");;
         }
 
         //
