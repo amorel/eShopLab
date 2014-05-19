@@ -52,14 +52,20 @@ namespace eShopLab.Areas.Admin.Controllers
         {
             if (category.File != null && category.File.ContentLength > 0)
             {
-                var mediaType = db.MediaTypes.Where(m => m.MediaTypeExtension == Path.GetExtension(category.File.FileName));
-                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.File.FileName));
+                string ext  = Path.GetExtension(category.File.FileName);
+                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.NewCategory.CategoryName + category.NewCategory.CategoryID + ext));
+                category.NewCategory.Medium = new Medium()
+                {
+                    MediaName = category.NewCategory.CategoryName + category.NewCategory.CategoryID,
+                    MediaAlt = category.NewCategory.CategoryName,
+                    MediaUrl = "~/Uploads/" + category.NewCategory.CategoryName + category.NewCategory.CategoryID + ext
+                };
             }
 
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category.NewCategory);
-                //db.SaveChanges();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

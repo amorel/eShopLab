@@ -65,10 +65,6 @@
             <End Role="DeliverableCountry" EntitySet="DeliverableCountry" />
             <End Role="DeliverablePrice" EntitySet="DeliverablePrice" />
           </AssociationSet>
-          <AssociationSet Name="FK_Media_MediaType" Association="eShopDBModel.Store.FK_Media_MediaType">
-            <End Role="MediaType" EntitySet="MediaType" />
-            <End Role="Media" EntitySet="Media" />
-          </AssociationSet>
           <AssociationSet Name="FK_Price_Product" Association="eShopDBModel.Store.FK_Price_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="Price" EntitySet="Price" />
@@ -375,18 +371,6 @@
             </Principal>
             <Dependent Role="DeliverablePrice">
               <PropertyRef Name="DeliverablePriceCountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Media_MediaType">
-          <End Role="MediaType" Type="eShopDBModel.Store.MediaType" Multiplicity="1" />
-          <End Role="Media" Type="eShopDBModel.Store.Media" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MediaType">
-              <PropertyRef Name="MediaTypeID" />
-            </Principal>
-            <Dependent Role="Media">
-              <PropertyRef Name="MediaTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

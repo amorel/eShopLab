@@ -2,6 +2,7 @@
     var myDropzone = $("#mydropzone").dropzone({
         previewsContainer: ".dropzone-previews",
         maxFiles: 1,
+        addRemoveLinks: true,
         autoProcessQueue: false,
         acceptedFiles: "image/*",
         init: function () {
