@@ -18,10 +18,11 @@
             // First change the button to actually tell Dropzone to process the queue.
             this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
                 // Make sure that the form isn't actually being sent.
-                alert($("#mydropzone").dropzone.files.length);
-                e.preventDefault();
-                e.stopPropagation();
-                myDropzone.processQueue();
+                if (Dropzone.forElement("#mydropzone").files.length > 0) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                }
             })
         }
     });
