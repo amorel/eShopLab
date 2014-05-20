@@ -1,2 +1,3 @@
-﻿delete from Category
+﻿use [C:\USERS\ADMIN.PC-CZC1213R5T\DOCUMENTS\ARNAUD\ESHOPLAB\ESHOPLAB\APP_DATA\ESHOPDB.MDF]
+delete from Category
 delete from Media
