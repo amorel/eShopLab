@@ -119,9 +119,17 @@ namespace eShopLab.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
+            try
+            {
+                Category category = db.Categories.Find(id);
+                category.Medium.DeleteFile(Server.MapPath("~/Uploads/"));
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                
+            }
             return RedirectToAction("Index");
         }
 

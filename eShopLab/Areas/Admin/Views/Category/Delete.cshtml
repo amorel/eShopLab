@@ -32,10 +32,10 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Medium.MediaName)
+         <label for="CategoryName">Media</label>
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Medium.MediaName)
+        <img id="imgMedia" src="@Url.Content(Model.Medium.MediaUrl)" alt="" />
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
