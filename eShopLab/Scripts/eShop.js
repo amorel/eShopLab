@@ -24,6 +24,9 @@
                     myDropzone.processQueue();
                 }
             })
+        },
+        complete: function () {
+            window.location = "./";
         }
     });
     console.log("ready!");
