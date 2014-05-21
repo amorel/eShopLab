@@ -1,0 +1,40 @@
+﻿@model IEnumerable<eShopLab.Models.SizeCategory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SizeCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SizeCategoryInitial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SizeCategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SizeCategoryInitial)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SizeCategoryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SizeCategoryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SizeCategoryID })
+        </td>
+    </tr>
+}
+
+</table>

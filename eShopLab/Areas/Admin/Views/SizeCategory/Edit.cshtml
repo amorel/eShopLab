@@ -1,0 +1,46 @@
+﻿@model eShopLab.Models.SizeCategory
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SizeCategory</legend>
+
+        @Html.HiddenFor(model => model.SizeCategoryID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SizeCategoryName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SizeCategoryName)
+            @Html.ValidationMessageFor(model => model.SizeCategoryName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SizeCategoryInitial)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SizeCategoryInitial)
+            @Html.ValidationMessageFor(model => model.SizeCategoryInitial)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

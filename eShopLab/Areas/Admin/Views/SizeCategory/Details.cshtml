@@ -1,0 +1,30 @@
+﻿@model eShopLab.Models.SizeCategory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>SizeCategory</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SizeCategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SizeCategoryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SizeCategoryInitial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SizeCategoryInitial)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SizeCategoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

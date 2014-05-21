@@ -1,0 +1,30 @@
+﻿@model eShopLab.Models.UnitType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UnitType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UnitTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UnitTypeSymbol)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitTypeSymbol)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UnitTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
