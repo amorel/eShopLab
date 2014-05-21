@@ -4,6 +4,8 @@ Drop database eShopDB
 go
 Create database eShopDB
 go
+use eShopDB
+go
 CREATE TABLE [User]( 
 UserID INT IDENTITY(1,1) NOT NULL, 
 UserUsername NVARCHAR(128) NOT NULL, 
@@ -100,11 +102,11 @@ UnitTypeSymbol NVARCHAR(16) NULL,
 CONSTRAINT PK_UnitTypeID PRIMARY KEY (UnitTypeID) 
 )
 
-CREATE TABLE VATCategory( 
-VATCategoryID INT IDENTITY(1,1) NOT NULL, 
-VATCategoryName NVARCHAR(64) NOT NULL, 
-VATCategoryValue DECIMAL(5,3) NOT NULL DEFAULT ((0)), 
-CONSTRAINT PK_VATCategoryID PRIMARY KEY (VATCategoryID) 
+CREATE TABLE SizeCategory( 
+SizeCategoryID INT IDENTITY(1,1) NOT NULL, 
+SizeCategoryName NVARCHAR(64) NOT NULL,
+SizeCategoryInitial CHAR(4) NOT NULL,
+CONSTRAINT PK_SizeCategoryID PRIMARY KEY (SizeCategoryID) 
 )
  
 CREATE TABLE Product( 
@@ -122,7 +124,7 @@ UnitTypeID INT NOT NULL,
 CategoryID INT NOT NULL, 
 MediaID INT NOT NULL, 
 CONSTRAINT PK_ProductID PRIMARY KEY (ProductID), 
-CONSTRAINT FK_Product_VATCategory FOREIGN KEY (VATCategoryID) REFERENCES VATCategory(VATCategoryID), 
+CONSTRAINT FK_Product_VATCategory FOREIGN KEY (VATCategoryID) REFERENCES SizeCategory(SizeCategoryID), 
 CONSTRAINT FK_Product_UnitType FOREIGN KEY (UnitTypeID) REFERENCES UnitType(UnitTypeID), 
 CONSTRAINT FK_Product_Category FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID), 
 CONSTRAINT FK_Product_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID) 
@@ -135,6 +137,15 @@ CONSTRAINT PK_MediaProduct PRIMARY KEY (ProductID, MediaID),
 CONSTRAINT FK_MediaProduct_Product FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
 CONSTRAINT FK_MediaProduct_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID)
 ) 
+
+CREATE TABLE ProductSizeCategory( 
+ProductID INT NOT NULL, 
+SizeCategoryID INT NOT NULL,
+Quantity INT NOT NULL, 
+CONSTRAINT PK_ProductSizeCategory PRIMARY KEY (ProductID, SizeCategoryID),
+CONSTRAINT FK_SizeCategory_Product FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+CONSTRAINT FK_SizeCategory_SizeCategory FOREIGN KEY (SizeCategoryID) REFERENCES SizeCategory(SizeCategoryID)
+)
 
 CREATE TABLE Price( 
 PriceID INT IDENTITY(1,1) NOT NULL, 
