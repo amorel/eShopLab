@@ -23,7 +23,7 @@ namespace eShopLab.Models
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
         public bool CategoryIsMenu { get; set; }
-        public int MediaID { get; set; }
+        public Nullable<int> MediaID { get; set; }
     
         public virtual Medium Medium { get; set; }
         public virtual ICollection<Product> Products { get; set; }

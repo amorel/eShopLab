@@ -11,36 +11,40 @@
 <fieldset>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryName)
+        @Html.DisplayNameFor(model => model.CategoryName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CategoryName)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryDescription)
+        @Html.DisplayNameFor(model => model.CategoryDescription)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CategoryDescription)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.CategoryIsMenu)
+        @Html.DisplayNameFor(model => model.CategoryIsMenu)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.CategoryIsMenu)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Medium.MediaName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Medium.MediaName)
-    </div>
+    @if (Model.Medium != null)
+    {
+        <div class="display-label">
+            <label for="CategoryName">Media</label>
+        </div>
+        <div class="display-field">
+            <img id="imgMedia" src="@Url.Content(Model.Medium.MediaUrl)" alt="" />
+        </div>
+    }
 </fieldset>
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     <p>
-        <input type="submit" value="Delete" /> |
+        <input type="submit" value="Delete" />
+        |
         @Html.ActionLink("Back to List", "Index")
     </p>
 }

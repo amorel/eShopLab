@@ -25,7 +25,7 @@ namespace eShopLab.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Adress> Adresses { get; set; }
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Command> Commands { get; set; }
         public DbSet<CommandLine> CommandLines { get; set; }

@@ -16,7 +16,7 @@ namespace eShopLab.Models
     {
         public Customer()
         {
-            this.Adresses = new HashSet<Adress>();
+            this.Addresses = new HashSet<Address>();
         }
     
         public int CustomerID { get; set; }
@@ -26,7 +26,7 @@ namespace eShopLab.Models
         public bool CustomerActive { get; set; }
         public int UserID { get; set; }
     
-        public virtual ICollection<Adress> Adresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual User User { get; set; }
     }
 }

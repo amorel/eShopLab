@@ -24,11 +24,11 @@ namespace eShopLab.Models
         public System.DateTime CommandFicsalDate { get; set; }
         public string CommandeReference { get; set; }
         public int CommandStatusID { get; set; }
-        public int DeliveryAdressID { get; set; }
-        public Nullable<int> InvoiceAdressID { get; set; }
+        public int DeliveryAddressID { get; set; }
+        public Nullable<int> InvoiceAddressID { get; set; }
     
-        public virtual Adress Adress { get; set; }
-        public virtual Adress Adress1 { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual Address Address1 { get; set; }
         public virtual CommandStatu CommandStatu { get; set; }
         public virtual ICollection<CommandLine> CommandLines { get; set; }
     }

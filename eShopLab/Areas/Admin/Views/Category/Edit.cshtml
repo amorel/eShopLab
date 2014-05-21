@@ -6,8 +6,10 @@
 }
 
 <span class="title">Edit Category</span>
+<input hidden="hidden" type="text" name="fileUrl" value="@Model.Medium.MediaUrl.Replace("~","")" />
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -39,11 +41,14 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.MediaID, "Medium")
+            <label for="CategoryName">Media</label>
         </div>
         <div class="editor-field">
-            @Html.DropDownList("MediaID", String.Empty)
-            @Html.ValidationMessageFor(model => model.MediaID)
+            <div class="dropzone-previews">
+                <div class="dz-message">
+                    <img id="dropzoneimg" src="~/Content/images/dropFiles.png" />
+                </div>
+            </div>
         </div>
 
         <p>

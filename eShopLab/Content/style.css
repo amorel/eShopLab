@@ -310,13 +310,12 @@ footer .copyright{
 }
 
 .dropzone-previews {
+    position: relative;
     min-height: 100px;
 }
 
-/*.dropzone .dz-default.dz-message {
-    position:relative !important;
-    left: 200px !important;
-    -webkit-background-size: 214px 203px !important;
-    -moz-background-size: 214px 203px !important;
-    background-size: 214px 203px !important;
-}*/
+.dz-image-preview{
+    position: absolute !important;
+    top: -20px;
+    left: 250px;
+}

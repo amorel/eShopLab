@@ -16,14 +16,14 @@ namespace eShopLab.Models
     {
         public DeliverableCountry()
         {
-            this.Adresses = new HashSet<Adress>();
+            this.Addresses = new HashSet<Address>();
             this.DeliverablePrices = new HashSet<DeliverablePrice>();
         }
     
         public int DeliverableCountryID { get; set; }
         public string DeliverableCountryName { get; set; }
     
-        public virtual ICollection<Adress> Adresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<DeliverablePrice> DeliverablePrices { get; set; }
     }
 }

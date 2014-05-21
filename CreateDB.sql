@@ -1,4 +1,10 @@
-﻿CREATE TABLE [User]( 
+use master
+go
+Drop database eShopDB
+go
+Create database eShopDB
+go
+CREATE TABLE [User]( 
 UserID INT IDENTITY(1,1) NOT NULL, 
 UserUsername NVARCHAR(128) NOT NULL, 
 UserPassword NVARCHAR(255) NOT NULL, 
@@ -36,26 +42,26 @@ CONSTRAINT PK_CustomerID PRIMARY KEY (CustomerID),
 CONSTRAINT FK_Customer_User FOREIGN KEY (UserID) REFERENCES [User](UserID) 
 )
 
-CREATE TABLE Adress( 
-AdressID INT IDENTITY(1,1) NOT NULL, 
-AdressCompany NVARCHAR(64) NULL, 
-AdressLine1 NVARCHAR(128) NOT NULL, 
-AdressLine2 NVARCHAR(128) NULL, 
-AdressZipCode NVARCHAR(16) NOT NULL, 
-AdressType BIT NOT NULL, 
-AdressActive BIT NOT NULL, 
+CREATE TABLE [Address]( 
+AddressID INT IDENTITY(1,1) NOT NULL, 
+AddressCompany NVARCHAR(64) NULL, 
+AddressLine1 NVARCHAR(128) NOT NULL, 
+AddressLine2 NVARCHAR(128) NULL, 
+AddressZipCode NVARCHAR(16) NOT NULL, 
+AddressType BIT NOT NULL, 
+AddressActive BIT NOT NULL, 
 DeliverableCountryID INT NOT NULL, 
 CustomerID INT NOT NULL 
-CONSTRAINT PK_AdressID PRIMARY KEY (AdressID), 
-CONSTRAINT FK_Adress_Customer FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID), 
-CONSTRAINT FK_Adress_DeliverableCountry FOREIGN KEY (DeliverableCountryID) REFERENCES DeliverableCountry(DeliverableCountryID) 
+CONSTRAINT PK_AddressID PRIMARY KEY (AddressID), 
+CONSTRAINT FK_Address_Customer FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID), 
+CONSTRAINT FK_Address_DeliverableCountry FOREIGN KEY (DeliverableCountryID) REFERENCES DeliverableCountry(DeliverableCountryID) 
 )
  
 CREATE TABLE MediaType( 
 MediaTypeID INT IDENTITY(1,1) NOT NULL, 
 MediaTypeName NVARCHAR(64) NOT NULL, 
 MediaTypeExtension NVARCHAR(8) NULL, 
-CONSTRAINT PK_MediaTypeID PRIMARY KEY (MediaTypeID) 
+CONSTRAINT PK_MediaTypeID PRIMARY KEY (MediaTypeID)
 ) 
 
 CREATE TABLE Media( 
@@ -63,11 +69,11 @@ MediaID INT IDENTITY(1,1) NOT NULL,
 [MediaName] NVARCHAR(64) NOT NULL, 
 MediaAlt NVARCHAR(128) NULL, 
 MediaUrl NVARCHAR(MAX) NOT NULL, 
-MediaTypeID INT NOT NULL, 
+MediaTypeID INT NULL, 
 CONSTRAINT PK_MediaID PRIMARY KEY (MediaID), 
 CONSTRAINT FK_Media_MediaType FOREIGN KEY (MediaTypeID) REFERENCES MediaType(MediaTypeID) 
 )
- 
+
 CREATE TABLE CommandStatus( 
 CommandStatusID INT IDENTITY(1,1) NOT NULL, 
 CommandStatusName NVARCHAR(64) NOT NULL, 
@@ -82,7 +88,7 @@ CategoryID INT IDENTITY(1,1) NOT NULL,
 CategoryName NVARCHAR(64) NOT NULL, 
 CategoryDescription NVARCHAR(255) NOT NULL, 
 CategoryIsMenu BIT NOT NULL DEFAULT ((0)), 
-MediaID INT NOT NULL, 
+MediaID INT NULL, 
 CONSTRAINT PK_CategoryID PRIMARY KEY (CategoryID), 
 CONSTRAINT FK_Category_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID) 
 )
@@ -122,6 +128,14 @@ CONSTRAINT FK_Product_Category FOREIGN KEY (CategoryID) REFERENCES Category(Cate
 CONSTRAINT FK_Product_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID) 
 ) 
 
+CREATE TABLE MediaProduct( 
+ProductID INT NOT NULL, 
+MediaID INT NOT NULL,  
+CONSTRAINT PK_MediaProduct PRIMARY KEY (ProductID, MediaID),
+CONSTRAINT FK_MediaProduct_Product FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
+CONSTRAINT FK_MediaProduct_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID)
+) 
+
 CREATE TABLE Price( 
 PriceID INT IDENTITY(1,1) NOT NULL, 
 PriceDate DATETIME NOT NULL DEFAULT GetDate(), 
@@ -137,12 +151,12 @@ CommandDate DATETIME NOT NULL DEFAULT GetDate(),
 CommandFicsalDate DATETIME NOT NULL, 
 CommandeReference NVARCHAR(32) NOT NULL, 
 CommandStatusID INT NOT NULL, 
-DeliveryAdressID INT NOT NULL, 
-InvoiceAdressID INT NULL, 
+DeliveryAddressID INT NOT NULL, 
+InvoiceAddressID INT NULL, 
 CONSTRAINT PK_CommandID PRIMARY KEY (CommandID), 
 CONSTRAINT FK_Command_CommandStatus FOREIGN KEY (CommandStatusID) REFERENCES CommandStatus(CommandStatusID), 
-CONSTRAINT FK_Command_DeliveryAdress FOREIGN KEY (DeliveryAdressID) REFERENCES Adress(AdressID), 
-CONSTRAINT FK_Command_InvoiceAdress FOREIGN KEY (InvoiceAdressID) REFERENCES Adress(AdressID) 
+CONSTRAINT FK_Command_DeliveryAddress FOREIGN KEY (DeliveryAddressID) REFERENCES Address(AddressID), 
+CONSTRAINT FK_Command_InvoiceAddress FOREIGN KEY (InvoiceAddressID) REFERENCES Address(AddressID) 
 ) 
 
 CREATE TABLE CommandLine( 
