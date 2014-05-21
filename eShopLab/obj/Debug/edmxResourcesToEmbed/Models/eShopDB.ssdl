@@ -14,9 +14,10 @@
     <EntitySet Name="MediaType" EntityType="eShopDBModel.Store.MediaType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Price" EntityType="eShopDBModel.Store.Price" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Product" EntityType="eShopDBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductSizeCategory" EntityType="eShopDBModel.Store.ProductSizeCategory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SizeCategory" EntityType="eShopDBModel.Store.SizeCategory" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UnitType" EntityType="eShopDBModel.Store.UnitType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="User" EntityType="eShopDBModel.Store.User" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="VATCategory" EntityType="eShopDBModel.Store.VATCategory" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Address_Customer" Association="eShopDBModel.Store.FK_Address_Customer">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Address" EntitySet="Address" />
@@ -90,8 +91,16 @@
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
     <AssociationSet Name="FK_Product_VATCategory" Association="eShopDBModel.Store.FK_Product_VATCategory">
-      <End Role="VATCategory" EntitySet="VATCategory" />
+      <End Role="SizeCategory" EntitySet="SizeCategory" />
       <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SizeCategory_Product" Association="eShopDBModel.Store.FK_SizeCategory_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductSizeCategory" EntitySet="ProductSizeCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SizeCategory_SizeCategory" Association="eShopDBModel.Store.FK_SizeCategory_SizeCategory">
+      <End Role="SizeCategory" EntitySet="SizeCategory" />
+      <End Role="ProductSizeCategory" EntitySet="ProductSizeCategory" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Address">
@@ -230,6 +239,23 @@
     <Property Name="CategoryID" Type="int" Nullable="false" />
     <Property Name="MediaID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ProductSizeCategory">
+    <Key>
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="SizeCategoryID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="SizeCategoryID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SizeCategory">
+    <Key>
+      <PropertyRef Name="SizeCategoryID" />
+    </Key>
+    <Property Name="SizeCategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SizeCategoryName" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="SizeCategoryInitial" Type="char" Nullable="false" MaxLength="4" />
+  </EntityType>
   <EntityType Name="UnitType">
     <Key>
       <PropertyRef Name="UnitTypeID" />
@@ -249,14 +275,6 @@
     <Property Name="UserSalt" Type="nvarchar" Nullable="false" MaxLength="32" />
     <Property Name="UserRegisterDate" Type="datetime" Nullable="false" />
     <Property Name="UserLastLoginDate" Type="datetime" />
-  </EntityType>
-  <EntityType Name="VATCategory">
-    <Key>
-      <PropertyRef Name="VATCategoryID" />
-    </Key>
-    <Property Name="VATCategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="VATCategoryName" Type="nvarchar" Nullable="false" MaxLength="64" />
-    <Property Name="VATCategoryValue" Type="decimal" Nullable="false" Precision="5" Scale="3" />
   </EntityType>
   <Association Name="FK_Address_Customer">
     <End Role="Customer" Type="eShopDBModel.Store.Customer" Multiplicity="1" />
@@ -475,14 +493,38 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Product_VATCategory">
-    <End Role="VATCategory" Type="eShopDBModel.Store.VATCategory" Multiplicity="1" />
+    <End Role="SizeCategory" Type="eShopDBModel.Store.SizeCategory" Multiplicity="1" />
     <End Role="Product" Type="eShopDBModel.Store.Product" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="VATCategory">
-        <PropertyRef Name="VATCategoryID" />
+      <Principal Role="SizeCategory">
+        <PropertyRef Name="SizeCategoryID" />
       </Principal>
       <Dependent Role="Product">
         <PropertyRef Name="VATCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SizeCategory_Product">
+    <End Role="Product" Type="eShopDBModel.Store.Product" Multiplicity="1" />
+    <End Role="ProductSizeCategory" Type="eShopDBModel.Store.ProductSizeCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductSizeCategory">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SizeCategory_SizeCategory">
+    <End Role="SizeCategory" Type="eShopDBModel.Store.SizeCategory" Multiplicity="1" />
+    <End Role="ProductSizeCategory" Type="eShopDBModel.Store.ProductSizeCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SizeCategory">
+        <PropertyRef Name="SizeCategoryID" />
+      </Principal>
+      <Dependent Role="ProductSizeCategory">
+        <PropertyRef Name="SizeCategoryID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

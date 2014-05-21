@@ -141,6 +141,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ProductSizeCategories">
+      <EntityTypeMapping TypeName="eShopDBModel.ProductSizeCategory">
+        <MappingFragment StoreEntitySet="ProductSizeCategory">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="SizeCategoryID" ColumnName="SizeCategoryID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SizeCategories">
+      <EntityTypeMapping TypeName="eShopDBModel.SizeCategory">
+        <MappingFragment StoreEntitySet="SizeCategory">
+          <ScalarProperty Name="SizeCategoryID" ColumnName="SizeCategoryID" />
+          <ScalarProperty Name="SizeCategoryName" ColumnName="SizeCategoryName" />
+          <ScalarProperty Name="SizeCategoryInitial" ColumnName="SizeCategoryInitial" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="UnitTypes">
       <EntityTypeMapping TypeName="eShopDBModel.UnitType">
         <MappingFragment StoreEntitySet="UnitType">
@@ -160,15 +178,6 @@
           <ScalarProperty Name="UserSalt" ColumnName="UserSalt" />
           <ScalarProperty Name="UserRegisterDate" ColumnName="UserRegisterDate" />
           <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VATCategories">
-      <EntityTypeMapping TypeName="eShopDBModel.VATCategory">
-        <MappingFragment StoreEntitySet="VATCategory">
-          <ScalarProperty Name="VATCategoryID" ColumnName="VATCategoryID" />
-          <ScalarProperty Name="VATCategoryName" ColumnName="VATCategoryName" />
-          <ScalarProperty Name="VATCategoryValue" ColumnName="VATCategoryValue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

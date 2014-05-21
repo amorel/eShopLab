@@ -124,7 +124,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +180,12 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductSizeCategory.cs">
+      <DependentUpon>eShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SizeCategory.cs">
+      <DependentUpon>eShopDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UnitType.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
@@ -189,9 +194,6 @@
     </Compile>
     <Compile Include="Models\Validation\ValidationCategory.cs" />
     <Compile Include="Models\Partial\Medium.cs" />
-    <Compile Include="Models\VATCategory.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,11 +260,6 @@
       <DependentUpon>eShopDB.edmx</DependentUpon>
       <LastGenOutput>eShopDB.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

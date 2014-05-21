@@ -12,17 +12,19 @@ namespace eShopLab.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class VATCategory
+    public partial class SizeCategory
     {
-        public VATCategory()
+        public SizeCategory()
         {
             this.Products = new HashSet<Product>();
+            this.ProductSizeCategories = new HashSet<ProductSizeCategory>();
         }
     
-        public int VATCategoryID { get; set; }
-        public string VATCategoryName { get; set; }
-        public decimal VATCategoryValue { get; set; }
+        public int SizeCategoryID { get; set; }
+        public string SizeCategoryName { get; set; }
+        public string SizeCategoryInitial { get; set; }
     
         public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductSizeCategory> ProductSizeCategories { get; set; }
     }
 }

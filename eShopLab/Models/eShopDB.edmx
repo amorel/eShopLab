@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="eShopDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="eShopDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="eShopDBModelStoreContainer">
           <EntitySet Name="Address" EntityType="eShopDBModel.Store.Address" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Category" EntityType="eShopDBModel.Store.Category" store:Type="Tables" Schema="dbo" />
@@ -533,7 +533,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eShopDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -571,7 +572,7 @@
             <End Role="Command" EntitySet="Commands" />
           </AssociationSet>
           <AssociationSet Name="FK_Category_Media" Association="eShopDBModel.FK_Category_Media">
-            <End Role="Medium" EntitySet="Media" />
+            <End Role="Media" EntitySet="Media" />
             <End Role="Category" EntitySet="Categories" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Category" Association="eShopDBModel.FK_Product_Category">
@@ -579,7 +580,7 @@
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Command_CommandStatus" Association="eShopDBModel.FK_Command_CommandStatus">
-            <End Role="CommandStatu" EntitySet="CommandStatus" />
+            <End Role="CommandStatus" EntitySet="CommandStatus" />
             <End Role="Command" EntitySet="Commands" />
           </AssociationSet>
           <AssociationSet Name="FK_CommandLine_Command" Association="eShopDBModel.FK_CommandLine_Command">
@@ -591,8 +592,8 @@
             <End Role="CommandLine" EntitySet="CommandLines" />
           </AssociationSet>
           <AssociationSet Name="FK_CommandStatus_Media" Association="eShopDBModel.FK_CommandStatus_Media">
-            <End Role="Medium" EntitySet="Media" />
-            <End Role="CommandStatu" EntitySet="CommandStatus" />
+            <End Role="Media" EntitySet="Media" />
+            <End Role="CommandStatus" EntitySet="CommandStatus" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_User" Association="eShopDBModel.FK_Customer_User">
             <End Role="User" EntitySet="Users" />
@@ -604,10 +605,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Media_MediaType" Association="eShopDBModel.FK_Media_MediaType">
             <End Role="MediaType" EntitySet="MediaTypes" />
-            <End Role="Medium" EntitySet="Media" />
+            <End Role="Media" EntitySet="Media" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Media" Association="eShopDBModel.FK_Product_Media">
-            <End Role="Medium" EntitySet="Media" />
+            <End Role="Media" EntitySet="Media" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Price_Product" Association="eShopDBModel.FK_Price_Product">
@@ -631,7 +632,7 @@
             <End Role="ProductSizeCategory" EntitySet="ProductSizeCategories" />
           </AssociationSet>
           <AssociationSet Name="MediaProduct" Association="eShopDBModel.MediaProduct">
-            <End Role="Medium" EntitySet="Media" />
+            <End Role="Media" EntitySet="Media" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
@@ -639,15 +640,15 @@
           <Key>
             <PropertyRef Name="AddressID" />
           </Key>
-          <Property Type="Int32" Name="AddressID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="AddressCompany" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AddressLine1" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AddressLine2" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AddressZipCode" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="AddressType" Nullable="false" />
-          <Property Type="Boolean" Name="AddressActive" Nullable="false" />
-          <Property Type="Int32" Name="DeliverableCountryID" Nullable="false" />
-          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Name="AddressID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressCompany" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="AddressZipCode" Type="String" Nullable="false" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="AddressType" Type="Boolean" Nullable="false" />
+          <Property Name="AddressActive" Type="Boolean" Nullable="false" />
+          <Property Name="DeliverableCountryID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="eShopDBModel.FK_Address_Customer" FromRole="Address" ToRole="Customer" />
           <NavigationProperty Name="DeliverableCountry" Relationship="eShopDBModel.FK_Address_DeliverableCountry" FromRole="Address" ToRole="DeliverableCountry" />
           <NavigationProperty Name="Commands" Relationship="eShopDBModel.FK_Command_DeliveryAddress" FromRole="Address" ToRole="Command" />
@@ -657,39 +658,39 @@
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Type="Int32" Name="CategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CategoryDescription" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="CategoryIsMenu" Nullable="false" />
-          <Property Type="Int32" Name="MediaID" />
-          <NavigationProperty Name="Medium" Relationship="eShopDBModel.FK_Category_Media" FromRole="Category" ToRole="Medium" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="CategoryDescription" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CategoryIsMenu" Type="Boolean" Nullable="false" />
+          <Property Name="MediaID" Type="Int32" />
+          <NavigationProperty Name="Medium" Relationship="eShopDBModel.FK_Category_Media" FromRole="Category" ToRole="Media" />
           <NavigationProperty Name="Products" Relationship="eShopDBModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Command">
           <Key>
             <PropertyRef Name="CommandID" />
           </Key>
-          <Property Type="Int32" Name="CommandID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="CommandDate" Nullable="false" Precision="3" />
-          <Property Type="DateTime" Name="CommandFicsalDate" Nullable="false" Precision="3" />
-          <Property Type="String" Name="CommandeReference" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="CommandStatusID" Nullable="false" />
-          <Property Type="Int32" Name="DeliveryAddressID" Nullable="false" />
-          <Property Type="Int32" Name="InvoiceAddressID" />
+          <Property Name="CommandID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CommandDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CommandFicsalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CommandeReference" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="CommandStatusID" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryAddressID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceAddressID" Type="Int32" />
           <NavigationProperty Name="Address" Relationship="eShopDBModel.FK_Command_DeliveryAddress" FromRole="Command" ToRole="Address" />
           <NavigationProperty Name="Address1" Relationship="eShopDBModel.FK_Command_InvoiceAddress" FromRole="Command" ToRole="Address" />
-          <NavigationProperty Name="CommandStatu" Relationship="eShopDBModel.FK_Command_CommandStatus" FromRole="Command" ToRole="CommandStatu" />
+          <NavigationProperty Name="CommandStatu" Relationship="eShopDBModel.FK_Command_CommandStatus" FromRole="Command" ToRole="CommandStatus" />
           <NavigationProperty Name="CommandLines" Relationship="eShopDBModel.FK_CommandLine_Command" FromRole="Command" ToRole="CommandLine" />
         </EntityType>
         <EntityType Name="CommandLine">
           <Key>
             <PropertyRef Name="CommandLineID" />
           </Key>
-          <Property Type="Int32" Name="CommandLineID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="CommandLineQuantity" Nullable="false" />
-          <Property Type="Decimal" Name="CommandLinePrice" Nullable="false" Precision="19" Scale="4" />
-          <Property Type="Int32" Name="CommandID" Nullable="false" />
-          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Name="CommandLineID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CommandLineQuantity" Type="Int32" Nullable="false" />
+          <Property Name="CommandLinePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CommandID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Command" Relationship="eShopDBModel.FK_CommandLine_Command" FromRole="CommandLine" ToRole="Command" />
           <NavigationProperty Name="Product" Relationship="eShopDBModel.FK_CommandLine_Product" FromRole="CommandLine" ToRole="Product" />
         </EntityType>
@@ -697,23 +698,23 @@
           <Key>
             <PropertyRef Name="CommandStatusID" />
           </Key>
-          <Property Type="Int32" Name="CommandStatusID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CommandStatusName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="Int16" Name="CommandStatusProgress" Nullable="false" />
-          <Property Type="Int32" Name="MediaID" Nullable="false" />
-          <NavigationProperty Name="Commands" Relationship="eShopDBModel.FK_Command_CommandStatus" FromRole="CommandStatu" ToRole="Command" />
-          <NavigationProperty Name="Medium" Relationship="eShopDBModel.FK_CommandStatus_Media" FromRole="CommandStatu" ToRole="Medium" />
+          <Property Name="CommandStatusID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CommandStatusName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="CommandStatusProgress" Type="Int16" Nullable="false" />
+          <Property Name="MediaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Commands" Relationship="eShopDBModel.FK_Command_CommandStatus" FromRole="CommandStatus" ToRole="Command" />
+          <NavigationProperty Name="Medium" Relationship="eShopDBModel.FK_CommandStatus_Media" FromRole="CommandStatus" ToRole="Media" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
-          <Property Type="Int32" Name="CustomerID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="CustomerLastName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CustomerFirstName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CustomerCompany" MaxLength="96" FixedLength="false" Unicode="true" />
-          <Property Type="Boolean" Name="CustomerActive" Nullable="false" />
-          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerLastName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerFirstName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerCompany" Type="String" MaxLength="96" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Addresses" Relationship="eShopDBModel.FK_Address_Customer" FromRole="Customer" ToRole="Address" />
           <NavigationProperty Name="User" Relationship="eShopDBModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
         </EntityType>
@@ -721,8 +722,8 @@
           <Key>
             <PropertyRef Name="DeliverableCountryID" />
           </Key>
-          <Property Type="Int32" Name="DeliverableCountryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="DeliverableCountryName" Nullable="false" MaxLength="48" FixedLength="false" Unicode="true" />
+          <Property Name="DeliverableCountryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliverableCountryName" Type="String" Nullable="false" MaxLength="48" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Addresses" Relationship="eShopDBModel.FK_Address_DeliverableCountry" FromRole="DeliverableCountry" ToRole="Address" />
           <NavigationProperty Name="DeliverablePrices" Relationship="eShopDBModel.FK_DeliverablePrice_DeliverableCountry" FromRole="DeliverableCountry" ToRole="DeliverablePrice" />
         </EntityType>
@@ -730,81 +731,81 @@
           <Key>
             <PropertyRef Name="DeliverablePriceID" />
           </Key>
-          <Property Type="Int32" Name="DeliverablePriceID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="DeliverablePriceName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="Byte" Name="DeliverablePriceTimeEstimation" Nullable="false" />
-          <Property Type="Decimal" Name="DeliverablePriceValue" Nullable="false" Precision="10" Scale="4" />
-          <Property Type="Int32" Name="DeliverablePriceCountryID" Nullable="false" />
+          <Property Name="DeliverablePriceID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliverablePriceName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="DeliverablePriceTimeEstimation" Type="Byte" Nullable="false" />
+          <Property Name="DeliverablePriceValue" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="DeliverablePriceCountryID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DeliverableCountry" Relationship="eShopDBModel.FK_DeliverablePrice_DeliverableCountry" FromRole="DeliverablePrice" ToRole="DeliverableCountry" />
         </EntityType>
         <EntityType Name="Medium">
           <Key>
             <PropertyRef Name="MediaID" />
           </Key>
-          <Property Type="Int32" Name="MediaID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MediaName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MediaAlt" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MediaUrl" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="MediaTypeID" />
-          <NavigationProperty Name="Categories" Relationship="eShopDBModel.FK_Category_Media" FromRole="Medium" ToRole="Category" />
-          <NavigationProperty Name="CommandStatus" Relationship="eShopDBModel.FK_CommandStatus_Media" FromRole="Medium" ToRole="CommandStatu" />
-          <NavigationProperty Name="MediaType" Relationship="eShopDBModel.FK_Media_MediaType" FromRole="Medium" ToRole="MediaType" />
-          <NavigationProperty Name="Products" Relationship="eShopDBModel.FK_Product_Media" FromRole="Medium" ToRole="Product" />
-          <NavigationProperty Name="Products1" Relationship="eShopDBModel.MediaProduct" FromRole="Medium" ToRole="Product" />
+          <Property Name="MediaID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MediaName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="MediaAlt" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="MediaUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MediaTypeID" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="eShopDBModel.FK_Category_Media" FromRole="Media" ToRole="Category" />
+          <NavigationProperty Name="CommandStatus" Relationship="eShopDBModel.FK_CommandStatus_Media" FromRole="Media" ToRole="CommandStatus" />
+          <NavigationProperty Name="MediaType" Relationship="eShopDBModel.FK_Media_MediaType" FromRole="Media" ToRole="MediaType" />
+          <NavigationProperty Name="Products" Relationship="eShopDBModel.FK_Product_Media" FromRole="Media" ToRole="Product" />
+          <NavigationProperty Name="Products1" Relationship="eShopDBModel.MediaProduct" FromRole="Media" ToRole="Product" />
         </EntityType>
         <EntityType Name="MediaType">
           <Key>
             <PropertyRef Name="MediaTypeID" />
           </Key>
-          <Property Type="Int32" Name="MediaTypeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MediaTypeName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="MediaTypeExtension" MaxLength="8" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Media" Relationship="eShopDBModel.FK_Media_MediaType" FromRole="MediaType" ToRole="Medium" />
+          <Property Name="MediaTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MediaTypeName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="MediaTypeExtension" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Media" Relationship="eShopDBModel.FK_Media_MediaType" FromRole="MediaType" ToRole="Media" />
         </EntityType>
         <EntityType Name="Price">
           <Key>
             <PropertyRef Name="PriceID" />
           </Key>
-          <Property Type="Int32" Name="PriceID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="DateTime" Name="PriceDate" Nullable="false" Precision="3" />
-          <Property Type="Decimal" Name="PriceValue" Nullable="false" Precision="19" Scale="4" />
-          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Name="PriceID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PriceValue" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="eShopDBModel.FK_Price_Product" FromRole="Price" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
           </Key>
-          <Property Type="Int32" Name="ProductID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ProductDescription" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ProductLongDescription" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="ProductReference" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ProductManufacturerReference" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ProductBarCode" MaxLength="16" FixedLength="true" Unicode="false" />
-          <Property Type="DateTime" Name="ProductAddingDate" Nullable="false" Precision="3" />
-          <Property Type="Boolean" Name="ProductDiscontinued" Nullable="false" />
-          <Property Type="Int32" Name="VATCategoryID" Nullable="false" />
-          <Property Type="Int32" Name="UnitTypeID" Nullable="false" />
-          <Property Type="Int32" Name="CategoryID" Nullable="false" />
-          <Property Type="Int32" Name="MediaID" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ProductLongDescription" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ProductReference" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="ProductManufacturerReference" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ProductBarCode" Type="String" MaxLength="16" Unicode="false" FixedLength="true" />
+          <Property Name="ProductAddingDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProductDiscontinued" Type="Boolean" Nullable="false" />
+          <Property Name="VATCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UnitTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="MediaID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="eShopDBModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="CommandLines" Relationship="eShopDBModel.FK_CommandLine_Product" FromRole="Product" ToRole="CommandLine" />
-          <NavigationProperty Name="Medium" Relationship="eShopDBModel.FK_Product_Media" FromRole="Product" ToRole="Medium" />
+          <NavigationProperty Name="Medium" Relationship="eShopDBModel.FK_Product_Media" FromRole="Product" ToRole="Media" />
           <NavigationProperty Name="Prices" Relationship="eShopDBModel.FK_Price_Product" FromRole="Product" ToRole="Price" />
           <NavigationProperty Name="UnitType" Relationship="eShopDBModel.FK_Product_UnitType" FromRole="Product" ToRole="UnitType" />
           <NavigationProperty Name="SizeCategory" Relationship="eShopDBModel.FK_Product_VATCategory" FromRole="Product" ToRole="SizeCategory" />
           <NavigationProperty Name="ProductSizeCategories" Relationship="eShopDBModel.FK_SizeCategory_Product" FromRole="Product" ToRole="ProductSizeCategory" />
-          <NavigationProperty Name="Media" Relationship="eShopDBModel.MediaProduct" FromRole="Product" ToRole="Medium" />
+          <NavigationProperty Name="Media" Relationship="eShopDBModel.MediaProduct" FromRole="Product" ToRole="Media" />
         </EntityType>
         <EntityType Name="ProductSizeCategory">
           <Key>
             <PropertyRef Name="ProductID" />
             <PropertyRef Name="SizeCategoryID" />
           </Key>
-          <Property Type="Int32" Name="ProductID" Nullable="false" />
-          <Property Type="Int32" Name="SizeCategoryID" Nullable="false" />
-          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="SizeCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="eShopDBModel.FK_SizeCategory_Product" FromRole="ProductSizeCategory" ToRole="Product" />
           <NavigationProperty Name="SizeCategory" Relationship="eShopDBModel.FK_SizeCategory_SizeCategory" FromRole="ProductSizeCategory" ToRole="SizeCategory" />
         </EntityType>
@@ -812,9 +813,9 @@
           <Key>
             <PropertyRef Name="SizeCategoryID" />
           </Key>
-          <Property Type="Int32" Name="SizeCategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="SizeCategoryName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SizeCategoryInitial" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="SizeCategoryID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SizeCategoryName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="SizeCategoryInitial" Type="String" Nullable="false" MaxLength="4" Unicode="false" FixedLength="true" />
           <NavigationProperty Name="Products" Relationship="eShopDBModel.FK_Product_VATCategory" FromRole="SizeCategory" ToRole="Product" />
           <NavigationProperty Name="ProductSizeCategories" Relationship="eShopDBModel.FK_SizeCategory_SizeCategory" FromRole="SizeCategory" ToRole="ProductSizeCategory" />
         </EntityType>
@@ -822,27 +823,27 @@
           <Key>
             <PropertyRef Name="UnitTypeID" />
           </Key>
-          <Property Type="Int32" Name="UnitTypeID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="UnitTypeName" Nullable="false" MaxLength="48" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UnitTypeSymbol" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="UnitTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitTypeName" Type="String" Nullable="false" MaxLength="48" Unicode="true" FixedLength="false" />
+          <Property Name="UnitTypeSymbol" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Products" Relationship="eShopDBModel.FK_Product_UnitType" FromRole="UnitType" ToRole="Product" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="UserUsername" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UserPassword" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UserEmail" Nullable="false" MaxLength="160" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="UserSalt" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="UserRegisterDate" Nullable="false" Precision="3" />
-          <Property Type="DateTime" Name="UserLastLoginDate" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserUsername" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="UserEmail" Type="String" Nullable="false" MaxLength="160" Unicode="true" FixedLength="false" />
+          <Property Name="UserSalt" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="UserRegisterDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserLastLoginDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customers" Relationship="eShopDBModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
         </EntityType>
         <Association Name="FK_Address_Customer">
-          <End Type="eShopDBModel.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="eShopDBModel.Address" Role="Address" Multiplicity="*" />
+          <End Role="Customer" Type="eShopDBModel.Customer" Multiplicity="1" />
+          <End Role="Address" Type="eShopDBModel.Address" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustomerID" />
@@ -853,8 +854,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Address_DeliverableCountry">
-          <End Type="eShopDBModel.DeliverableCountry" Role="DeliverableCountry" Multiplicity="1" />
-          <End Type="eShopDBModel.Address" Role="Address" Multiplicity="*" />
+          <End Role="DeliverableCountry" Type="eShopDBModel.DeliverableCountry" Multiplicity="1" />
+          <End Role="Address" Type="eShopDBModel.Address" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DeliverableCountry">
               <PropertyRef Name="DeliverableCountryID" />
@@ -865,8 +866,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Command_DeliveryAddress">
-          <End Type="eShopDBModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="eShopDBModel.Command" Role="Command" Multiplicity="*" />
+          <End Role="Address" Type="eShopDBModel.Address" Multiplicity="1" />
+          <End Role="Command" Type="eShopDBModel.Command" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Address">
               <PropertyRef Name="AddressID" />
@@ -877,8 +878,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Command_InvoiceAddress">
-          <End Type="eShopDBModel.Address" Role="Address" Multiplicity="0..1" />
-          <End Type="eShopDBModel.Command" Role="Command" Multiplicity="*" />
+          <End Role="Address" Type="eShopDBModel.Address" Multiplicity="0..1" />
+          <End Role="Command" Type="eShopDBModel.Command" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Address">
               <PropertyRef Name="AddressID" />
@@ -889,10 +890,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Category_Media">
-          <End Type="eShopDBModel.Medium" Role="Medium" Multiplicity="0..1" />
-          <End Type="eShopDBModel.Category" Role="Category" Multiplicity="*" />
+          <End Role="Media" Type="eShopDBModel.Medium" Multiplicity="0..1" />
+          <End Role="Category" Type="eShopDBModel.Category" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Medium">
+            <Principal Role="Media">
               <PropertyRef Name="MediaID" />
             </Principal>
             <Dependent Role="Category">
@@ -901,8 +902,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Category">
-          <End Type="eShopDBModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="Category" Type="eShopDBModel.Category" Multiplicity="1" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryID" />
@@ -913,10 +914,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Command_CommandStatus">
-          <End Type="eShopDBModel.CommandStatu" Role="CommandStatu" Multiplicity="1" />
-          <End Type="eShopDBModel.Command" Role="Command" Multiplicity="*" />
+          <End Role="CommandStatus" Type="eShopDBModel.CommandStatu" Multiplicity="1" />
+          <End Role="Command" Type="eShopDBModel.Command" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CommandStatu">
+            <Principal Role="CommandStatus">
               <PropertyRef Name="CommandStatusID" />
             </Principal>
             <Dependent Role="Command">
@@ -925,8 +926,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CommandLine_Command">
-          <End Type="eShopDBModel.Command" Role="Command" Multiplicity="1" />
-          <End Type="eShopDBModel.CommandLine" Role="CommandLine" Multiplicity="*" />
+          <End Role="Command" Type="eShopDBModel.Command" Multiplicity="1" />
+          <End Role="CommandLine" Type="eShopDBModel.CommandLine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Command">
               <PropertyRef Name="CommandID" />
@@ -937,8 +938,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CommandLine_Product">
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="eShopDBModel.CommandLine" Role="CommandLine" Multiplicity="*" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="1" />
+          <End Role="CommandLine" Type="eShopDBModel.CommandLine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
@@ -949,20 +950,20 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CommandStatus_Media">
-          <End Type="eShopDBModel.Medium" Role="Medium" Multiplicity="1" />
-          <End Type="eShopDBModel.CommandStatu" Role="CommandStatu" Multiplicity="*" />
+          <End Role="Media" Type="eShopDBModel.Medium" Multiplicity="1" />
+          <End Role="CommandStatus" Type="eShopDBModel.CommandStatu" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Medium">
+            <Principal Role="Media">
               <PropertyRef Name="MediaID" />
             </Principal>
-            <Dependent Role="CommandStatu">
+            <Dependent Role="CommandStatus">
               <PropertyRef Name="MediaID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customer_User">
-          <End Type="eShopDBModel.User" Role="User" Multiplicity="1" />
-          <End Type="eShopDBModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="User" Type="eShopDBModel.User" Multiplicity="1" />
+          <End Role="Customer" Type="eShopDBModel.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
@@ -973,8 +974,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DeliverablePrice_DeliverableCountry">
-          <End Type="eShopDBModel.DeliverableCountry" Role="DeliverableCountry" Multiplicity="1" />
-          <End Type="eShopDBModel.DeliverablePrice" Role="DeliverablePrice" Multiplicity="*" />
+          <End Role="DeliverableCountry" Type="eShopDBModel.DeliverableCountry" Multiplicity="1" />
+          <End Role="DeliverablePrice" Type="eShopDBModel.DeliverablePrice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DeliverableCountry">
               <PropertyRef Name="DeliverableCountryID" />
@@ -985,22 +986,22 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Media_MediaType">
-          <End Type="eShopDBModel.MediaType" Role="MediaType" Multiplicity="0..1" />
-          <End Type="eShopDBModel.Medium" Role="Medium" Multiplicity="*" />
+          <End Role="MediaType" Type="eShopDBModel.MediaType" Multiplicity="0..1" />
+          <End Role="Media" Type="eShopDBModel.Medium" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MediaType">
               <PropertyRef Name="MediaTypeID" />
             </Principal>
-            <Dependent Role="Medium">
+            <Dependent Role="Media">
               <PropertyRef Name="MediaTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Media">
-          <End Type="eShopDBModel.Medium" Role="Medium" Multiplicity="1" />
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="Media" Type="eShopDBModel.Medium" Multiplicity="1" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Medium">
+            <Principal Role="Media">
               <PropertyRef Name="MediaID" />
             </Principal>
             <Dependent Role="Product">
@@ -1009,8 +1010,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Price_Product">
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="eShopDBModel.Price" Role="Price" Multiplicity="*" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="1" />
+          <End Role="Price" Type="eShopDBModel.Price" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
@@ -1021,8 +1022,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_UnitType">
-          <End Type="eShopDBModel.UnitType" Role="UnitType" Multiplicity="1" />
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="UnitType" Type="eShopDBModel.UnitType" Multiplicity="1" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UnitType">
               <PropertyRef Name="UnitTypeID" />
@@ -1033,8 +1034,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_VATCategory">
-          <End Type="eShopDBModel.SizeCategory" Role="SizeCategory" Multiplicity="1" />
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="SizeCategory" Type="eShopDBModel.SizeCategory" Multiplicity="1" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SizeCategory">
               <PropertyRef Name="SizeCategoryID" />
@@ -1045,8 +1046,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SizeCategory_Product">
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="eShopDBModel.ProductSizeCategory" Role="ProductSizeCategory" Multiplicity="*" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="1" />
+          <End Role="ProductSizeCategory" Type="eShopDBModel.ProductSizeCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductID" />
@@ -1057,8 +1058,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SizeCategory_SizeCategory">
-          <End Type="eShopDBModel.SizeCategory" Role="SizeCategory" Multiplicity="1" />
-          <End Type="eShopDBModel.ProductSizeCategory" Role="ProductSizeCategory" Multiplicity="*" />
+          <End Role="SizeCategory" Type="eShopDBModel.SizeCategory" Multiplicity="1" />
+          <End Role="ProductSizeCategory" Type="eShopDBModel.ProductSizeCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SizeCategory">
               <PropertyRef Name="SizeCategoryID" />
@@ -1069,10 +1070,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="MediaProduct">
-          <End Type="eShopDBModel.Medium" Role="Medium" Multiplicity="*" />
-          <End Type="eShopDBModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="Media" Type="eShopDBModel.Medium" Multiplicity="*" />
+          <End Role="Product" Type="eShopDBModel.Product" Multiplicity="*" />
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1081,189 +1082,189 @@
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="eShopDBModel.Address">
               <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="DeliverableCountryID" ColumnName="DeliverableCountryID" />
-                <ScalarProperty Name="AddressActive" ColumnName="AddressActive" />
-                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
-                <ScalarProperty Name="AddressZipCode" ColumnName="AddressZipCode" />
-                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
-                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
-                <ScalarProperty Name="AddressCompany" ColumnName="AddressCompany" />
                 <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="AddressCompany" ColumnName="AddressCompany" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressZipCode" ColumnName="AddressZipCode" />
+                <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+                <ScalarProperty Name="AddressActive" ColumnName="AddressActive" />
+                <ScalarProperty Name="DeliverableCountryID" ColumnName="DeliverableCountryID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="eShopDBModel.Category">
               <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
-                <ScalarProperty Name="CategoryIsMenu" ColumnName="CategoryIsMenu" />
-                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
+                <ScalarProperty Name="CategoryIsMenu" ColumnName="CategoryIsMenu" />
+                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Commands">
             <EntityTypeMapping TypeName="eShopDBModel.Command">
               <MappingFragment StoreEntitySet="Command">
-                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
-                <ScalarProperty Name="DeliveryAddressID" ColumnName="DeliveryAddressID" />
-                <ScalarProperty Name="CommandStatusID" ColumnName="CommandStatusID" />
-                <ScalarProperty Name="CommandeReference" ColumnName="CommandeReference" />
-                <ScalarProperty Name="CommandFicsalDate" ColumnName="CommandFicsalDate" />
-                <ScalarProperty Name="CommandDate" ColumnName="CommandDate" />
                 <ScalarProperty Name="CommandID" ColumnName="CommandID" />
+                <ScalarProperty Name="CommandDate" ColumnName="CommandDate" />
+                <ScalarProperty Name="CommandFicsalDate" ColumnName="CommandFicsalDate" />
+                <ScalarProperty Name="CommandeReference" ColumnName="CommandeReference" />
+                <ScalarProperty Name="CommandStatusID" ColumnName="CommandStatusID" />
+                <ScalarProperty Name="DeliveryAddressID" ColumnName="DeliveryAddressID" />
+                <ScalarProperty Name="InvoiceAddressID" ColumnName="InvoiceAddressID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CommandLines">
             <EntityTypeMapping TypeName="eShopDBModel.CommandLine">
               <MappingFragment StoreEntitySet="CommandLine">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="CommandID" ColumnName="CommandID" />
-                <ScalarProperty Name="CommandLinePrice" ColumnName="CommandLinePrice" />
-                <ScalarProperty Name="CommandLineQuantity" ColumnName="CommandLineQuantity" />
                 <ScalarProperty Name="CommandLineID" ColumnName="CommandLineID" />
+                <ScalarProperty Name="CommandLineQuantity" ColumnName="CommandLineQuantity" />
+                <ScalarProperty Name="CommandLinePrice" ColumnName="CommandLinePrice" />
+                <ScalarProperty Name="CommandID" ColumnName="CommandID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CommandStatus">
             <EntityTypeMapping TypeName="eShopDBModel.CommandStatu">
               <MappingFragment StoreEntitySet="CommandStatus">
-                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
-                <ScalarProperty Name="CommandStatusProgress" ColumnName="CommandStatusProgress" />
-                <ScalarProperty Name="CommandStatusName" ColumnName="CommandStatusName" />
                 <ScalarProperty Name="CommandStatusID" ColumnName="CommandStatusID" />
+                <ScalarProperty Name="CommandStatusName" ColumnName="CommandStatusName" />
+                <ScalarProperty Name="CommandStatusProgress" ColumnName="CommandStatusProgress" />
+                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="eShopDBModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="CustomerActive" ColumnName="CustomerActive" />
-                <ScalarProperty Name="CustomerCompany" ColumnName="CustomerCompany" />
-                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
-                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerLastName" ColumnName="CustomerLastName" />
+                <ScalarProperty Name="CustomerFirstName" ColumnName="CustomerFirstName" />
+                <ScalarProperty Name="CustomerCompany" ColumnName="CustomerCompany" />
+                <ScalarProperty Name="CustomerActive" ColumnName="CustomerActive" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DeliverableCountries">
             <EntityTypeMapping TypeName="eShopDBModel.DeliverableCountry">
               <MappingFragment StoreEntitySet="DeliverableCountry">
-                <ScalarProperty Name="DeliverableCountryName" ColumnName="DeliverableCountryName" />
                 <ScalarProperty Name="DeliverableCountryID" ColumnName="DeliverableCountryID" />
+                <ScalarProperty Name="DeliverableCountryName" ColumnName="DeliverableCountryName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DeliverablePrices">
             <EntityTypeMapping TypeName="eShopDBModel.DeliverablePrice">
               <MappingFragment StoreEntitySet="DeliverablePrice">
-                <ScalarProperty Name="DeliverablePriceCountryID" ColumnName="DeliverablePriceCountryID" />
-                <ScalarProperty Name="DeliverablePriceValue" ColumnName="DeliverablePriceValue" />
-                <ScalarProperty Name="DeliverablePriceTimeEstimation" ColumnName="DeliverablePriceTimeEstimation" />
-                <ScalarProperty Name="DeliverablePriceName" ColumnName="DeliverablePriceName" />
                 <ScalarProperty Name="DeliverablePriceID" ColumnName="DeliverablePriceID" />
+                <ScalarProperty Name="DeliverablePriceName" ColumnName="DeliverablePriceName" />
+                <ScalarProperty Name="DeliverablePriceTimeEstimation" ColumnName="DeliverablePriceTimeEstimation" />
+                <ScalarProperty Name="DeliverablePriceValue" ColumnName="DeliverablePriceValue" />
+                <ScalarProperty Name="DeliverablePriceCountryID" ColumnName="DeliverablePriceCountryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Media">
             <EntityTypeMapping TypeName="eShopDBModel.Medium">
               <MappingFragment StoreEntitySet="Media">
-                <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
-                <ScalarProperty Name="MediaUrl" ColumnName="MediaUrl" />
-                <ScalarProperty Name="MediaAlt" ColumnName="MediaAlt" />
-                <ScalarProperty Name="MediaName" ColumnName="MediaName" />
                 <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+                <ScalarProperty Name="MediaName" ColumnName="MediaName" />
+                <ScalarProperty Name="MediaAlt" ColumnName="MediaAlt" />
+                <ScalarProperty Name="MediaUrl" ColumnName="MediaUrl" />
+                <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MediaTypes">
             <EntityTypeMapping TypeName="eShopDBModel.MediaType">
               <MappingFragment StoreEntitySet="MediaType">
-                <ScalarProperty Name="MediaTypeExtension" ColumnName="MediaTypeExtension" />
-                <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
                 <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
+                <ScalarProperty Name="MediaTypeName" ColumnName="MediaTypeName" />
+                <ScalarProperty Name="MediaTypeExtension" ColumnName="MediaTypeExtension" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Prices">
             <EntityTypeMapping TypeName="eShopDBModel.Price">
               <MappingFragment StoreEntitySet="Price">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="PriceValue" ColumnName="PriceValue" />
-                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
                 <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+                <ScalarProperty Name="PriceDate" ColumnName="PriceDate" />
+                <ScalarProperty Name="PriceValue" ColumnName="PriceValue" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="eShopDBModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
-                <ScalarProperty Name="VATCategoryID" ColumnName="VATCategoryID" />
-                <ScalarProperty Name="ProductDiscontinued" ColumnName="ProductDiscontinued" />
-                <ScalarProperty Name="ProductAddingDate" ColumnName="ProductAddingDate" />
-                <ScalarProperty Name="ProductBarCode" ColumnName="ProductBarCode" />
-                <ScalarProperty Name="ProductManufacturerReference" ColumnName="ProductManufacturerReference" />
-                <ScalarProperty Name="ProductReference" ColumnName="ProductReference" />
-                <ScalarProperty Name="ProductLongDescription" ColumnName="ProductLongDescription" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductLongDescription" ColumnName="ProductLongDescription" />
+                <ScalarProperty Name="ProductReference" ColumnName="ProductReference" />
+                <ScalarProperty Name="ProductManufacturerReference" ColumnName="ProductManufacturerReference" />
+                <ScalarProperty Name="ProductBarCode" ColumnName="ProductBarCode" />
+                <ScalarProperty Name="ProductAddingDate" ColumnName="ProductAddingDate" />
+                <ScalarProperty Name="ProductDiscontinued" ColumnName="ProductDiscontinued" />
+                <ScalarProperty Name="VATCategoryID" ColumnName="VATCategoryID" />
+                <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="MediaID" ColumnName="MediaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductSizeCategories">
             <EntityTypeMapping TypeName="eShopDBModel.ProductSizeCategory">
               <MappingFragment StoreEntitySet="ProductSizeCategory">
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="SizeCategoryID" ColumnName="SizeCategoryID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="SizeCategoryID" ColumnName="SizeCategoryID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SizeCategories">
             <EntityTypeMapping TypeName="eShopDBModel.SizeCategory">
               <MappingFragment StoreEntitySet="SizeCategory">
-                <ScalarProperty Name="SizeCategoryInitial" ColumnName="SizeCategoryInitial" />
-                <ScalarProperty Name="SizeCategoryName" ColumnName="SizeCategoryName" />
                 <ScalarProperty Name="SizeCategoryID" ColumnName="SizeCategoryID" />
+                <ScalarProperty Name="SizeCategoryName" ColumnName="SizeCategoryName" />
+                <ScalarProperty Name="SizeCategoryInitial" ColumnName="SizeCategoryInitial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnitTypes">
             <EntityTypeMapping TypeName="eShopDBModel.UnitType">
               <MappingFragment StoreEntitySet="UnitType">
-                <ScalarProperty Name="UnitTypeSymbol" ColumnName="UnitTypeSymbol" />
-                <ScalarProperty Name="UnitTypeName" ColumnName="UnitTypeName" />
                 <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+                <ScalarProperty Name="UnitTypeName" ColumnName="UnitTypeName" />
+                <ScalarProperty Name="UnitTypeSymbol" ColumnName="UnitTypeSymbol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="eShopDBModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
-                <ScalarProperty Name="UserRegisterDate" ColumnName="UserRegisterDate" />
-                <ScalarProperty Name="UserSalt" ColumnName="UserSalt" />
-                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserUsername" ColumnName="UserUsername" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserUsername" ColumnName="UserUsername" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserSalt" ColumnName="UserSalt" />
+                <ScalarProperty Name="UserRegisterDate" ColumnName="UserRegisterDate" />
+                <ScalarProperty Name="UserLastLoginDate" ColumnName="UserLastLoginDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="MediaProduct" TypeName="eShopDBModel.MediaProduct" StoreEntitySet="MediaProduct">
+            <EndProperty Name="Media">
+              <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+            </EndProperty>
             <EndProperty Name="Product">
               <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-            </EndProperty>
-            <EndProperty Name="Medium">
-              <ScalarProperty Name="MediaID" ColumnName="MediaID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
@@ -1280,7 +1281,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
