@@ -1,0 +1,100 @@
+﻿@model eShopLab.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductLongDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductLongDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductReference)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductReference)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductManufacturerReference)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductManufacturerReference)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductBarCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductBarCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductAddingDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductAddingDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductDiscontinued)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductDiscontinued)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SizeCategory.SizeCategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SizeCategory.SizeCategoryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UnitType.UnitTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitType.UnitTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Category.CategoryName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.CategoryName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Medium.MediaName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Medium.MediaName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
