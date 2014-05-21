@@ -48,23 +48,23 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Category/Create
 
         [HttpPost]
-        public ActionResult Create(CategoryMedia category)
+        public ActionResult Create(Category category)
         {
             if (category.File != null && category.File.ContentLength > 0)
             {
                 string ext  = Path.GetExtension(category.File.FileName);
-                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.NewCategory.CategoryName + category.NewCategory.CategoryID + ext));
-                category.NewCategory.Medium = new Medium()
+                category.File.SaveAs(Server.MapPath("~/Uploads/" + category.CategoryName + category.CategoryID + ext));
+                category.Medium = new Medium()
                 {
-                    MediaName = category.NewCategory.CategoryName + category.NewCategory.CategoryID,
-                    MediaAlt = category.NewCategory.CategoryName,
-                    MediaUrl = "~/Uploads/" + category.NewCategory.CategoryName + category.NewCategory.CategoryID + ext
+                    MediaName = category.CategoryName + category.CategoryID,
+                    MediaAlt = category.CategoryName,
+                    MediaUrl = "~/Uploads/" + category.CategoryName + category.CategoryID + ext
                 };
             }
 
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category.NewCategory);
+                db.Categories.Add(category);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");;

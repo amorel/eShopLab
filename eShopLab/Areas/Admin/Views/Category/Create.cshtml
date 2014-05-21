@@ -1,13 +1,13 @@
-﻿@model eShopLab.Models.CategoryMedia
+﻿@model eShopLab.Models.Category
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
 <span class="title">Create Category</span>
-
+@{Html.EnableClientValidation(true);}
+@{Html.EnableUnobtrusiveJavaScript();}
 @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
 {
     @Html.ValidationSummary(true)
@@ -17,24 +17,24 @@
             <label for="CategoryName">Category Name</label>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NewCategory.CategoryName)
-            @Html.ValidationMessageFor(model => model.NewCategory.CategoryName)
+            @Html.EditorFor(model => model.CategoryName)
+            @Html.ValidationMessageFor(model => model.CategoryName)
         </div>
 
         <div class="editor-label">
             <label for="CategoryName">Category Description</label>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NewCategory.CategoryDescription)
-            @Html.ValidationMessageFor(model => model.NewCategory.CategoryDescription)
+            @Html.EditorFor(model => model.CategoryDescription)
+            @Html.ValidationMessageFor(model => model.CategoryDescription)
         </div>
 
         <div class="editor-label">
             <label for="CategoryName">Is in the menu?</label>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.NewCategory.CategoryIsMenu)
-            @Html.ValidationMessageFor(model => model.NewCategory.CategoryIsMenu)
+            @Html.EditorFor(model => model.CategoryIsMenu)
+            @Html.ValidationMessageFor(model => model.CategoryIsMenu)
         </div>
 
         <div class="editor-label">

@@ -22,7 +22,8 @@ namespace eShopLab.App_Start
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/dropzone/dropzone.js",
                 "~/Scripts/eShop.js",
-                "~/Content/jquery.validate.js",
+                "~/Scripts/jquery.validate.js",
+                "~/Scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/bootstrap.js"));
         }
     }

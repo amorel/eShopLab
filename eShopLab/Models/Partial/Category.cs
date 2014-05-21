@@ -5,9 +5,9 @@ using System.Web;
 
 namespace eShopLab.Models
 {
-    public class CategoryMedia
+    [System.ComponentModel.DataAnnotations.MetadataType(typeof(ValidationCategory))]
+    public partial class Category
     {
-        public Category NewCategory { get; set; }
         public HttpPostedFileBase File { get; set; }
     }
 }
