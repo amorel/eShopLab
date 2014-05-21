@@ -178,6 +178,8 @@
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Partial\Category.cs" />
+    <Compile Include="Models\Partial\SizeCategory.cs" />
+    <Compile Include="Models\Partial\UnitType.cs" />
     <Compile Include="Models\Price.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
@@ -196,6 +198,8 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Validation\ValidationSizeCategory.cs" />
+    <Compile Include="Models\Validation\ValidationUnitType.cs" />
     <Compile Include="Models\Validation\ValidationCategory.cs" />
     <Compile Include="Models\Partial\Medium.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
