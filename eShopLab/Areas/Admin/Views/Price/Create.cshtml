@@ -1,0 +1,49 @@
+﻿@model eShopLab.Models.Price
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Price</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceDate)
+            @Html.ValidationMessageFor(model => model.PriceDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PriceValue)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriceValue)
+            @Html.ValidationMessageFor(model => model.PriceValue)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductID, "Product")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ProductID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

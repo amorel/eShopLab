@@ -1,0 +1,46 @@
+﻿@model IEnumerable<eShopLab.Models.Price>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.ProductName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PriceID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PriceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PriceID })
+        </td>
+    </tr>
+}
+
+</table>

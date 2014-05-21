@@ -1,0 +1,37 @@
+﻿@model eShopLab.Models.Price
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Price</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PriceValue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PriceValue)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product.ProductName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product.ProductName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PriceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

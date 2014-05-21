@@ -181,3 +181,18 @@ CONSTRAINT FK_CommandLine_Command FOREIGN KEY (CommandID) REFERENCES Command(Com
 CONSTRAINT FK_CommandLine_Product FOREIGN KEY (ProductID) REFERENCES PRoduct(ProductID) 
 ) 
 
+use eShopDB
+go
+DELETE FROM SizeCategory;
+INSERT INTO SizeCategory VALUES('Small', 'S');
+INSERT INTO SizeCategory VALUES('Medium', 'M');
+INSERT INTO SizeCategory VALUES('Large', 'L');
+INSERT INTO SizeCategory VALUES('X Large', 'XL');
+INSERT INTO SizeCategory VALUES('XX Large', 'XXL');
+
+use eShopDB
+go
+DELETE FROM UnitType;
+INSERT INTO UnitType VALUES('Euro', '€');
+INSERT INTO UnitType VALUES('Dollar', '$');
+INSERT INTO UnitType VALUES('Pound', '£');
