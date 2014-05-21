@@ -12,21 +12,21 @@ namespace eShopLab.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Adress
+    public partial class Address
     {
-        public Adress()
+        public Address()
         {
             this.Commands = new HashSet<Command>();
             this.Commands1 = new HashSet<Command>();
         }
     
-        public int AdressID { get; set; }
-        public string AdressCompany { get; set; }
-        public string AdressLine1 { get; set; }
-        public string AdressLine2 { get; set; }
-        public string AdressZipCode { get; set; }
-        public bool AdressType { get; set; }
-        public bool AdressActive { get; set; }
+        public int AddressID { get; set; }
+        public string AddressCompany { get; set; }
+        public string AddressLine1 { get; set; }
+        public string AddressLine2 { get; set; }
+        public string AddressZipCode { get; set; }
+        public bool AddressType { get; set; }
+        public bool AddressActive { get; set; }
         public int DeliverableCountryID { get; set; }
         public int CustomerID { get; set; }
     

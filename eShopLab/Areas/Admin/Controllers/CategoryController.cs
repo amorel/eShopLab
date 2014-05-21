@@ -122,7 +122,7 @@ namespace eShopLab.Areas.Admin.Controllers
             try
             {
                 Category category = db.Categories.Find(id);
-                category.Medium.DeleteFile(Server.MapPath("~/Uploads/"));
+                if(category.Medium != null) category.Medium.DeleteFile(Server.MapPath("~/Uploads/"));
                 db.Categories.Remove(category);
                 db.SaveChanges();
             }

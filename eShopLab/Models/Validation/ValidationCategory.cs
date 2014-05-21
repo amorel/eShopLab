@@ -9,11 +9,11 @@ namespace eShopLab.Models
     internal sealed class ValidationCategory
     {
         [Required(ErrorMessage = "Name is required please.")]
-        [StringLength(5)]
-        public string CategoryName;
+        [StringLength(30,MinimumLength=3)]
+        public string CategoryName { get; set; }
 
         [Required(ErrorMessage = "Description is required please.")]
-        [StringLength(5)]
+        [StringLength(200,MinimumLength = 3)]
         public string CategoryDescription { get; set; }
     }
 }

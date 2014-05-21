@@ -128,68 +128,68 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Adress.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Command.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommandLine.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommandStatu.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliverableCountry.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliverablePrice.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\eShopDBModel.Context.cs">
+    <Compile Include="Models\eShopDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>eShopDBModel.Context.tt</DependentUpon>
+      <DependentUpon>eShopDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\eShopDBModel.cs">
+    <Compile Include="Models\eShopDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\eShopDBModel.Designer.cs">
+    <Compile Include="Models\eShopDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>eShopDBModel.edmx</DependentUpon>
+      <DependentUpon>eShopDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\MediaType.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medium.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Partial\Category.cs" />
-    <Compile Include="Models\Validation\ValidationCategory.cs" />
-    <Compile Include="Models\Partial\Medium.cs" />
     <Compile Include="Models\Price.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UnitType.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Validation\ValidationCategory.cs" />
+    <Compile Include="Models\Partial\Medium.cs" />
     <Compile Include="Models\VATCategory.cs">
-      <DependentUpon>eShopDBModel.tt</DependentUpon>
+      <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -197,10 +197,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="App_Data\eShopDB.mdf" />
-    <Content Include="App_Data\eShopDB_log.ldf">
-      <DependentUpon>eShopDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -232,23 +228,6 @@
     <Content Include="fonts\sourcesanspro-regular-webfont.eot" />
     <Content Include="fonts\sourcesanspro-regular-webfont.ttf" />
     <Content Include="fonts\sourcesanspro-regular-webfont.woff" />
-    <EntityDeploy Include="Models\eShopDBModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>eShopDBModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\eShopDBModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>eShopDBModel.edmx</DependentUpon>
-      <LastGenOutput>eShopDBModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\eShopDBModel.edmx.diagram">
-      <DependentUpon>eShopDBModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\eShopDBModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>eShopDBModel.edmx</DependentUpon>
-      <LastGenOutput>eShopDBModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
@@ -261,6 +240,23 @@
     <Content Include="Scripts\dropzone\css\dropzone.css" />
     <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
     <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
+    <EntityDeploy Include="Models\eShopDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>eShopDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\eShopDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eShopDB.edmx</DependentUpon>
+      <LastGenOutput>eShopDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\eShopDB.edmx.diagram">
+      <DependentUpon>eShopDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\eShopDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>eShopDB.edmx</DependentUpon>
+      <LastGenOutput>eShopDB.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -276,7 +272,9 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -289,6 +287,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Uploads\" />
   </ItemGroup>

@@ -18,6 +18,7 @@ namespace eShopLab.Models
         {
             this.CommandLines = new HashSet<CommandLine>();
             this.Prices = new HashSet<Price>();
+            this.Media = new HashSet<Medium>();
         }
     
         public int ProductID { get; set; }
@@ -40,5 +41,6 @@ namespace eShopLab.Models
         public virtual ICollection<Price> Prices { get; set; }
         public virtual UnitType UnitType { get; set; }
         public virtual VATCategory VATCategory { get; set; }
+        public virtual ICollection<Medium> Media { get; set; }
     }
 }
