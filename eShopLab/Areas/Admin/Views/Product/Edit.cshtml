@@ -1,0 +1,122 @@
+﻿@model eShopLab.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.HiddenFor(model => model.ProductID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductName)
+            @Html.ValidationMessageFor(model => model.ProductName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductDescription)
+            @Html.ValidationMessageFor(model => model.ProductDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductLongDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductLongDescription)
+            @Html.ValidationMessageFor(model => model.ProductLongDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductReference)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductReference)
+            @Html.ValidationMessageFor(model => model.ProductReference)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductManufacturerReference)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductManufacturerReference)
+            @Html.ValidationMessageFor(model => model.ProductManufacturerReference)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductBarCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductBarCode)
+            @Html.ValidationMessageFor(model => model.ProductBarCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductAddingDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductAddingDate)
+            @Html.ValidationMessageFor(model => model.ProductAddingDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductDiscontinued)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductDiscontinued)
+            @Html.ValidationMessageFor(model => model.ProductDiscontinued)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VATCategoryID, "VATCategory")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VATCategoryID", String.Empty)
+            @Html.ValidationMessageFor(model => model.VATCategoryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UnitTypeID, "UnitType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("UnitTypeID", String.Empty)
+            @Html.ValidationMessageFor(model => model.UnitTypeID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryID, "Category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CategoryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MediaID, "Medium")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("MediaID", String.Empty)
+            @Html.ValidationMessageFor(model => model.MediaID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
