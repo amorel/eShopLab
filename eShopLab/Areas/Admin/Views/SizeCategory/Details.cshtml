@@ -28,3 +28,10 @@
     @Html.ActionLink("Edit", "Edit", new { id=Model.SizeCategoryID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts{
+    <script>
+        $(".product-menu").addClass("active");
+        $(".SizeCategory-submenu").addClass("active");
+    </script>
+}

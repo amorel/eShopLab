@@ -41,3 +41,10 @@
     @Html.ActionLink("Edit", "Edit", new { id=Model.CategoryID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts{
+    <script>
+        $(".product-menu").addClass("active");
+        $(".category-submenu").parent().addClass("active");
+    </script>
+}

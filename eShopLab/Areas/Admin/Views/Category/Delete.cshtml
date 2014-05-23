@@ -48,3 +48,10 @@
         @Html.ActionLink("Back to List", "Index")
     </p>
 }
+
+@section scripts{
+    <script>
+        $(".product-menu").addClass("active");
+        $(".category-submenu").parent().addClass("active");
+    </script>
+}

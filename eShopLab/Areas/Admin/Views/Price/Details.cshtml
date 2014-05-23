@@ -35,3 +35,10 @@
     @Html.ActionLink("Edit", "Edit", new { id=Model.PriceID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts{
+    <script>
+        $(".product-menu").addClass("active");
+        $(".price-submenu").addClass("active");
+    </script>
+}
