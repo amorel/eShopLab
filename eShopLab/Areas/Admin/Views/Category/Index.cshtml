@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<span class="title">Categories list</span>
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -53,6 +53,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Categories list")
         $(".product-menu").addClass("active");
         $(".category-submenu").addClass("active");
     </script>
