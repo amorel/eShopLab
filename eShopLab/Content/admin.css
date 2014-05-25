@@ -2886,6 +2886,20 @@ h3.timeline-title {
     text-transform: uppercase;
     top: 7px;
 }
+.dropzone-previews {
+    position: relative;
+    min-height: 100px;
+    padding-bottom: 10px;
+}
+
+.dz-image-preview{
+    position: absolute !important;
+    top: -20px !important;
+    left: 250px;
+}
+.dz-message {
+    display:inline-block;
+}
 
 @media only screen and (max-width: 479px) {
     /* Main Content */
