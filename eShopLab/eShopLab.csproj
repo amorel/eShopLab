@@ -127,6 +127,7 @@
     <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeCategoryController.cs" />
+    <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -179,7 +180,6 @@
     <Compile Include="Models\Partial\Category.cs" />
     <Compile Include="Models\Partial\Product.cs" />
     <Compile Include="Models\Partial\SizeCategory.cs" />
-    <Compile Include="Models\Partial\UnitType.cs" />
     <Compile Include="Models\Price.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
@@ -356,7 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>

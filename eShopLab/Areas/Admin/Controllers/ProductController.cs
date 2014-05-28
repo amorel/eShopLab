@@ -49,8 +49,22 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Product/Create
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, ICollection<ProduSizeCat> prodSizeCat)
         {
+            foreach (var prod in prodSizeCat)
+            {
+                if (prod.check == "on")
+                {
+                    ProductSizeCategory productSizeCategory = new ProductSizeCategory
+                    {
+                        SizeCategoryID = prod.SizeCategoryID,
+                        Quantity = prod.Quantity
+                    };
+
+                    product.ProductSizeCategories.Add(productSizeCategory);
+
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -58,7 +72,8 @@ namespace eShopLab.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.MyCategories = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.MySize = db.SizeCategories;
             return View(product);
         }
 

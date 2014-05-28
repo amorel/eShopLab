@@ -232,7 +232,7 @@
     <Property Name="ProductManufacturerReference" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
     <Property Name="ProductBarCode" Type="String" MaxLength="16" Unicode="false" FixedLength="true" />
     <Property Name="ProductAddingDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ProductDiscontinued" Type="Boolean" Nullable="false" />
+    <Property Name="ProductDiscontinued" Type="Boolean" Nullable="false" DefaultValue="False" />
     <Property Name="CategoryID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Category" Relationship="eShopDBModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
     <NavigationProperty Name="CommandLines" Relationship="eShopDBModel.FK_CommandLine_Product" FromRole="Product" ToRole="CommandLine" />

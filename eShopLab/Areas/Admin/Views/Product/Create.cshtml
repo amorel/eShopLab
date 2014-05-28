@@ -10,7 +10,6 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductName)
         </div>
@@ -59,13 +58,16 @@
             @Html.ValidationMessageFor(model => model.ProductBarCode)
         </div>
 
-        <div class="editor-label">
+
+        @Html.EditorFor(model => model.ProductAddingDate,null, "addingDate")
+
+        @*<div class="editor-label">
             @Html.LabelFor(model => model.ProductAddingDate)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ProductAddingDate)
             @Html.ValidationMessageFor(model => model.ProductAddingDate)
-        </div>
+        </div>*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDiscontinued)
@@ -84,19 +86,22 @@
         </div>
 
         <div class="editor-label">
-            <label style="width:90px;">Size</label><label style="width:80px;">Quantity</label>
+            <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
         </div>
         <div class="editor-field">
 
-        @foreach (var size in ViewBag.MySize)
-        {
-            <div class="input-group">
-                <span class="input-group-addon" style="width:80px;text-align:left;">
-                <input type="checkbox">
-                    @size.SizeCategoryInitial
-                </span>
-                <input type="text" class="form-control" style="width:80px;">
-            </div><!-- /input-group -->  
+            @{var i = 0;}
+            @foreach (var size in ViewBag.MySize)
+            {
+                <div class="input-group">
+                    <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
+                    <span class="input-group-addon" style="width: 80px; text-align: left;">
+                        <input type="checkbox" name="[@(i)].check">
+                        @size.SizeCategoryInitial
+                    </span>
+                    <input name="[@(i++)].Quantity" type="text" class="form-control" style="width:80px;">
+                </div>
+                <!-- /input-group -->  
             }
 
             @Html.ValidationMessageFor(model => model.ProductSizeCategories)
@@ -116,5 +121,6 @@
         $(".title").html("Create Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
+        $("#addingDate").val(new Date().toISOString());
     </script>
 }
