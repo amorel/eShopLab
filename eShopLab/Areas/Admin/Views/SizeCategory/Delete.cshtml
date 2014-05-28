@@ -5,8 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
 <h3>Are you sure you want to delete this?</h3>
 <fieldset>
     <legend>SizeCategory</legend>
@@ -34,6 +32,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Delete Size Category");
         $(".product-menu").addClass("active");
         $("#sizecategory-submenu").addClass("active");
     </script>

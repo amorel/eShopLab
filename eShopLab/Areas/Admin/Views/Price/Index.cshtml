@@ -5,8 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -47,6 +45,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Prices List");
         $(".product-menu").addClass("active");
         $("#price-submenu").addClass("active");
     </script>

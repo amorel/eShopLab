@@ -5,8 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
 <fieldset>
     <legend>Price</legend>
 
@@ -38,6 +36,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Details Price");
         $(".product-menu").addClass("active");
         $("#price-submenu").addClass("active");
     </script>
