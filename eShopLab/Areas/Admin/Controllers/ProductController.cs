@@ -18,7 +18,7 @@ namespace eShopLab.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category).Include(p => p.Medium).Include(p => p.UnitType).Include(p => p.SizeCategory);
+            var products = db.Products.Include(p => p.Category);
             return View(products.ToList());
         }
 
@@ -41,9 +41,6 @@ namespace eShopLab.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
-            ViewBag.MediaID = new SelectList(db.Media, "MediaID", "MediaName");
-            ViewBag.UnitTypeID = new SelectList(db.UnitTypes, "UnitTypeID", "UnitTypeName");
-            ViewBag.VATCategoryID = new SelectList(db.SizeCategories, "SizeCategoryID", "SizeCategoryName");
             return View();
         }
 
@@ -61,9 +58,6 @@ namespace eShopLab.Areas.Admin.Controllers
             }
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewBag.MediaID = new SelectList(db.Media, "MediaID", "MediaName", product.MediaID);
-            ViewBag.UnitTypeID = new SelectList(db.UnitTypes, "UnitTypeID", "UnitTypeName", product.UnitTypeID);
-            ViewBag.VATCategoryID = new SelectList(db.SizeCategories, "SizeCategoryID", "SizeCategoryName", product.VATCategoryID);
             return View(product);
         }
 
@@ -78,9 +72,6 @@ namespace eShopLab.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewBag.MediaID = new SelectList(db.Media, "MediaID", "MediaName", product.MediaID);
-            ViewBag.UnitTypeID = new SelectList(db.UnitTypes, "UnitTypeID", "UnitTypeName", product.UnitTypeID);
-            ViewBag.VATCategoryID = new SelectList(db.SizeCategories, "SizeCategoryID", "SizeCategoryName", product.VATCategoryID);
             return View(product);
         }
 
@@ -97,9 +88,6 @@ namespace eShopLab.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewBag.MediaID = new SelectList(db.Media, "MediaID", "MediaName", product.MediaID);
-            ViewBag.UnitTypeID = new SelectList(db.UnitTypes, "UnitTypeID", "UnitTypeName", product.UnitTypeID);
-            ViewBag.VATCategoryID = new SelectList(db.SizeCategories, "SizeCategoryID", "SizeCategoryName", product.VATCategoryID);
             return View(product);
         }
 

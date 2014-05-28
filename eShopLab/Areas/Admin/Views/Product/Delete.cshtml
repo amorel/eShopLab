@@ -68,31 +68,10 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.SizeCategory.SizeCategoryName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SizeCategory.SizeCategoryName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UnitType.UnitTypeName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UnitType.UnitTypeName)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.Category.CategoryName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Category.CategoryName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Medium.MediaName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Medium.MediaName)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {
@@ -100,11 +79,4 @@
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>
-}
-
-@section scripts{
-    <script>
-        $(".product-menu").addClass("active");
-        $("#product-submenu").addClass("active");
-    </script>
 }

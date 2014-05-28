@@ -37,16 +37,7 @@
             @Html.DisplayNameFor(model => model.ProductDiscontinued)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SizeCategory.SizeCategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitType.UnitTypeName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Medium.MediaName)
         </th>
         <th></th>
     </tr>
@@ -78,16 +69,7 @@
             @Html.DisplayFor(modelItem => item.ProductDiscontinued)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SizeCategory.SizeCategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitType.UnitTypeName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Medium.MediaName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
@@ -98,10 +80,3 @@
 }
 
 </table>
-
-@section scripts{
-    <script>
-        $(".product-menu").addClass("active");
-        $("#product-submenu").addClass("active");
-    </script>
-}

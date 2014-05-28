@@ -39,7 +39,6 @@ namespace eShopLab.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductSizeCategory> ProductSizeCategories { get; set; }
         public DbSet<SizeCategory> SizeCategories { get; set; }
-        public DbSet<UnitType> UnitTypes { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace eShopLab.Models
     {
         public SizeCategory()
         {
-            this.Products = new HashSet<Product>();
             this.ProductSizeCategories = new HashSet<ProductSizeCategory>();
         }
     
@@ -24,7 +23,6 @@ namespace eShopLab.Models
         public string SizeCategoryName { get; set; }
         public string SizeCategoryInitial { get; set; }
     
-        public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<ProductSizeCategory> ProductSizeCategories { get; set; }
     }
 }
