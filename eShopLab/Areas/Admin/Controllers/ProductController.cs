@@ -40,7 +40,8 @@ namespace eShopLab.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName");
+            ViewBag.MyCategories = new SelectList(db.Categories, "CategoryID", "CategoryName");
+            ViewBag.MySize = db.SizeCategories;
             return View();
         }
 

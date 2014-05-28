@@ -7,7 +7,8 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -81,10 +82,28 @@
             @Html.LabelFor(model => model.CategoryID, "Category")
         </div>
         <div class="editor-field">
-            @Html.DropDownList("CategoryID", String.Empty)
+            @Html.DropDownList("CategoryID", (IEnumerable<SelectListItem>)(ViewBag.MyCategories))
             @Html.ValidationMessageFor(model => model.CategoryID)
         </div>
 
+        <div class="editor-label">
+            <label style="width:90px;">Size</label><label style="width:80px;">Quantity</label>
+        </div>
+        <div class="editor-field">
+
+        @foreach (var size in ViewBag.MySize)
+        {
+            <div class="input-group">
+                <span class="input-group-addon" style="width:80px;text-align:left;">
+                <input type="checkbox">
+                    @size.SizeCategoryInitial
+                </span>
+                <input type="text" class="form-control" style="width:80px;">
+            </div><!-- /input-group -->  
+            }
+
+            @Html.ValidationMessageFor(model => model.ProductSizeCategories)
+        </div>
         <p>
             <input type="submit" value="Create" />
         </p>
@@ -95,6 +114,9 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section scripts{
+    <script>
+        $(".product-menu").addClass("active");
+        $("#product-submenu").addClass("active");
+    </script>
 }
