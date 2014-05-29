@@ -58,16 +58,7 @@
             @Html.ValidationMessageFor(model => model.ProductBarCode)
         </div>
 
-
-        @Html.EditorFor(model => model.ProductAddingDate,null, "addingDate")
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.ProductAddingDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductAddingDate)
-            @Html.ValidationMessageFor(model => model.ProductAddingDate)
-        </div>*@
+        @Html.EditorFor(model => model.ProductAddingDate)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDiscontinued)
@@ -99,7 +90,8 @@
                         <input type="checkbox" name="[@(i)].check">
                         @size.SizeCategoryInitial
                     </span>
-                    <input name="[@(i++)].Quantity" type="text" class="form-control" style="width:80px;">
+                    <input name="[@(i)].Quantity" type="text" class="form-control" style="width:80px;" required>
+                    <span class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
                 </div>
                 <!-- /input-group -->  
             }
@@ -121,6 +113,6 @@
         $(".title").html("Create Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
-        $("#addingDate").val(new Date().toISOString());
+        $("#ProductAddingDate").val(new Date().toISOString()).hide();
     </script>
 }

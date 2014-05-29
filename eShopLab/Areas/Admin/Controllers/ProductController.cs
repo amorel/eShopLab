@@ -51,14 +51,14 @@ namespace eShopLab.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(Product product, ICollection<ProduSizeCat> prodSizeCat)
         {
-            foreach (var prod in prodSizeCat)
+            foreach (var prodSize in prodSizeCat)
             {
-                if (prod.check == "on")
+                if (prodSize.check == "on")
                 {
                     ProductSizeCategory productSizeCategory = new ProductSizeCategory
                     {
-                        SizeCategoryID = prod.SizeCategoryID,
-                        Quantity = prod.Quantity
+                        SizeCategoryID = prodSize.SizeCategoryID,
+                        Quantity = prodSize.Quantity
                     };
 
                     product.ProductSizeCategories.Add(productSizeCategory);
@@ -71,9 +71,6 @@ namespace eShopLab.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.MyCategories = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewBag.MySize = db.SizeCategories;
             return View(product);
         }
 

@@ -83,14 +83,14 @@ var app = function () {
             autoProcessQueue: false,
             acceptedFiles: "image/*",
             init: function () {
-                this.on("addedfile", function (file) {
-                    var dz = Dropzone.forElement("#mydropzone");
-                    if (dz.files.length > 1) {
-                        dz.removeFile(dz.files[0])
-                    }
-                });
 
                 var myDropzone = this;
+
+                this.on("addedfile", function (file) {
+                    if (myDropzone.files.length > 1) {
+                        myDropzone.removeFile(myDropzone.files[0])
+                    }
+                });
 
                 // First change the button to actually tell Dropzone to process the queue.
                 this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
