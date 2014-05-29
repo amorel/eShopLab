@@ -21,17 +21,18 @@ namespace eShopLab.Models
         public string ProductLongDescription { get; set; }
         [Required(ErrorMessage = "Reference is required please.")]
         [StringLength(32)]
-        [Display(Name = "Ref")]
+        [Display(Name = "Reference")]
         public string ProductReference { get; set; }
         [Required(ErrorMessage = "Manufacture reference is required please.")]
         [StringLength(128)]
-        [Display(Name = "ManRef")]
+        [Display(Name = "ManufactureReference")]
         public string ProductManufacturerReference { get; set; }
         [Required(ErrorMessage = "Bar code is required please.")]
         [StringLength(16)]
         [Display(Name = "BarCode")]
         public string ProductBarCode { get; set; }
-        [Display(Name = "AddingDate")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Adding")]
         public System.DateTime ProductAddingDate { get; set; }
         [Display(Name = "Discontinued")]
         public bool ProductDiscontinued { get; set; }
