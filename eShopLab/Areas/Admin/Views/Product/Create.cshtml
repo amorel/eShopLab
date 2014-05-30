@@ -79,21 +79,21 @@
         <div class="editor-label">
             <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
         </div>
-        <div class="editor-field">
+        <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
 
             @{var i = 0;}
             @foreach (var size in ViewBag.MySize)
             {
                 <div class="input-group">
                     <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
-                    <span class="input-group-addon" style="width: 80px; text-align: left;">
-                        <input type="checkbox" name="[@(i)].check">
-                        @size.SizeCategoryInitial
+                    <span class="input-group-addon label-size">
+                        <input id="[@(i)].checklab" type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)"><label class="labcheck" for="[@(i)].checklab"></label>
+                        &nbsp;&nbsp;@size.SizeCategoryInitial
                     </span>
-                    <input name="[@(i)].Quantity" type="text" class="form-control" style="width:80px;" required>
+                    <input name="[@(i)].Quantity" type="text" class="form-control" style="width:80px;" ng-disabled="!checkedSize@(i)" required>
                     <span class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
                 </div>
-                <!-- /input-group -->  
+                <!-- /input-group -->
             }
 
             @Html.ValidationMessageFor(model => model.ProductSizeCategories)
@@ -114,5 +114,7 @@
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
         $("#ProductAddingDate").val(new Date().toISOString()).hide();
+        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function () {
+        });
     </script>
 }

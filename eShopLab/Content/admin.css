@@ -2912,6 +2912,11 @@ h3.timeline-title {
 
 }
 
+.label-size{
+    width: 80px;
+    text-align: left;
+}
+
 @media only screen and (max-width: 479px) {
     /* Main Content */
     #main-content .h1 {

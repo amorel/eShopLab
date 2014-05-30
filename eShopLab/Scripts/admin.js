@@ -11,7 +11,6 @@ var app = function () {
         togglePanel();
         closePanel();
         dropzone();
-        icheck();
     };
 
     var tooltips = function () {
@@ -118,13 +117,6 @@ var app = function () {
             complete: function () {
                 window.location = "./";
             }
-        });
-    }
-
-    var icheck = function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_flat-grey',
-            radioClass: 'iradio_flat-grey'
         });
     }
     //End functions
