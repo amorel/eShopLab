@@ -5,13 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Price</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.PriceDate)
@@ -50,6 +47,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Create Price");
         $(".product-menu").addClass("active");
         $("#price-submenu").addClass("active");
     </script>

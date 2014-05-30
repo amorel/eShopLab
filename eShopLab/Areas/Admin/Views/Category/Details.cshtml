@@ -5,8 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<span class="title">Details Category</span>
-
 <fieldset>
 
     <div class="display-label">
@@ -44,6 +42,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Details Category");
         $(".product-menu").addClass("active");
         $("#category-submenu").addClass("active");
     </script>

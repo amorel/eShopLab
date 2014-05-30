@@ -5,13 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Product</legend>
 
         @Html.HiddenFor(model => model.ProductID)
 
@@ -80,35 +77,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.VATCategoryID, "SizeCategory")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("VATCategoryID", String.Empty)
-            @Html.ValidationMessageFor(model => model.VATCategoryID)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UnitTypeID, "UnitType")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("UnitTypeID", String.Empty)
-            @Html.ValidationMessageFor(model => model.UnitTypeID)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.CategoryID, "Category")
         </div>
         <div class="editor-field">
             @Html.DropDownList("CategoryID", String.Empty)
             @Html.ValidationMessageFor(model => model.CategoryID)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.MediaID, "Medium")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("MediaID", String.Empty)
-            @Html.ValidationMessageFor(model => model.MediaID)
         </div>
 
         <p>
@@ -123,6 +96,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Edit Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
     </script>

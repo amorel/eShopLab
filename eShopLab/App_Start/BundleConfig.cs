@@ -23,6 +23,7 @@ namespace eShopLab.App_Start
                 "~/Scripts/dropzone/css/dropzone.css",
                 "~/Content/bootstrap.css",
                 "~/Content/animate.css",
+                "~/Scripts/icheck/css/_all.css",
                 "~/Content/admin.css"
                 ));
 
@@ -33,6 +34,7 @@ namespace eShopLab.App_Start
                 "~/Scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/modernizr-2.7.2.js",
                 "~/Scripts/bootstrap.js",
+                "~/Scripts/icheck/js/icheck.min.js",
                 "~/Scripts/admin.js"
                 ));
         }

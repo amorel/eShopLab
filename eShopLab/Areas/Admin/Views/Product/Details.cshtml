@@ -5,10 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>Product</legend>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.ProductName)
@@ -67,31 +64,10 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.SizeCategory.SizeCategoryName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.SizeCategory.SizeCategoryName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UnitType.UnitTypeName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UnitType.UnitTypeName)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.Category.CategoryName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Category.CategoryName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Medium.MediaName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Medium.MediaName)
     </div>
 </fieldset>
 <p>
@@ -101,6 +77,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Details Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
     </script>

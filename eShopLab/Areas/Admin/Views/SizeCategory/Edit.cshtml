@@ -5,13 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>SizeCategory</legend>
 
         @Html.HiddenFor(model => model.SizeCategoryID)
 
@@ -43,6 +40,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Edit Size Category");
         $(".product-menu").addClass("active");
         $("#sizecategory-submenu").addClass("active");
     </script>

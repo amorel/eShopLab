@@ -5,13 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Price</legend>
 
         @Html.HiddenFor(model => model.PriceID)
 
@@ -51,6 +48,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Edit Price");
         $(".product-menu").addClass("active");
         $("#price-submenu").addClass("active");
     </script>

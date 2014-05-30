@@ -5,8 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -37,16 +35,7 @@
             @Html.DisplayNameFor(model => model.ProductDiscontinued)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SizeCategory.SizeCategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitType.UnitTypeName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Category.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Medium.MediaName)
         </th>
         <th></th>
     </tr>
@@ -78,16 +67,7 @@
             @Html.DisplayFor(modelItem => item.ProductDiscontinued)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SizeCategory.SizeCategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitType.UnitTypeName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Category.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Medium.MediaName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
@@ -101,6 +81,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Product List");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
     </script>

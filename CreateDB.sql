@@ -94,13 +94,6 @@ MediaID INT NULL,
 CONSTRAINT PK_CategoryID PRIMARY KEY (CategoryID), 
 CONSTRAINT FK_Category_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID) 
 )
- 
-CREATE TABLE UnitType( 
-UnitTypeID INT IDENTITY(1,1) NOT NULL, 
-UnitTypeName NVARCHAR(48) NOT NULL, 
-UnitTypeSymbol NVARCHAR(16) NULL, 
-CONSTRAINT PK_UnitTypeID PRIMARY KEY (UnitTypeID) 
-)
 
 CREATE TABLE SizeCategory( 
 SizeCategoryID INT IDENTITY(1,1) NOT NULL, 
@@ -118,16 +111,10 @@ ProductReference NVARCHAR(32) NULL,
 ProductManufacturerReference NVARCHAR(128) NOT NULL, 
 ProductBarCode CHAR(16) NULL, 
 ProductAddingDate DATETIME NOT NULL, 
-ProductDiscontinued BIT NOT NULL DEFAULT((0)), 
-VATCategoryID INT NOT NULL, 
-UnitTypeID INT NOT NULL, 
+ProductDiscontinued BIT NOT NULL DEFAULT((0)),
 CategoryID INT NOT NULL, 
-MediaID INT NOT NULL, 
 CONSTRAINT PK_ProductID PRIMARY KEY (ProductID), 
-CONSTRAINT FK_Product_VATCategory FOREIGN KEY (VATCategoryID) REFERENCES SizeCategory(SizeCategoryID), 
-CONSTRAINT FK_Product_UnitType FOREIGN KEY (UnitTypeID) REFERENCES UnitType(UnitTypeID), 
-CONSTRAINT FK_Product_Category FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID), 
-CONSTRAINT FK_Product_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID) 
+CONSTRAINT FK_Product_Category FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
 ) 
 
 CREATE TABLE MediaProduct( 
@@ -189,10 +176,3 @@ INSERT INTO SizeCategory VALUES('Medium', 'M');
 INSERT INTO SizeCategory VALUES('Large', 'L');
 INSERT INTO SizeCategory VALUES('X Large', 'XL');
 INSERT INTO SizeCategory VALUES('XX Large', 'XXL');
-
-use eShopDB
-go
-DELETE FROM UnitType;
-INSERT INTO UnitType VALUES('Euro', '€');
-INSERT INTO UnitType VALUES('Dollar', '$');
-INSERT INTO UnitType VALUES('Pound', '£');

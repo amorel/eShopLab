@@ -127,7 +127,7 @@
     <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeCategoryController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UnitTypeController.cs" />
+    <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,8 +178,8 @@
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Partial\Category.cs" />
+    <Compile Include="Models\Partial\Product.cs" />
     <Compile Include="Models\Partial\SizeCategory.cs" />
-    <Compile Include="Models\Partial\UnitType.cs" />
     <Compile Include="Models\Price.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
@@ -192,12 +192,10 @@
     <Compile Include="Models\SizeCategory.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UnitType.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Validation\ValidationProduct.cs" />
     <Compile Include="Models\Validation\ValidationSizeCategory.cs" />
     <Compile Include="Models\Validation\ValidationUnitType.cs" />
     <Compile Include="Models\Validation\ValidationCategory.cs" />
@@ -256,6 +254,16 @@
     <Content Include="Scripts\dropzone\css\dropzone.css" />
     <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
     <Content Include="Scripts\dropzone\css\stylus\basic.styl" />
+    <Content Include="Areas\Admin\Views\SizeCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SizeCategory\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SizeCategory\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SizeCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SizeCategory\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Price\Delete.cshtml" />
     <EntityDeploy Include="Models\eShopDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>eShopDB.Designer.cs</LastGenOutput>
@@ -278,21 +286,6 @@
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\SizeCategory\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\SizeCategory\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\SizeCategory\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\SizeCategory\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\SizeCategory\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\UnitType\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\UnitType\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\UnitType\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\UnitType\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\UnitType\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Delete.cshtml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -304,6 +297,38 @@
     <Content Include="Scripts\dropzone\images\spritemap.png" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\admin.js" />
+    <Content Include="Scripts\icheck\css\aero%402x.png" />
+    <Content Include="Scripts\icheck\css\aero.css" />
+    <Content Include="Scripts\icheck\css\aero.png" />
+    <Content Include="Scripts\icheck\css\blue%402x.png" />
+    <Content Include="Scripts\icheck\css\blue.css" />
+    <Content Include="Scripts\icheck\css\blue.png" />
+    <Content Include="Scripts\icheck\css\flat%402x.png" />
+    <Content Include="Scripts\icheck\css\flat.css" />
+    <Content Include="Scripts\icheck\css\flat.png" />
+    <Content Include="Scripts\icheck\css\green%402x.png" />
+    <Content Include="Scripts\icheck\css\green.css" />
+    <Content Include="Scripts\icheck\css\green.png" />
+    <Content Include="Scripts\icheck\css\grey%402x.png" />
+    <Content Include="Scripts\icheck\css\grey.css" />
+    <Content Include="Scripts\icheck\css\grey.png" />
+    <Content Include="Scripts\icheck\css\orange%402x.png" />
+    <Content Include="Scripts\icheck\css\orange.css" />
+    <Content Include="Scripts\icheck\css\orange.png" />
+    <Content Include="Scripts\icheck\css\pink%402x.png" />
+    <Content Include="Scripts\icheck\css\pink.css" />
+    <Content Include="Scripts\icheck\css\pink.png" />
+    <Content Include="Scripts\icheck\css\purple%402x.png" />
+    <Content Include="Scripts\icheck\css\purple.css" />
+    <Content Include="Scripts\icheck\css\purple.png" />
+    <Content Include="Scripts\icheck\css\red%402x.png" />
+    <Content Include="Scripts\icheck\css\red.css" />
+    <Content Include="Scripts\icheck\css\red.png" />
+    <Content Include="Scripts\icheck\css\yellow%402x.png" />
+    <Content Include="Scripts\icheck\css\yellow.css" />
+    <Content Include="Scripts\icheck\css\yellow.png" />
+    <Content Include="Scripts\icheck\css\_all.css" />
+    <Content Include="Scripts\icheck\js\icheck.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -331,7 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>

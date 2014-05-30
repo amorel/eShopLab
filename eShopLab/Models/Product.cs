@@ -31,17 +31,11 @@ namespace eShopLab.Models
         public string ProductBarCode { get; set; }
         public System.DateTime ProductAddingDate { get; set; }
         public bool ProductDiscontinued { get; set; }
-        public int VATCategoryID { get; set; }
-        public int UnitTypeID { get; set; }
         public int CategoryID { get; set; }
-        public int MediaID { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual ICollection<CommandLine> CommandLines { get; set; }
-        public virtual Medium Medium { get; set; }
         public virtual ICollection<Price> Prices { get; set; }
-        public virtual UnitType UnitType { get; set; }
-        public virtual SizeCategory SizeCategory { get; set; }
         public virtual ICollection<ProductSizeCategory> ProductSizeCategories { get; set; }
         public virtual ICollection<Medium> Media { get; set; }
     }

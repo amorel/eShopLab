@@ -5,7 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<span class="title">Edit Category</span>
 <input hidden="hidden" type="text" name="fileUrl" value="@Model.Medium.MediaUrl.Replace("~","")" />
 
 @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
@@ -63,6 +62,7 @@
 
 @section scripts{
     <script>
+        $(".title").html("Edit Category");
         $(".product-menu").addClass("active");
         $("#category-submenu").addClass("active");
     </script>
