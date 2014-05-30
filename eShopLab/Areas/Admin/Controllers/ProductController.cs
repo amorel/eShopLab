@@ -84,7 +84,17 @@ namespace eShopLab.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.prod_size = db.SizeCategories
+                .GroupJoin(db.ProductSizeCategories,
+                p=>p.SizeCategoryID, 
+                s=>s.SizeCategoryID,
+                (p, g) => g.Select(s => new {
+                    SizeCategoryInitial = p.SizeCategoryInitial, Quantity = s.Quantity
+                }).DefaultIfEmpty(new {SizeCategoryInitial = p.SizeCategoryInitial, Quantity = 0})).SelectMany( g => g ).ToList();
+
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.MySize = db.SizeCategories;
             return View(product);
         }
 

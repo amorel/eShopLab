@@ -5,7 +5,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -61,14 +62,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductAddingDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductAddingDate)
-            @Html.ValidationMessageFor(model => model.ProductAddingDate)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.ProductDiscontinued)
         </div>
         <div class="editor-field">
@@ -83,7 +76,35 @@
             @Html.DropDownList("CategoryID", String.Empty)
             @Html.ValidationMessageFor(model => model.CategoryID)
         </div>
+        <div class="editor-label">
+            <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
+        </div>
 
+        @foreach (var prodsize in ViewBag.prod_size)
+        {
+            <p>
+                @*@prodsize.SizeCategoryInitial*@
+            </p>
+        }
+        <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
+
+            @{var i = 0;}
+            @foreach (var size in ViewBag.MySize)
+            {
+                <div class="input-group">
+                    <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
+                    <span class="input-group-addon label-size">
+                        <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=true'>
+                        &nbsp;&nbsp;@size.SizeCategoryInitial
+                    </span>
+                    <input name="[@(i)].Quantity" type="text" class="form-control" style="width:80px;" ng-disabled="!checkedSize@(i)" required>
+                    <span class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+                </div>
+                <!-- /input-group -->
+            }
+
+            @Html.ValidationMessageFor(model => model.ProductSizeCategories)
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -99,5 +120,7 @@
         $(".title").html("Edit Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
+        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function () {
+        });
     </script>
 }

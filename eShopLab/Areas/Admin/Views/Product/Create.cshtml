@@ -87,7 +87,7 @@
                 <div class="input-group">
                     <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
                     <span class="input-group-addon label-size">
-                        <input id="[@(i)].checklab" type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)"><label class="labcheck" for="[@(i)].checklab"></label>
+                        <input id="[@(i)].checklab" type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)">
                         &nbsp;&nbsp;@size.SizeCategoryInitial
                     </span>
                     <input name="[@(i)].Quantity" type="text" class="form-control" style="width:80px;" ng-disabled="!checkedSize@(i)" required>
