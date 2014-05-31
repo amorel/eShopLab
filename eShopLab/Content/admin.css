@@ -853,7 +853,7 @@ label.valid {
         outline: none;
         -webkit-box-shadow: none;
         box-shadow: none;
-        outline: none!important;
+        outline: none !important;
     }
 
     .btn.disabled,
@@ -870,7 +870,7 @@ a.btn-default:link,
 a.btn-default:visited {
     color: #ffffff;
     background-color: #bdc3c7;
-    outline: none!important;
+    outline: none !important;
 }
 
 a.btn-default:hover,
@@ -2879,26 +2879,42 @@ h3.timeline-title {
 #header .title {
     margin-top: 28px;
     display: inline-block;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 18px;
     font-weight: 400;
     text-transform: uppercase;
     top: 7px;
 }
+
 .dropzone-previews {
     position: relative;
     min-height: 100px;
     padding-bottom: 10px;
 }
 
-.dz-image-preview{
+.dz-image-preview {
     position: absolute !important;
     top: -20px !important;
     left: 250px;
 }
+
 .dz-message {
-    display:inline-block;
+    display: inline-block;
+}
+
+.table-form {
+     border-bottom:1px solid #E0E0E0;
+}
+
+.center{
+    text-align: center;
+
+}
+
+.label-size{
+    width: 80px;
+    text-align: left;
 }
 
 @media only screen and (max-width: 479px) {

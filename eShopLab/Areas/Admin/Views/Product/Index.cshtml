@@ -17,16 +17,10 @@
             @Html.DisplayNameFor(model => model.ProductDescription)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductLongDescription)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ProductReference)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductManufacturerReference)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductBarCode)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductAddingDate)
@@ -35,44 +29,38 @@
             @Html.DisplayNameFor(model => model.ProductDiscontinued)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
+            <label style="margin:0">Category</label>
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="table-form">
             @Html.DisplayFor(modelItem => item.ProductName)
         </td>
-        <td>
+        <td class="table-form">
             @Html.DisplayFor(modelItem => item.ProductDescription)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductLongDescription)
-        </td>
-        <td>
+        <td class="table-form">
             @Html.DisplayFor(modelItem => item.ProductReference)
         </td>
-        <td>
+        <td class="table-form">
             @Html.DisplayFor(modelItem => item.ProductManufacturerReference)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductBarCode)
-        </td>
-        <td>
+        <td class="table-form">
             @Html.DisplayFor(modelItem => item.ProductAddingDate)
         </td>
-        <td>
+        <td class="table-form center">
             @Html.DisplayFor(modelItem => item.ProductDiscontinued)
         </td>
-        <td>
+        <td class="table-form">
             @Html.DisplayFor(modelItem => item.Category.CategoryName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+        <td class="table-form">
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }) <br />
+            @Html.ActionLink("Details", "Details", new { id = item.ProductID })<br />
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
         </td>
     </tr>
 }

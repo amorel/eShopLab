@@ -35,6 +35,7 @@ namespace eShopLab.App_Start
                 "~/Scripts/modernizr-2.7.2.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/icheck/js/icheck.min.js",
+                "~/Scripts/angular.js",
                 "~/Scripts/admin.js"
                 ));
         }
