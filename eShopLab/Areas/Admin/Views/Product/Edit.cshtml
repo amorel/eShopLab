@@ -80,27 +80,22 @@
             <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
         </div>
 
-        @foreach (var prodsize in ViewBag.prod_size)
-        {
-            <p>
-                @*@prodsize.SizeCategoryInitial*@
-            </p>
-        }
         <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
 
             @{var i = 0;}
-            @foreach (var size in ViewBag.MySize)
+            @foreach (var prodsize in ViewBag.prod_size)
             {
-                <div class="input-group">
-                    <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
+                <div class="size-container input-group">
+                    <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@prodsize.SizeCategoryID">
                     <span class="input-group-addon label-size">
-                        <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=true'>
-                        &nbsp;&nbsp;@size.SizeCategoryInitial
+                        <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=@if(prodsize.Quantity == 0){ <text>false</text>}else{ <text>true</text>}' autocomplete="off">
+                        &nbsp;&nbsp;@prodsize.SizeCategoryInitial
                     </span>
-                    <input name="[@(i)].Quantity" type="text" class="form-control" style="width:80px;" ng-disabled="!checkedSize@(i)" required>
+                    <input name="[@(i)].Quantity" type="number" class="form-control form-input" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-disabled="!checkedSize@(i)" ng-show="checkedSize@(i)" ng-init="Qty[@(i)]=@prodsize.Quantity" autocomplete="off" required>
                     <span class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+
                 </div>
-                <!-- /input-group -->
+                                        <!-- /input-group -->
             }
 
             @Html.ValidationMessageFor(model => model.ProductSizeCategories)
@@ -120,7 +115,13 @@
         $(".title").html("Edit Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
-        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function () {
+        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope) {
+            $scope.Qty = {};
+            this.changed = function (i) {
+                if ($scope.Qty[i] <= 0) {
+                    $scope.Qty[i] = 0;
+                }
+            }
         });
     </script>
 }

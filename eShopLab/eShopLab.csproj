@@ -127,6 +127,7 @@
     <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeCategoryController.cs" />
+    <Compile Include="Areas\Admin\Models\SizeProd_Qty.cs" />
     <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

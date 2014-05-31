@@ -86,15 +86,17 @@ namespace eShopLab.Areas.Admin.Controllers
             }
 
             ViewBag.prod_size = db.SizeCategories
-                .GroupJoin(db.ProductSizeCategories,
-                p=>p.SizeCategoryID, 
-                s=>s.SizeCategoryID,
-                (p, g) => g.Select(s => new {
-                    SizeCategoryInitial = p.SizeCategoryInitial, Quantity = s.Quantity
-                }).DefaultIfEmpty(new {SizeCategoryInitial = p.SizeCategoryInitial, Quantity = 0})).SelectMany( g => g ).ToList();
+                .GroupJoin(db.ProductSizeCategories.Where(pc => pc.ProductID == id),
+                p => p.SizeCategoryID,
+                s => s.SizeCategoryID,
+                (p, g) => g.Select(s => new SizeProd_Qty()
+                {
+                    SizeCategoryID = p.SizeCategoryID,
+                    SizeCategoryInitial = p.SizeCategoryInitial,
+                    Quantity = s.Quantity
+                }).DefaultIfEmpty(new SizeProd_Qty() { SizeCategoryID = p.SizeCategoryID, SizeCategoryInitial = p.SizeCategoryInitial, Quantity = 0 })).SelectMany(g => g).ToList();
 
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
-            ViewBag.MySize = db.SizeCategories;
             return View(product);
         }
 

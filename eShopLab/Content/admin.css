@@ -2904,17 +2904,19 @@ h3.timeline-title {
 }
 
 .table-form {
-     border-bottom:1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
 }
 
-.center{
+.center {
     text-align: center;
-
 }
 
-.label-size{
+.label-size {
     width: 80px;
     text-align: left;
+}
+.size-container{
+    min-height:36px!important;
 }
 
 @media only screen and (max-width: 479px) {
