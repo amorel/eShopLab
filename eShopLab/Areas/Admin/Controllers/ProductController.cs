@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using eShopLab.Models;
+using System.Globalization;
 
 namespace eShopLab.Areas.Admin.Controllers
 {
@@ -49,11 +50,11 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Product/Create
 
         [HttpPost]
-        public ActionResult Create(Product product, ICollection<ProduSizeCat> prodSizeCat, int Price)
+        public ActionResult Create(Product product, ICollection<ProduSizeCat> prodSizeCat, string PriceValue)
         {
             foreach (var prodSize in prodSizeCat)
             {
-                if (prodSize.check == "on")
+                if (prodSize.check == "on" && prodSize.Quantity !=0)
                 {
                     ProductSizeCategory productSizeCategory = new ProductSizeCategory
                     {
@@ -70,9 +71,13 @@ namespace eShopLab.Areas.Admin.Controllers
                 db.Products.Add(product);
                 db.SaveChanges();
                 int id = product.ProductID;
+
+                decimal result;
+                decimal.TryParse(PriceValue, out result);
+
                 db.Prices.Add(new Price()
                 {
-                    PriceValue = Price,
+                    PriceValue = result,
                     PriceDate = DateTime.Now,
                     ProductID = product.ProductID
                 });
@@ -87,7 +92,12 @@ namespace eShopLab.Areas.Admin.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            //int? price = db.Prices.Where(p => p).Select(p => p.PriceValue).Max(p => p.PriceDate);
+            var priceByProduct = db.Prices.Where(p => p.ProductID == id);
+            var maxDate = priceByProduct.Max(p => p.PriceDate);
+            var price = priceByProduct.Where(p => p.PriceDate == maxDate).FirstOrDefault();
+
+            ViewBag.price = Math.Round(price.PriceValue, 2);
+
             Product product = db.Products.Find(id);
             if (product == null)
             {

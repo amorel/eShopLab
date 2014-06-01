@@ -11,10 +11,11 @@ eShopLab is an eShopping website to sell clothes. This project covers back end a
 -	Entity Framework (ORM)
 -	Database First approach
 -	Area organization
+-	Linq
 -	[Angular.js](https://angularjs.org/)
 -	Bootstrap
 -	[Dropzone.js](http://www.dropzonejs.com)
--	Linq
+-	[JQuery-Mask-Plugin](https://github.com/igorescobar/jQuery-Mask-Plugin)
 
 
 [README](https://github.com/amorel/eShopLab).

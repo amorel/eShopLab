@@ -95,11 +95,19 @@
                     <span ng-show="checkedSize@(i)" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
 
                 </div>
-                                        <!-- /input-group -->
             }
 
             @Html.ValidationMessageFor(model => model.ProductSizeCategories)
         </div>
+
+        <div class="editor-label">
+            <label>Price</label>
+        </div>
+        <div class="editor-field">
+            <input id="PriceValue" name="PriceValue" pattern="[0-9]+([\,|\.][0-9]+)?" autocomplete="off" value="@ViewBag.price" required />
+            <span class="field-validation-valid" data-valmsg-for="PriceValue" data-valmsg-replace="true"></span>
+        </div>
+        <br />
         <p>
             <input type="submit" value="Save" />
         </p>

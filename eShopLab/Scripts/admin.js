@@ -11,6 +11,7 @@ var app = function () {
         togglePanel();
         closePanel();
         dropzone();
+        mask();
     };
 
     var tooltips = function () {
@@ -119,7 +120,11 @@ var app = function () {
             }
         });
     }
-    //End functions
+
+    var mask = function () {
+        $("#PriceValue").mask('000000000000000,00', { reverse: true });
+    }
+    //End {
 
     //return functions
     return {
