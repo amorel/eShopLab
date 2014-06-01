@@ -49,7 +49,7 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Product/Create
 
         [HttpPost]
-        public ActionResult Create(Product product, ICollection<ProduSizeCat> prodSizeCat)
+        public ActionResult Create(Product product, ICollection<ProduSizeCat> prodSizeCat, int Price)
         {
             foreach (var prodSize in prodSizeCat)
             {
@@ -69,6 +69,14 @@ namespace eShopLab.Areas.Admin.Controllers
             {
                 db.Products.Add(product);
                 db.SaveChanges();
+                int id = product.ProductID;
+                db.Prices.Add(new Price()
+                {
+                    PriceValue = Price,
+                    PriceDate = DateTime.Now,
+                    ProductID = product.ProductID
+                });
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(product);
@@ -79,6 +87,7 @@ namespace eShopLab.Areas.Admin.Controllers
 
         public ActionResult Edit(int id = 0)
         {
+            //int? price = db.Prices.Where(p => p).Select(p => p.PriceValue).Max(p => p.PriceDate);
             Product product = db.Products.Find(id);
             if (product == null)
             {

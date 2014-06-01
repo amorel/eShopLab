@@ -98,6 +98,14 @@
 
             @Html.ValidationMessageFor(model => model.ProductSizeCategories)
         </div>
+        <div class="editor-label">
+            <label>Price</label>
+        </div>
+        <div class="editor-field">
+            <input name="Price" type="number" autocomplete="off" required/>
+            <span class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+        </div>
+        <br />
         <p>
             <input type="submit" value="Create" />
         </p>
