@@ -112,6 +112,10 @@
     </fieldset>
 }
 
+@using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+{
+}
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

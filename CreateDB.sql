@@ -176,3 +176,63 @@ INSERT INTO SizeCategory VALUES('Medium', 'M');
 INSERT INTO SizeCategory VALUES('Large', 'L');
 INSERT INTO SizeCategory VALUES('X Large', 'XL');
 INSERT INTO SizeCategory VALUES('XX Large', 'XXL');
+
+use eShopDB
+go
+DELETE FROM Category;
+INSERT INTO Category VALUES('Shirt', 'Men Shirt', 1, null);
+INSERT INTO Category VALUES('T-shirts & Polos', 'Men T-shirts & Polos', 1, null);
+INSERT INTO Category VALUES('Coats & Jackets', 'Men Coats & Jackets', 1, null);
+
+use eShopDB
+go
+DELETE FROM Product;
+INSERT INTO Product VALUES('China', 'Desigual China', 'Desigual men''s China shirt - available in plain and neutral tones, with a Desigual touch on the front that''s neither over-the-top nor too detailed: an ensemble of prints, embroidery and patches.', 'CHINAD25FD254', 'DESIGUAL45SDF4', '1565465668', '02/05/2014', 0, 1 );
+INSERT INTO Product VALUES('Cachos', 'Desigual Cachos', 'Desigual men''s Cachos shirt. This shirt was worn by the best international models on the catwalk at New York Fashion Week.', 'Cachos25FD254', 'DESIGUAL45SDF4', '8546327915', '03/05/2014', 0, 1 );
+INSERT INTO Product VALUES('Ciudad Flores', 'Desigual Ciudad Flores', 'Desigual men’s Ciudad Flores shirt. An item for the boldest Desigual men who prefer their garments with lots of graphics.', 'CIUDADFLORES', 'DESIGUAL45SDF4', '31568735647', '02/02/2014', 0, 1 );
+INSERT INTO Product VALUES('Miguelito', 'Desigual Miguelito', 'Desigual men’s Miguelito T-shirt with a wide horizontal stripe print.', 'MIGUELITO254', 'MIGUELITO45SDF4', '7541635894', '05/04/2014', 0, 2 );
+INSERT INTO Product VALUES('Divin', 'Desigual Divin', 'Desigual men’s Divin T-shirt. Short-sleeved.', 'DIVIND25FD254', 'DESIGUAL45SDF4', '3246315874', '02/03/2014', 0, 2 );
+INSERT INTO Product VALUES('Imporahi', 'Desigual Imporahi', 'Desigual men''s Imporahi blazer. A plain, very simple blazer that reflects the essence of Desigual thanks to the handwritten messages and doodles.', 'IMPORAHIFD254', 'DESIGUAL45SDF4', '3452178965', '02/04/2014', 0, 3 );
+INSERT INTO Product VALUES('Sigula', 'Desigual Sigula', 'MAN WOVEN OVERCOAT BLAZER LONG SLEEVE.', 'SIGULAHIFD254', 'DESIGUAL45SDF4', '31524785421', '06/04/2014', 0, 3 );
+
+use eShopDB
+go
+DELETE FROM ProductSizeCategory;
+INSERT INTO ProductSizeCategory VALUES(1, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(1, 3, 45);
+INSERT INTO ProductSizeCategory VALUES(1, 4, 147);
+INSERT INTO ProductSizeCategory VALUES(1, 2, 85);
+INSERT INTO ProductSizeCategory VALUES(2, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(2, 3, 45);
+INSERT INTO ProductSizeCategory VALUES(2, 4, 78);
+
+INSERT INTO ProductSizeCategory VALUES(3, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(3, 3, 45);
+INSERT INTO ProductSizeCategory VALUES(3, 4, 147);
+INSERT INTO ProductSizeCategory VALUES(3, 2, 85);
+INSERT INTO ProductSizeCategory VALUES(4, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(4, 3, 45);
+INSERT INTO ProductSizeCategory VALUES(4, 4, 78);
+
+INSERT INTO ProductSizeCategory VALUES(5, 2, 35);
+INSERT INTO ProductSizeCategory VALUES(5, 3, 45);
+INSERT INTO ProductSizeCategory VALUES(6, 4, 147);
+INSERT INTO ProductSizeCategory VALUES(6, 2, 85);
+INSERT INTO ProductSizeCategory VALUES(7, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(7, 3, 45);
+INSERT INTO ProductSizeCategory VALUES(7, 4, 78);
+
+
+use eShopDB
+go
+DELETE FROM Price;
+INSERT INTO Price VALUES('02/02/2014', 78.00, 1);
+INSERT INTO Price VALUES('02/03/2014', 68.00, 1);
+INSERT INTO Price VALUES('02/02/2014', 120.00, 2);
+INSERT INTO Price VALUES('02/02/2014', 150.00, 3);
+INSERT INTO Price VALUES('02/04/2014', 180.00, 3);
+INSERT INTO Price VALUES('02/02/2014', 85.00, 4);
+INSERT INTO Price VALUES('02/02/2014', 123.00, 6);
+INSERT INTO Price VALUES('02/02/2014', 60.00, 7);
+INSERT INTO Price VALUES('02/05/2014', 75.00, 7);
+INSERT INTO Price VALUES('02/02/2014', 80.00, 8);

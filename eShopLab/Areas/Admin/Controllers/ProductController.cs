@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using eShopLab.Models;
 using System.Globalization;
+using System.IO;
 
 namespace eShopLab.Areas.Admin.Controllers
 {
@@ -54,7 +55,7 @@ namespace eShopLab.Areas.Admin.Controllers
         {
             foreach (var prodSize in prodSizeCat)
             {
-                if (prodSize.check == "on" && prodSize.Quantity !=0)
+                if (prodSize.check == "on" && prodSize.Quantity != 0)
                 {
                     ProductSizeCategory productSizeCategory = new ProductSizeCategory
                     {
@@ -82,9 +83,61 @@ namespace eShopLab.Areas.Admin.Controllers
                     ProductID = product.ProductID
                 });
                 db.SaveChanges();
+
+                DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~\Uploads\SandBox"));
+                var filesName = directory.GetFiles().ToList();
+                if (filesName.Count > 0)
+                {
+                    var path = Server.MapPath("~/Uploads/Product/" + product.ProductID);
+                    Directory.CreateDirectory(path);
+                    int i = 0;
+                    foreach (var fileName in filesName)
+                    {
+                        
+                        var pathRoot = Server.MapPath("~/Uploads");
+                        string Fromfile = pathRoot + "/SandBox/" + fileName;
+                        string Tofile = path + "/" + i + Path.GetExtension(path + fileName);
+                        System.IO.File.Move(Fromfile, Tofile);
+
+                        Medium medium = new Medium()
+                        {
+                            MediaName = fileName.ToString(),
+                            MediaAlt = "",
+                            MediaUrl = "~/SandBox/" + fileName.ToString()
+                        };
+
+                        db.Media.Add(medium);
+                        i++;
+                    }
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
             return View(product);
+        }
+
+        [HttpPost]
+        public ActionResult Upload()
+        {
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                file.SaveAs(Server.MapPath("~/Uploads/SandBox/" + file.FileName));
+            }
+
+            return Json(new { Message = string.Empty });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteFile(string fileName)
+        {
+            var fullPath = Server.MapPath("~/Uploads/SandBox/" + fileName);
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+            return Json(new { Message = string.Empty });
         }
 
         //
