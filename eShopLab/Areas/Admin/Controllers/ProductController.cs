@@ -130,6 +130,17 @@ namespace eShopLab.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        public ActionResult GetImage(int id)
+        {
+            DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~\Uploads\Product\" + id));
+            if (directory.Exists)
+            {
+                var filesName = directory.GetFiles().ToList();
+            }
+
+            return Json(new { Message = string.Empty });
+        }
+        [HttpPost]
         public ActionResult DeleteFile(string fileName)
         {
             var fullPath = Server.MapPath("~/Uploads/SandBox/" + fileName);

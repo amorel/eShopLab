@@ -88,7 +88,10 @@
                 <div class="size-container input-group">
                     <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@prodsize.SizeCategoryID">
                     <span class="input-group-addon label-size">
-                        <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=@if(prodsize.Quantity == 0){ <text>false</text>}else{ <text>true</text>}' autocomplete="off">
+                        <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=@if (prodsize.Quantity == 0)
+                                                                                                                       { <text>false</text>}
+                                                                                                                       else
+                                                                                                                       { <text>true</text>}' autocomplete="off">
                         &nbsp;&nbsp;@prodsize.SizeCategoryInitial
                     </span>
                     <input name="[@(i)].Quantity" type="number" class="form-control form-input" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-disabled="!checkedSize@(i)" ng-show="checkedSize@(i)" ng-init="Qty[@(i)]=@prodsize.Quantity" autocomplete="off" required>
@@ -114,6 +117,43 @@
     </fieldset>
 }
 
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading fonce">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">DropZone
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">
+                @using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+                {
+                }
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading fonce">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">IMAGES
+                </a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+
+                <ul class="unstyled" ng-app="GalleryApp" ng-controller="GalleryCtrl">
+                    <li ng-repeat="image in Gallery">
+                        <input type="checkbox" ng-model="image.done">
+                        <span class="done-{{todo.done}}">{{image.text}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -123,13 +163,24 @@
         $(".title").html("Edit Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
-        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope) {
+        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope, $http) {
             $scope.Qty = {};
             this.changed = function (i) {
                 if ($scope.Qty[i] <= 0) {
                     $scope.Qty[i] = 0;
                 }
             }
+
+            $http({ method: "POST", url: "/Admin/Product/GetImage", data: {id: "@Model.ProductID" } }).
+                    success(function (data, status) {
+                        $scope.status = status;
+                        $scope.data = data;
+                        alert("giood");
+                    }).
+                    error(function (data, status) {
+                        $scope.data = data || "Request failed";
+                        $scope.status = status;
+                    });
         });
     </script>
 }

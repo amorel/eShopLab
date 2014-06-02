@@ -86,13 +86,8 @@ var app = function () {
                         type: "POST",
                         url: "/Admin/Product/DeleteFile",
                         data: {fileName: fileName},
-                        success: function (data) {
-
-
-                        },
                         dataType: "Json"
                     });
-                    console.log(file);
                 });
             }
         });
@@ -111,6 +106,7 @@ var app = function () {
 
 //Load global functions
 $(document).ready(function () {
+    Dropzone.autoDiscover = false;
     app.init();
 
 });
