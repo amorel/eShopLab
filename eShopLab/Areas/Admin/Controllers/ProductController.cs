@@ -139,7 +139,8 @@ namespace eShopLab.Areas.Admin.Controllers
                 var PhysicalPaths = directory.GetFiles().ToList();
                 foreach (var PhysicalPath in PhysicalPaths)
                 {
-                    VirtualPathList.Add(Globals.resolveVirtual(PhysicalPath.DirectoryName) + "/" + PhysicalPath.Name);
+                    string virtualPath = Globals.resolveVirtual(PhysicalPath.DirectoryName) + "/" + PhysicalPath.Name;
+                    VirtualPathList.Add(virtualPath.Replace("~/", ""));
                     
                 }
             }
@@ -160,7 +161,7 @@ namespace eShopLab.Areas.Admin.Controllers
         //
         // GET: /Admin/Product/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id)
         {
             var priceByProduct = db.Prices.Where(p => p.ProductID == id);
             var maxDate = priceByProduct.Max(p => p.PriceDate);

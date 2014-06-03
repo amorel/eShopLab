@@ -2899,13 +2899,42 @@ h3.timeline-title {
     width: 80px;
     text-align: left;
 }
-.size-container{
-    min-height:36px!important;
+
+.size-container {
+    min-height: 36px!important;
 }
 
 .fonce {
     border: 1px solid #ccc!important;
     background-color: #eee!important;
+}
+
+ul.horizontal-slide {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: auto;
+    height: 430px;
+}
+
+    ul.horizontal-slide li[class*="span-gallery"] {
+        display: inline-block;
+        float: none;
+        width: 200px;
+        height: 200px;
+        margin: 1px;
+    }
+
+        ul.horizontal-slide li[class*="span-gallery"]:first-child {
+            margin-left: 0;
+        }
+
+.thumbnail {
+    height: 200px;
+}
+
+.thumbnail img {
+    height: 190px;
 }
 
 @media only screen and (max-width: 479px) {
