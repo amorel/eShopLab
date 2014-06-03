@@ -2914,7 +2914,7 @@ ul.horizontal-slide {
     padding: 0;
     width: 100%;
     overflow-x: auto;
-    height: 430px;
+    height: 100%;
 }
 
     ul.horizontal-slide li[class*="span-gallery"] {
@@ -2930,12 +2930,27 @@ ul.horizontal-slide {
         }
 
 .thumbnail {
-    height: 200px;
+    height: 100%;
+    margin: 0;
 }
 
-.thumbnail img {
-    height: 190px;
+    .thumbnail img {
+        height: 90%;
+    }
+
+.thumbnail-span {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    border-top: 1px solid #ccc;
 }
+
+    .thumbnail-span button {
+        margin: 0 auto;
+        width: 100px;
+        background-color: #eee!important;
+        border: 1px solid #ccc;
+    }
 
 @media only screen and (max-width: 479px) {
     /* Main Content */
