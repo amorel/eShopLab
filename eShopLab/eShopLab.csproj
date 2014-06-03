@@ -130,6 +130,7 @@
     <Compile Include="Areas\Admin\Models\SizeProd_Qty.cs" />
     <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Extension\Globals.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

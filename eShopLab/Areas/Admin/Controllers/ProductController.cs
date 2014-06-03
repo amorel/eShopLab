@@ -90,7 +90,7 @@ namespace eShopLab.Areas.Admin.Controllers
                 {
                     var path = Server.MapPath("~/Uploads/Product/" + product.ProductID);
                     Directory.CreateDirectory(path);
-                    int i = 0;
+                    int i = 1;
                     foreach (var fileName in filesName)
                     {
                         
@@ -101,7 +101,7 @@ namespace eShopLab.Areas.Admin.Controllers
 
                         Medium medium = new Medium()
                         {
-                            MediaName = fileName.ToString(),
+                            MediaName = product.ProductName,
                             MediaAlt = "",
                             MediaUrl = "~/SandBox/" + fileName.ToString()
                         };
@@ -133,12 +133,18 @@ namespace eShopLab.Areas.Admin.Controllers
         public ActionResult GetImage(int id)
         {
             DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~\Uploads\Product\" + id));
+            List<string> VirtualPathList = new List<string>();
             if (directory.Exists)
             {
-                var filesName = directory.GetFiles().ToList();
+                var PhysicalPaths = directory.GetFiles().ToList();
+                foreach (var PhysicalPath in PhysicalPaths)
+                {
+                    VirtualPathList.Add(Globals.resolveVirtual(PhysicalPath.DirectoryName) + "/" + PhysicalPath.Name);
+                    
+                }
             }
 
-            return Json(new { Message = string.Empty });
+            return Json(VirtualPathList);
         }
         [HttpPost]
         public ActionResult DeleteFile(string fileName)

@@ -236,3 +236,69 @@ INSERT INTO Price VALUES('02/02/2014', 123.00, 6);
 INSERT INTO Price VALUES('02/02/2014', 60.00, 7);
 INSERT INTO Price VALUES('02/05/2014', 75.00, 7);
 INSERT INTO Price VALUES('02/02/2014', 80.00, 8);
+
+
+use eShopDB
+go
+DELETE FROM Media;
+INSERT INTO Media VALUES('China', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('China', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('China', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('China', '', '~/Product/1/4.jpg', null);
+
+INSERT INTO Media VALUES('Cachos', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Product/1/3.jpg', null);
+
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Product/1/3.jpg', null);
+
+INSERT INTO Media VALUES('Miguelito', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Product/1/3.jpg', null);
+
+INSERT INTO Media VALUES('Divin', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Product/1/3.jpg', null);
+
+INSERT INTO Media VALUES('Imporahi', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Product/1/3.jpg', null);
+
+INSERT INTO Media VALUES('Sigula', '', '~/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Product/1/3.jpg', null);
+
+use eShopDB
+go
+DELETE FROM MediaProduct;
+INSERT INTO MediaProduct VALUES(1, 1);
+INSERT INTO MediaProduct VALUES(1, 2);
+INSERT INTO MediaProduct VALUES(1, 3);
+INSERT INTO MediaProduct VALUES(1, 4);
+
+INSERT INTO MediaProduct VALUES(2, 5);
+INSERT INTO MediaProduct VALUES(2, 6);
+INSERT INTO MediaProduct VALUES(2, 7);
+
+INSERT INTO MediaProduct VALUES(3, 8);
+INSERT INTO MediaProduct VALUES(3, 9);
+INSERT INTO MediaProduct VALUES(3, 10);
+
+INSERT INTO MediaProduct VALUES(4, 11);
+INSERT INTO MediaProduct VALUES(4, 12);
+INSERT INTO MediaProduct VALUES(4, 13);
+
+INSERT INTO MediaProduct VALUES(5, 14);
+INSERT INTO MediaProduct VALUES(5, 15);
+INSERT INTO MediaProduct VALUES(5, 16);
+
+INSERT INTO MediaProduct VALUES(6, 17);
+INSERT INTO MediaProduct VALUES(6, 18);
+INSERT INTO MediaProduct VALUES(6, 19);
+
+INSERT INTO MediaProduct VALUES(7, 20);
+INSERT INTO MediaProduct VALUES(7, 21);
+INSERT INTO MediaProduct VALUES(7, 22);
+
