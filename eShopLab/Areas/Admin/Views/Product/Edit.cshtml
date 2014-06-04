@@ -124,26 +124,11 @@
         <div class="panel panel-default">
             <div class="panel-heading fonce">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">DropZone
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    @using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
-                    {
-                    }
-                </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading fonce">
-                <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">IMAGES
                     </a>
                 </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
+            <div id="collapseTwo" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <ul class="horizontal-slide" ng-controller="ShowSizeCtrl">
                         <li class="span-gallery" ng-repeat="imgPath in VirtualPath">
@@ -155,6 +140,21 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading fonce">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">DropZone
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+                    {
+                    }
                 </div>
             </div>
         </div>
