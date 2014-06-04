@@ -244,7 +244,6 @@ DELETE FROM Media;
 INSERT INTO Media VALUES('China', '', '~/Product/1/1.jpg', null);
 INSERT INTO Media VALUES('China', '', '~/Product/1/2.jpg', null);
 INSERT INTO Media VALUES('China', '', '~/Product/1/3.jpg', null);
-INSERT INTO Media VALUES('China', '', '~/Product/1/4.jpg', null);
 
 INSERT INTO Media VALUES('Cachos', '', '~/Product/1/1.jpg', null);
 INSERT INTO Media VALUES('Cachos', '', '~/Product/1/2.jpg', null);

@@ -76,10 +76,18 @@ var app = function () {
     };
 
     var dropzone = function () {
+        var isRemoveLinks = true;
+        if ($("#accordion").exists()) {
+            isRemoveLinks = false;
+        }
         var myDropzone = $("#mydropzone").dropzone({
-            addRemoveLinks: true,
+            addRemoveLinks: isRemoveLinks,
             acceptedFiles: "image/*",
             init: function () {
+                $("#tabImage").on("click", function () {
+                    var dz = Dropzone.forElement("#mydropzone");
+                    dz.removeAllFiles();
+                });
                 this.on("removedfile", function (file) {
                     var fileName = file.name;
                     $.ajax({

@@ -118,14 +118,42 @@ namespace eShopLab.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Upload()
+        public ActionResult Upload(int ProductID = 0)
         {
+            int index = 0;
             foreach (string fileName in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[fileName];
-                file.SaveAs(Server.MapPath("~/Uploads/SandBox/" + file.FileName));
-            }
+                if (ProductID == 0)
+                {
+                    file.SaveAs(Server.MapPath("~/Uploads/SandBox/" + file.FileName));
+                }
+                else
+                {
+                    var fullPath = string.Empty;
+                    do
+                    {
+                        index++;
+                        fullPath = Server.MapPath("~/Uploads/Product/" + ProductID + "/" + index + Path.GetExtension(file.FileName));
+                        
+                    } while (System.IO.File.Exists(fullPath));
 
+                    file.SaveAs(fullPath);
+                    Product product = db.Products.Find(ProductID);
+
+                    Medium medium = new Medium()
+                    {
+                        MediaName = product.ProductName,
+                        MediaAlt = product.ProductName,
+                        MediaUrl = fullPath
+                    };
+
+                    db.Media.Add(medium);
+                    product.Media.Add(medium);
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                }
+            }
             return Json(new { Message = string.Empty });
         }
 
@@ -140,13 +168,13 @@ namespace eShopLab.Areas.Admin.Controllers
                 foreach (var PhysicalPath in PhysicalPaths)
                 {
                     string virtualPath = Globals.resolveVirtual(PhysicalPath.DirectoryName) + "/" + PhysicalPath.Name;
-                    VirtualPathList.Add(virtualPath.Replace("~/", ""));
+                    VirtualPathList.Add(virtualPath.Replace("~/", "") + "?time=" + DateTime.Now);
                     
                 }
             }
-
             return Json(VirtualPathList);
         }
+
         [HttpPost]
         public ActionResult DeleteFile(string fileName)
         {
