@@ -93,7 +93,7 @@ var app = function () {
                     $.ajax({
                         type: "POST",
                         url: "/Admin/Product/DeleteFile",
-                        data: {fileName: fileName},
+                        data: {filePath: "~/Uploads/SandBox/" + fileName},
                         dataType: "Json"
                     });
                 });

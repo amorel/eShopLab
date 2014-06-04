@@ -158,9 +158,9 @@ namespace eShopLab.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetImage(int id)
+        public ActionResult GetImage(int ProductID)
         {
-            DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~\Uploads\Product\" + id));
+            DirectoryInfo directory = new DirectoryInfo(Server.MapPath(@"~\Uploads\Product\" + ProductID));
             List<string> VirtualPathList = new List<string>();
             if (directory.Exists)
             {
@@ -176,9 +176,9 @@ namespace eShopLab.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteFile(string fileName)
+        public ActionResult DeleteFile(string filePath)
         {
-            var fullPath = Server.MapPath("~/Uploads/SandBox/" + fileName);
+            var fullPath = Server.MapPath(filePath);
             if (System.IO.File.Exists(fullPath))
             {
                 System.IO.File.Delete(fullPath);

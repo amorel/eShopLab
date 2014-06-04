@@ -132,10 +132,10 @@
                 <div class="panel-body">
                     <ul class="horizontal-slide">
                         <li class="span-gallery" ng-repeat="imgPath in VirtualPath">
-                            <a href="#" class="thumbnail">
+                            <a class="thumbnail">
                                 <img ng-src="~/{{ imgPath }}" alt="" />
                                 <div class="thumbnail-span">
-                                    <button class="btn btn-xs">Delete</button>
+                                    <button ng-click="deleteImg(imgPath)" class="btn btn-xs">Delete</button>
                                 </div>
                             </a>
                         </li>
@@ -186,16 +186,26 @@
         appsModule.controller("GalleryCtrl", function ($scope, $http) {
             $scope.VirtualPath = new Array();
             $scope.getGallery = function () {
-                $http({ method: "POST", url: "/Admin/Product/GetImage", data: { id: "@Model.ProductID" } }).
+                $http({ method: "POST", url: "/Admin/Product/GetImage", data: { ProductID: "@Model.ProductID" } }).
                     success(function (data, status) {
-                        $scope.status = status;
                         $scope.VirtualPath = data;
                     }).
                     error(function (data, status) {
-                        $scope.status = status;
                     });
-            }
+            };
             $scope.getGallery();
+
+            $scope.deleteImg = function (filePath) {
+                var tmp = filePath.replace(/(.*)?/g, "");
+                $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: tmp } }).
+                    success(function (data, status) {
+                        var index = $scope.VirtualPath.indexOf(filePath)
+                        $scope.VirtualPath.splice(index, 1);
+                    }).
+                    error(function (data, status) {
+                    });
+
+            };
         });
     </script>
 }
