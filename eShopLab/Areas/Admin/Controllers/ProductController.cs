@@ -62,9 +62,7 @@ namespace eShopLab.Areas.Admin.Controllers
                         SizeCategoryID = prodSize.SizeCategoryID,
                         Quantity = prodSize.Quantity
                     };
-
                     product.ProductSizeCategories.Add(productSizeCategory);
-
                 }
             }
             if (ModelState.IsValid)
@@ -113,6 +111,8 @@ namespace eShopLab.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
+            ViewBag.MyCategories = new SelectList(db.Categories, "CategoryID", "CategoryName");
+            ViewBag.MySize = db.SizeCategories;
             return View(product);
         }
 
@@ -168,7 +168,6 @@ namespace eShopLab.Areas.Admin.Controllers
                 {
                     string virtualPath = Globals.resolveVirtual(PhysicalPath.DirectoryName) + "/" + PhysicalPath.Name;
                     VirtualPathList.Add(virtualPath.Replace("~/", "") + "?time=" + DateTime.Now);
-                    
                 }
             }
             return Json(VirtualPathList);
@@ -221,14 +220,64 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Product/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, ICollection<ProduSizeCat> prodSizeCat, string PriceValue)
         {
             if (ModelState.IsValid)
             {
+                var prodSizeCatList = db.ProductSizeCategories.Where(p => p.ProductID == product.ProductID);
+                foreach (var pSC in prodSizeCatList)
+                {
+                    db.ProductSizeCategories.Remove(pSC);
+                }
+                db.Entry(product).State = EntityState.Modified;
+                
+                foreach (var prodSize in prodSizeCat)
+                {
+                    if (prodSize.check == "on" && prodSize.Quantity != 0)
+                    {
+                        ProductSizeCategory productSizeCategory = new ProductSizeCategory
+                        {
+                            SizeCategoryID = prodSize.SizeCategoryID,
+                            Quantity = prodSize.Quantity
+                        };
+                        product.ProductSizeCategories.Add(productSizeCategory);
+                    }
+                }
+                
+                var priceByProduct = db.Prices.Where(p => p.ProductID == product.ProductID);
+                var maxDate = priceByProduct.Max(p => p.PriceDate);
+                var price = priceByProduct.Where(p => p.PriceDate == maxDate).FirstOrDefault();
+
+                string pricee = Math.Round(price.PriceValue, 2).ToString();
+                if (pricee != PriceValue)
+                {
+                    decimal result;
+                    decimal.TryParse(PriceValue, out result);
+
+                    product.Prices.Add(new Price()
+                    {
+                        PriceValue = result,
+                        PriceDate = DateTime.Now,
+                        ProductID = product.ProductID
+                    });
+                }
+
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.prod_size = db.SizeCategories
+                .GroupJoin(db.ProductSizeCategories.Where(pc => pc.ProductID == product.ProductID),
+                p => p.SizeCategoryID,
+                s => s.SizeCategoryID,
+                (p, g) => g.Select(s => new SizeProd_Qty()
+                {
+                    SizeCategoryID = p.SizeCategoryID,
+                    SizeCategoryInitial = p.SizeCategoryInitial,
+                    Quantity = s.Quantity
+                }).DefaultIfEmpty(new SizeProd_Qty() { SizeCategoryID = p.SizeCategoryID, SizeCategoryInitial = p.SizeCategoryInitial, Quantity = 0 })).SelectMany(g => g).ToList();
+
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "CategoryName", product.CategoryID);
             return View(product);
         }
