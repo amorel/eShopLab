@@ -125,7 +125,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeCategoryController.cs" />
     <Compile Include="Areas\Admin\Models\SizeProd_Qty.cs" />
@@ -283,11 +282,6 @@
     <Content Include="Areas\Admin\Views\SizeCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SizeCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SizeCategory\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
