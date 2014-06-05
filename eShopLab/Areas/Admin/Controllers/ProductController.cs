@@ -100,7 +100,7 @@ namespace eShopLab.Areas.Admin.Controllers
                         {
                             MediaName = product.ProductName,
                             MediaAlt = "",
-                            MediaUrl = "~/SandBox/" + fileName.ToString()
+                            MediaUrl = "~/Uploads/Product/" + i + Path.GetExtension(path + fileName)
                         };
 
                         db.Media.Add(medium);
@@ -134,7 +134,7 @@ namespace eShopLab.Areas.Admin.Controllers
                     {
                         index++;
                         fullPath = Server.MapPath("~/Uploads/Product/" + ProductID + "/" + index + Path.GetExtension(file.FileName));
-                        
+
                     } while (System.IO.File.Exists(fullPath));
 
                     file.SaveAs(fullPath);
@@ -230,7 +230,7 @@ namespace eShopLab.Areas.Admin.Controllers
                     db.ProductSizeCategories.Remove(pSC);
                 }
                 db.Entry(product).State = EntityState.Modified;
-                
+
                 foreach (var prodSize in prodSizeCat)
                 {
                     if (prodSize.check == "on" && prodSize.Quantity != 0)
@@ -243,7 +243,7 @@ namespace eShopLab.Areas.Admin.Controllers
                         product.ProductSizeCategories.Add(productSizeCategory);
                     }
                 }
-                
+
                 var priceByProduct = db.Prices.Where(p => p.ProductID == product.ProductID);
                 var maxDate = priceByProduct.Max(p => p.PriceDate);
                 var price = priceByProduct.Where(p => p.PriceDate == maxDate).FirstOrDefault();
@@ -299,9 +299,18 @@ namespace eShopLab.Areas.Admin.Controllers
         // POST: /Admin/Product/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int ProductID)
         {
-            Product product = db.Products.Find(id);
+            var prodSizeCatList = db.ProductSizeCategories.Where(p => p.ProductID == ProductID);
+            foreach (var pSC in prodSizeCatList)
+            {
+                db.ProductSizeCategories.Remove(pSC);
+            }
+            
+            var path = Server.MapPath("~/Uploads/Product/" + ProductID);
+            if (Directory.Exists(path)) Directory.Delete(path, true);
+
+            Product product = db.Products.Find(ProductID);
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
