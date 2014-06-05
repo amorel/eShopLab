@@ -93,7 +93,6 @@ namespace eShopLab.Areas.Admin.Controllers
                     int i = 1;
                     foreach (var fileName in filesName)
                     {
-                        
                         var pathRoot = Server.MapPath("~/Uploads");
                         string Fromfile = pathRoot + "/SandBox/" + fileName;
                         string Tofile = path + "/" + i + Path.GetExtension(path + fileName);
@@ -178,7 +177,7 @@ namespace eShopLab.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult DeleteFile(string filePath)
         {
-            var fullPath = Server.MapPath(filePath);
+            var fullPath = Server.MapPath("~/" + filePath);
             if (System.IO.File.Exists(fullPath))
             {
                 System.IO.File.Delete(fullPath);

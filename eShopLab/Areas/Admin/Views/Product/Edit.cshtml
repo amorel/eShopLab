@@ -196,15 +196,14 @@
             $scope.getGallery();
 
             $scope.deleteImg = function (filePath) {
-                var tmp = filePath.replace(/(.*)?/g, "");
-                $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: tmp } }).
+                var filePathClean = /(.*)\?/.exec(filePath);
+                $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: filePathClean[1] } }).
                     success(function (data, status) {
                         var index = $scope.VirtualPath.indexOf(filePath)
                         $scope.VirtualPath.splice(index, 1);
                     }).
                     error(function (data, status) {
                     });
-
             };
         });
     </script>
