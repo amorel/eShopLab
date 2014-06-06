@@ -2887,22 +2887,6 @@ h3.timeline-title {
     top: 7px;
 }
 
-.dropzone-previews {
-    position: relative;
-    min-height: 100px;
-    padding-bottom: 10px;
-}
-
-.dz-image-preview {
-    position: absolute !important;
-    top: -20px !important;
-    left: 250px;
-}
-
-.dz-message {
-    display: inline-block;
-}
-
 .table-form {
     border-bottom: 1px solid #E0E0E0;
 }
@@ -2915,9 +2899,58 @@ h3.timeline-title {
     width: 80px;
     text-align: left;
 }
-.size-container{
-    min-height:36px!important;
+
+.size-container {
+    min-height: 36px!important;
 }
+
+.fonce {
+    border: 1px solid #ccc!important;
+    background-color: #eee!important;
+}
+
+ul.horizontal-slide {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: auto;
+    height: 100%;
+}
+
+    ul.horizontal-slide li[class*="span-gallery"] {
+        display: inline-block;
+        float: none;
+        width: 200px;
+        height: 200px;
+        margin: 1px;
+    }
+
+        ul.horizontal-slide li[class*="span-gallery"]:first-child {
+            margin-left: 0;
+        }
+
+.thumbnail {
+    height: 100%;
+    margin: 0;
+}
+
+    .thumbnail img {
+        height: 90%;
+    }
+
+.thumbnail-span {
+    display: inline-block;
+    width: 190px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+    .thumbnail-span button {
+        margin: 0 auto;
+        width: 100px;
+        background-color: #eee!important;
+        border: 1px solid #ccc;
+    }
 
 @media only screen and (max-width: 479px) {
     /* Main Content */

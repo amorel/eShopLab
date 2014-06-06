@@ -133,19 +133,24 @@
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\PriceController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizeCategoryController.cs" />
     <Compile Include="Areas\Admin\Models\SizeProd_Qty.cs" />
     <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\ProductCatalogController.cs" />
+=======
+    <Compile Include="Extension\Globals.cs" />
+>>>>>>> ea38c0e2ed432487976d31ecf65cca131b17608d
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +242,7 @@
     <Compile Include="Models\Partial\Medium.cs" />
     <Compile Include="ProductCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\CustomMembershipProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -342,11 +348,6 @@
     <Content Include="Areas\Admin\Views\SizeCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\SizeCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SizeCategory\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Price\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
@@ -723,7 +724,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\Category\" />
+    <Folder Include="Uploads\Product\" />
+    <Folder Include="Uploads\SandBox\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -14,7 +14,7 @@
             @Html.LabelFor(model => model.ProductName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductName)
+            @Html.TextBoxFor(model => model.ProductName, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductName)
         </div>
 
@@ -22,7 +22,7 @@
             @Html.LabelFor(model => model.ProductDescription)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDescription)
+            @Html.TextBoxFor(model => model.ProductDescription, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductDescription)
         </div>
 
@@ -30,7 +30,7 @@
             @Html.LabelFor(model => model.ProductLongDescription)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductLongDescription)
+            @Html.TextBoxFor(model => model.ProductLongDescription, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductLongDescription)
         </div>
 
@@ -38,7 +38,7 @@
             @Html.LabelFor(model => model.ProductReference)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductReference)
+            @Html.TextBoxFor(model => model.ProductReference, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductReference)
         </div>
 
@@ -46,7 +46,7 @@
             @Html.LabelFor(model => model.ProductManufacturerReference)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductManufacturerReference)
+            @Html.TextBoxFor(model => model.ProductManufacturerReference, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductManufacturerReference)
         </div>
 
@@ -54,7 +54,7 @@
             @Html.LabelFor(model => model.ProductBarCode)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductBarCode)
+            @Html.TextBoxFor(model => model.ProductBarCode, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductBarCode)
         </div>
 
@@ -110,6 +110,10 @@
             <input type="submit" value="Create" />
         </p>
     </fieldset>
+}
+
+@using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+{
 }
 
 <div>

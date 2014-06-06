@@ -21,10 +21,6 @@
         <th>
             @Html.DisplayNameFor(model => model.CategoryIsMenu)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Medium.MediaName)
-        </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -38,9 +34,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryIsMenu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Medium.MediaName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
