@@ -43,12 +43,27 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="DelegateDecompiler">
+      <HintPath>..\packages\DelegateDecompiler.0.6.0.0\lib\net40-Client\DelegateDecompiler.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Reflection">
+      <HintPath>..\packages\Mono.Reflection.1.0.0.0\lib\Mono.Reflection.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PerpetuumSoft.Knockout">
+      <HintPath>..\packages\kMVC.0.5.4\lib\net40\PerpetuumSoft.Knockout.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -130,32 +145,33 @@
     <Compile Include="Areas\Admin\Models\SizeProd_Qty.cs" />
     <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductCatalogController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Command.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommandLine.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommandStatu.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliverableCountry.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeliverablePrice.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\eShopDB.Context.cs">
       <AutoGen>True</AutoGen>
@@ -172,35 +188,54 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>eShopDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EshopModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EshopModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EshopModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EshopModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EshopModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\MediaType.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medium.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Partial\Category.cs" />
     <Compile Include="Models\Partial\Product.cs" />
     <Compile Include="Models\Partial\SizeCategory.cs" />
     <Compile Include="Models\Price.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductSizeCategory.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SizeCategory.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>eShopDB.tt</DependentUpon>
+      <DependentUpon>EshopModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Validation\ValidationProduct.cs" />
     <Compile Include="Models\Validation\ValidationSizeCategory.cs" />
     <Compile Include="Models\Validation\ValidationUnitType.cs" />
     <Compile Include="Models\Validation\ValidationCategory.cs" />
     <Compile Include="Models\Partial\Medium.cs" />
+    <Compile Include="ProductCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +253,9 @@
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\admin.css" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\jquery.bxslider.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\smoothproducts.css" />
     <Content Include="Content\style.css" />
     <Content Include="fonts\DroidSans-webfont.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -251,6 +289,30 @@
     <Content Include="Areas\Admin\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="images\banner_slider-1.jpg" />
+    <Content Include="images\banner_slider-2.jpg" />
+    <Content Include="images\banner_slider-3.jpg" />
+    <Content Include="images\bx_loader.gif" />
+    <Content Include="images\controls.png" />
+    <Content Include="images\detail1-s.jpg" />
+    <Content Include="images\detail1.jpg" />
+    <Content Include="images\detail2-s.jpg" />
+    <Content Include="images\detail2.jpg" />
+    <Content Include="images\detail3-s.jpg" />
+    <Content Include="images\detail3.jpg" />
+    <Content Include="images\product-1.jpg" />
+    <Content Include="images\product-10.jpg" />
+    <Content Include="images\product-11.jpg" />
+    <Content Include="images\product-12.jpg" />
+    <Content Include="images\product-2.jpg" />
+    <Content Include="images\product-3.jpg" />
+    <Content Include="images\product-4.jpg" />
+    <Content Include="images\product-5.jpg" />
+    <Content Include="images\product-6.jpg" />
+    <Content Include="images\product-7.jpg" />
+    <Content Include="images\product-8.jpg" />
+    <Content Include="images\product-9.jpg" />
+    <Content Include="Models\eShopDB.edmx.sql" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />
@@ -270,6 +332,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\Catalog.js" />
     <Content Include="Scripts\dropzone\css\basic.css" />
     <Content Include="Scripts\dropzone\css\dropzone.css" />
     <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
@@ -315,6 +378,23 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <EntityDeploy Include="Models\EshopModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EshopModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\EshopModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EshopModel.edmx</DependentUpon>
+      <LastGenOutput>EshopModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\EshopModel.edmx.diagram">
+      <DependentUpon>EshopModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\EshopModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EshopModel.edmx</DependentUpon>
+      <LastGenOutput>EshopModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -606,14 +686,23 @@
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.blImageCenter.js" />
+    <Content Include="Scripts\jquery.bxslider.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\mask\jquery.mask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\eshop.js" />
     <Content Include="Scripts\modernizr-2.7.2.js" />
+    <Content Include="Scripts\perpetuum.knockout.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\smoothproducts.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -626,9 +715,11 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_html5shiv.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\ProductCatalog\_Catalog.cshtml" />
+    <Content Include="Views\ProductCatalog\Details.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

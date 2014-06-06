@@ -14,7 +14,9 @@ namespace eShopLab.App_Start
             bundles.Add(new ScriptBundle("~/bundles/css").Include(
                 "~/Content/style.css",
                 "~/Content/font-awesome.min.css",
-                "~/Content/bootstrap.css"
+                "~/Content/bootstrap.css" ,
+                "~/Content/smoothproducts.css",
+                "~/Content/jquery.bxslider.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/cssadmin").Include(
@@ -37,7 +39,14 @@ namespace eShopLab.App_Start
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/icheck/js/icheck.min.js",
                 "~/Scripts/angular.js",
-                "~/Scripts/admin.js"
+                "~/Scripts/admin.js",
+                 "~/Scripts/smoothproducts.min.js",
+                 "~/Scripts/eshop.js",
+                  "~/Scripts/Catalog.js",
+                 "~/Scripts/jquery.bxslider.min.js",
+                 "~/Scripts/jquery.blImageCenter.js",
+                  "~/Scripts/knockout-2.1.0.js",
+                 "~/Scripts/knockout.mapping-latest.js"
                 ));
         }
     }
