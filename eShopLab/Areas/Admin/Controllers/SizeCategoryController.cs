@@ -97,13 +97,6 @@ namespace eShopLab.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.product = db.ProductSizeCategories.Where(pc => pc.SizeCategoryID == id)
-                .GroupJoin(db.Products.Select(p=>p),
-                p => p.ProductID,
-                s => s.ProductID,
-                (p, g) => g.Select(s => s)).ToList();
-                
-
             return View(sizecategory);
         }
 
