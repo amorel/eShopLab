@@ -12,7 +12,7 @@ namespace eShopLab.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
-        private EShopEntities db = new EShopEntities();
+        private eShopDBEntities db = new eShopDBEntities();
 
         //
         // GET: /Admin/Category/

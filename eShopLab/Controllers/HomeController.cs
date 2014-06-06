@@ -17,7 +17,7 @@ namespace eShopLab.Controllers
         //
         // GET: /Home/
 
-        private EShopEntities db = new EShopEntities();
+        private eShopDBEntities db = new eShopDBEntities();
 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {           

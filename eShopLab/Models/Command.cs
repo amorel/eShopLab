@@ -29,7 +29,7 @@ namespace eShopLab.Models
     
         public virtual Address Address { get; set; }
         public virtual Address Address1 { get; set; }
-        public virtual ICollection<CommandLine> CommandLines { get; set; }
         public virtual CommandStatu CommandStatu { get; set; }
+        public virtual ICollection<CommandLine> CommandLines { get; set; }
     }
 }
