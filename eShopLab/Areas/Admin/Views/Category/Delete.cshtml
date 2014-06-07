@@ -28,15 +28,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.CategoryIsMenu)
     </div>
-    @if (Model.Medium != null)
-    {
-        <div class="display-label">
-            <label for="CategoryName">Media</label>
-        </div>
-        <div class="display-field">
-            <img id="imgMedia" src="@Url.Content(Model.Medium.MediaUrl)" alt="" />
-        </div>
-    }
+
 </fieldset>
 @using (Html.BeginForm())
 {

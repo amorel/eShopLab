@@ -5,9 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<input hidden="hidden" type="text" name="fileUrl" value="@Model.Medium.MediaUrl.Replace("~","")" />
-
-@using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+@using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
@@ -37,17 +35,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.CategoryIsMenu)
             @Html.ValidationMessageFor(model => model.CategoryIsMenu)
-        </div>
-
-        <div class="editor-label">
-            <label for="CategoryName">Media</label>
-        </div>
-        <div class="editor-field">
-            <div class="dropzone-previews">
-                <div class="dz-message">
-                    <img id="dropzoneimg" src="~/Content/images/dropFiles.png" />
-                </div>
-            </div>
         </div>
 
         <p>

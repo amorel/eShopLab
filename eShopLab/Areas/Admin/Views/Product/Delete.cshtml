@@ -73,6 +73,7 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
+        @Html.HiddenFor(model => model.ProductID)
         <input type="submit" value="Delete" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>

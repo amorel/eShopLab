@@ -5,117 +5,166 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
+<div ng-app="apps">
 
-    <fieldset>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
 
-        @Html.HiddenFor(model => model.ProductID)
+        <fieldset>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductName)
-            @Html.ValidationMessageFor(model => model.ProductName)
-        </div>
+            @Html.HiddenFor(model => model.ProductID)
+            @Html.HiddenFor(model => model.ProductAddingDate)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductDescription)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDescription)
-            @Html.ValidationMessageFor(model => model.ProductDescription)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ProductName, new { autocomplete="off" })
+                @Html.ValidationMessageFor(model => model.ProductName)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductLongDescription)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductLongDescription)
-            @Html.ValidationMessageFor(model => model.ProductLongDescription)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductDescription)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ProductDescription, new { autocomplete="off" })
+                @Html.ValidationMessageFor(model => model.ProductDescription)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductReference)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductReference)
-            @Html.ValidationMessageFor(model => model.ProductReference)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductLongDescription)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ProductLongDescription, new { autocomplete="off" })
+                @Html.ValidationMessageFor(model => model.ProductLongDescription)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductManufacturerReference)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductManufacturerReference)
-            @Html.ValidationMessageFor(model => model.ProductManufacturerReference)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductReference)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ProductReference, new { autocomplete="off" })
+                @Html.ValidationMessageFor(model => model.ProductReference)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductBarCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductBarCode)
-            @Html.ValidationMessageFor(model => model.ProductBarCode)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductManufacturerReference)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ProductManufacturerReference, new { autocomplete="off" })
+                @Html.ValidationMessageFor(model => model.ProductManufacturerReference)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductDiscontinued)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDiscontinued)
-            @Html.ValidationMessageFor(model => model.ProductDiscontinued)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductBarCode)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ProductBarCode, new { autocomplete="off" })
+                @Html.ValidationMessageFor(model => model.ProductBarCode)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryID, "Category")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("CategoryID", String.Empty)
-            @Html.ValidationMessageFor(model => model.CategoryID)
-        </div>
-        <div class="editor-label">
-            <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductDiscontinued)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ProductDiscontinued)
+                @Html.ValidationMessageFor(model => model.ProductDiscontinued)
+            </div>
 
-        <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CategoryID, "Category")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("CategoryID")
+                @Html.ValidationMessageFor(model => model.CategoryID)
+            </div>
+            <div class="editor-label">
+                <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
+            </div>
 
-            @{var i = 0;}
-            @foreach (var prodsize in ViewBag.prod_size)
-            {
-                <div class="size-container input-group">
-                    <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@prodsize.SizeCategoryID">
-                    <span class="input-group-addon label-size">
-                        <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=@if(prodsize.Quantity == 0){ <text>false</text>}else{ <text>true</text>}' autocomplete="off">
-                        &nbsp;&nbsp;@prodsize.SizeCategoryInitial
-                    </span>
-                    <input name="[@(i)].Quantity" type="number" class="form-control form-input" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-disabled="!checkedSize@(i)" ng-show="checkedSize@(i)" ng-init="Qty[@(i)]=@prodsize.Quantity" autocomplete="off" required>
-                    <span ng-show="checkedSize@(i)" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+            <div class="editor-field" ng-controller="ShowSizeCtrl">
 
+                @{var i = 0;}
+                @foreach (var prodsize in ViewBag.prod_size)
+                {
+                    <div class="size-container input-group">
+                        <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@prodsize.SizeCategoryID">
+                        <span class="input-group-addon label-size">
+                            <input type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)" ng-init='checkedSize@(i)=@if (prodsize.Quantity == 0)
+                                                                                                                           { <text>false</text>}
+                                                                                                                           else
+                                                                                                                           { <text>true</text>}' autocomplete="off">
+                            &nbsp;&nbsp;@prodsize.SizeCategoryInitial
+                        </span>
+                        <input name="[@(i)].Quantity" type="number" class="form-control form-input" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-disabled="!checkedSize@(i)" ng-show="checkedSize@(i)" ng-init="Qty[@(i)]=@prodsize.Quantity" autocomplete="off" required>
+                        <span ng-show="checkedSize@(i)" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+
+                    </div>
+                }
+
+                @Html.ValidationMessageFor(model => model.ProductSizeCategories)
+            </div>
+
+            <div class="editor-label">
+                <label>Price</label>
+            </div>
+            <div class="editor-field">
+                <input id="PriceValue" name="PriceValue" pattern="[0-9]+([\,|\.][0-9]+)?" autocomplete="off" value="@ViewBag.price" required />
+                <span class="field-validation-valid" data-valmsg-for="PriceValue" data-valmsg-replace="true"></span>
+            </div>
+            <br />
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+
+
+    <div class="panel-group" id="accordion" ng-controller="GalleryCtrl">
+        <div class="panel panel-default">
+            <div class="panel-heading fonce">
+                <h4 class="panel-title">
+                    <a id="tabImage" ng-click="getGallery()" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">IMAGES
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <ul class="horizontal-slide">
+                        <li class="span-gallery" ng-repeat="imgPath in VirtualPath">
+                            <a class="thumbnail">
+                                <img ng-src="~/{{ imgPath }}" alt="" />
+                                <div class="thumbnail-span">
+                                    <button ng-click="deleteImg(imgPath)" class="btn btn-xs">Delete</button>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            }
-
-            @Html.ValidationMessageFor(model => model.ProductSizeCategories)
+            </div>
         </div>
-
-        <div class="editor-label">
-            <label>Price</label>
+        <div class="panel panel-default">
+            <div class="panel-heading fonce">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">DropZone
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+                    {
+                        @Html.HiddenFor(model => model.ProductID)
+                    }
+                </div>
+            </div>
         </div>
-        <div class="editor-field">
-            <input id="PriceValue" name="PriceValue" pattern="[0-9]+([\,|\.][0-9]+)?" autocomplete="off" value="@ViewBag.price" required />
-            <span class="field-validation-valid" data-valmsg-for="PriceValue" data-valmsg-replace="true"></span>
-        </div>
-        <br />
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section scripts{
@@ -123,13 +172,40 @@
         $(".title").html("Edit Product");
         $(".product-menu").addClass("active");
         $("#product-submenu").addClass("active");
-        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope) {
+
+        var appsModule = angular.module('apps', []);
+
+        appsModule.controller("ShowSizeCtrl", function ($scope) {
             $scope.Qty = {};
             this.changed = function (i) {
                 if ($scope.Qty[i] <= 0) {
                     $scope.Qty[i] = 0;
                 }
             }
+        });
+
+        appsModule.controller("GalleryCtrl", function ($scope, $http) {
+            $scope.VirtualPath = new Array();
+            $scope.getGallery = function () {
+                $http({ method: "POST", url: "/Admin/Product/GetImage", data: { ProductID: "@Model.ProductID" } }).
+                    success(function (data, status) {
+                        $scope.VirtualPath = data;
+                    }).
+                    error(function (data, status) {
+                    });
+            };
+            $scope.getGallery();
+
+            $scope.deleteImg = function (filePath) {
+                var filePathClean = /(.*)\?/.exec(filePath);
+                $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: filePathClean[1] } }).
+                    success(function (data, status) {
+                        var index = $scope.VirtualPath.indexOf(filePath)
+                        $scope.VirtualPath.splice(index, 1);
+                    }).
+                    error(function (data, status) {
+                    });
+            };
         });
     </script>
 }

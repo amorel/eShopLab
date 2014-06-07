@@ -76,47 +76,27 @@ var app = function () {
     };
 
     var dropzone = function () {
+        var isRemoveLinks = true;
+        if ($("#accordion").exists()) {
+            isRemoveLinks = false;
+        }
         var myDropzone = $("#mydropzone").dropzone({
-            previewsContainer: ".dropzone-previews",
-            maxFiles: 1,
-            addRemoveLinks: true,
-            autoProcessQueue: false,
+            addRemoveLinks: isRemoveLinks,
             acceptedFiles: "image/*",
             init: function () {
-
-                var myDropzone = this;
-
-                this.on("addedfile", function (file) {
-                    if (myDropzone.files.length > 1) {
-                        myDropzone.removeFile(myDropzone.files[0])
-                    }
+                $("#tabImage").on("click", function () {
+                    var dz = Dropzone.forElement("#mydropzone");
+                    dz.removeAllFiles();
                 });
-
-                // First change the button to actually tell Dropzone to process the queue.
-                this.element.querySelector("input[type=submit]").addEventListener("click", function (e) {
-                    // Make sure that the form isn't actually being sent.
-                    if (Dropzone.forElement("#mydropzone").files.length > 0) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        if ($("#mydropzone").valid()) {
-                            myDropzone.processQueue();
-                        }
-                    }
+                this.on("removedfile", function (file) {
+                    var fileName = file.name;
+                    $.ajax({
+                        type: "POST",
+                        url: "/Admin/Product/DeleteFile",
+                        data: {filePath: "~/Uploads/SandBox/" + fileName},
+                        dataType: "Json"
+                    });
                 });
-                if ($("input[name='fileUrl']").exists())
-                    if ($("input[name='fileUrl']").val() != "") {
-                        var fakeFile = {
-                            name: "",
-                            size: 2323 // in bytes,
-                        };
-
-                        myDropzone.emit("addedfile", fakeFile);
-                        myDropzone.emit("thumbnail", fakeFile, location.protocol + '//' + location.host + $("input[name='fileUrl']").val());
-                        myDropzone.files.push(fakeFile);
-                    }
-            },
-            complete: function () {
-                window.location = "./";
             }
         });
     }
@@ -134,6 +114,7 @@ var app = function () {
 
 //Load global functions
 $(document).ready(function () {
+    Dropzone.autoDiscover = false;
     app.init();
     $('#textareadescription').wysihtml5();
 

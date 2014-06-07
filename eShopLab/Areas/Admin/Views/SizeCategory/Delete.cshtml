@@ -1,5 +1,4 @@
 ﻿@model eShopLab.Models.SizeCategory
-
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -9,22 +8,54 @@
 <fieldset>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.SizeCategoryName)
+        @Html.DisplayNameFor(model => model.SizeCategoryName)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.SizeCategoryName)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.SizeCategoryInitial)
+        @Html.DisplayNameFor(model => model.SizeCategoryInitial)
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.SizeCategoryInitial)
     </div>
 </fieldset>
-@using (Html.BeginForm()) {
+
+@if (Model.ProductSizeCategories.Count > 0)
+{
+    <text>
+    <br />
+    <span class="warning-mess">If you delete this size category, you also delete association of this size with the following products:</span>
+    <br />
+    </text> 
+
+    <table>
+        <tr class="warning-mess">
+            <th style="width: 200px;">Product Name
+            </th>
+            <th>Quantity
+            </th>
+        </tr>
+        @foreach (var prodSize in Model.ProductSizeCategories)
+        {
+            <tr class="warning-mess">
+                <td>
+                    @prodSize.Product.ProductName
+                </td>
+                <td>
+                    @prodSize.Quantity
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+}
+@using (Html.BeginForm())
+{
     <p>
-        <input type="submit" value="Delete" /> |
+        <input type="submit" value="Delete" />
+        |
         @Html.ActionLink("Back to List", "Index")
     </p>
 }

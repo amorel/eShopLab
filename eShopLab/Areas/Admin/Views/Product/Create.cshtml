@@ -31,6 +31,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-6">
                 <div class="editor-label">
@@ -52,13 +53,11 @@
             </div>
         </div>
 
-
-
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDescription)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDescription)
+            @Html.TextBoxFor(model => model.ProductDescription, new { autocomplete="off" })
             @Html.ValidationMessageFor(model => model.ProductDescription)
         </div>
         <br />
@@ -77,8 +76,6 @@
                 </div>
             </div>
         </div>
-
-
 
         @Html.EditorFor(model => model.ProductAddingDate)
 
@@ -143,6 +140,10 @@
             <input type="submit" value="Create" />
         </p>
     </fieldset>
+}
+
+@using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "mydropzone" }))
+{
 }
 
 <div>

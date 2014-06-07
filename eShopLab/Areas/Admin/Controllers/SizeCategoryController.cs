@@ -96,6 +96,7 @@ namespace eShopLab.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(sizecategory);
         }
 
