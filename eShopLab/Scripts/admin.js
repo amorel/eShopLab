@@ -135,5 +135,6 @@ var app = function () {
 //Load global functions
 $(document).ready(function () {
     app.init();
+    $('#textareadescription').wysihtml5();
 
 });

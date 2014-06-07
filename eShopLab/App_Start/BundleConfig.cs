@@ -23,7 +23,8 @@ namespace eShopLab.App_Start
                 "~/Scripts/dropzone/css/dropzone.css",
                 "~/Content/bootstrap.css",
                 "~/Content/animate.css",
-                "~/Scripts/icheck/css/_all.css",
+                "~/Scripts/wysiwyg/bootstrap-wysihtml5.css",
+                "~/Scripts/wysiwyg/bootstrap3-wysiwyg5-color.css",
                 "~/Content/admin.css"
                 ));
 
@@ -35,7 +36,8 @@ namespace eShopLab.App_Start
                 "~/Scripts/mask/jquery.mask.js",
                 "~/Scripts/modernizr-2.7.2.js",
                 "~/Scripts/bootstrap.js",
-                "~/Scripts/icheck/js/icheck.min.js",
+                "~/Scripts/wysiwyg/wysihtml5-0.3.0.js",
+                "~/Scripts/wysiwyg/bootstrap3-wysihtml5.js",
                 "~/Scripts/angular.js",
                 "~/Scripts/admin.js"
                 ));

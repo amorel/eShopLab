@@ -614,6 +614,10 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\wysiwyg\bootstrap-wysihtml5.css" />
+    <Content Include="Scripts\wysiwyg\bootstrap3-wysihtml5.js" />
+    <Content Include="Scripts\wysiwyg\bootstrap3-wysiwyg5-color.css" />
+    <Content Include="Scripts\wysiwyg\wysihtml5-0.3.0.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

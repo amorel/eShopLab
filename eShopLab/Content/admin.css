@@ -2919,6 +2919,23 @@ h3.timeline-title {
     min-height:36px!important;
 }
 
+#textareadescription {
+    width: 100%;
+    /*height: 500px;*/
+}
+
+.panel-heading {
+    position: relative;
+}
+
+#ProductDescription {
+    width: 100%;
+}
+
+.text-box.single-line {
+    width: 100%;
+}
+
 @media only screen and (max-width: 479px) {
     /* Main Content */
     #main-content .h1 {

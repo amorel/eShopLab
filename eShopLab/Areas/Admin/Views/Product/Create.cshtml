@@ -10,13 +10,49 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductName)
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductName)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ProductName)
+                    @Html.ValidationMessageFor(model => model.ProductName)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductReference)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ProductReference)
+                    @Html.ValidationMessageFor(model => model.ProductReference)
+                </div>
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductName)
-            @Html.ValidationMessageFor(model => model.ProductName)
+        <div class="row">
+            <div class="col-md-6">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductManufacturerReference)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ProductManufacturerReference)
+                    @Html.ValidationMessageFor(model => model.ProductManufacturerReference)
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductBarCode)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ProductBarCode)
+                    @Html.ValidationMessageFor(model => model.ProductBarCode)
+                </div>
+            </div>
         </div>
+
+
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ProductDescription)
@@ -25,86 +61,83 @@
             @Html.EditorFor(model => model.ProductDescription)
             @Html.ValidationMessageFor(model => model.ProductDescription)
         </div>
+        <br />
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductLongDescription)
-        </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ProductLongDescription)
-            @Html.ValidationMessageFor(model => model.ProductLongDescription)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductReference)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductReference)
-            @Html.ValidationMessageFor(model => model.ProductReference)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductManufacturerReference)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductManufacturerReference)
-            @Html.ValidationMessageFor(model => model.ProductManufacturerReference)
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Long description</h3>
+                    <div class="actions pull-right">
+                        <i class="fa fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div class="panel-body" style="display: block;">
+                    @Html.TextAreaFor(model => model.ProductLongDescription, new { @class = "textarea form-control", @id = "textareadescription", rows = "10", cols = "80", placeholder = "Enter text ..." })
+                    @Html.ValidationMessageFor(model => model.ProductLongDescription)
+                </div>
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductBarCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductBarCode)
-            @Html.ValidationMessageFor(model => model.ProductBarCode)
-        </div>
+
 
         @Html.EditorFor(model => model.ProductAddingDate)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ProductDiscontinued)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ProductDiscontinued)
-            @Html.ValidationMessageFor(model => model.ProductDiscontinued)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryID, "Category")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("CategoryID", (IEnumerable<SelectListItem>)(ViewBag.MyCategories))
-            @Html.ValidationMessageFor(model => model.CategoryID)
-        </div>
-
-        <div class="editor-label">
-            <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
-        </div>
-        <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
-
-            @{var i = 0;}
-            @foreach (var size in ViewBag.MySize)
-            {
-                <div class="size-container input-group">
-                    <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
-                    <span class="input-group-addon label-size">
-                        <input id="[@(i)].checklab" type="checkbox" name="[@(i)].check" ng-model="checkedSize@(i)">
-                        &nbsp;&nbsp;@size.SizeCategoryInitial
-                    </span>
-                    <input name="[@(i)].Quantity" type="number" class="form-control" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-show="checkedSize@(i)" ng-disabled="!checkedSize@(i)" autocomplete="off" required>
-                    <span ng-show="checkedSize@(i)" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="editor-label">
+                    <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
                 </div>
-                            <!-- /input-group -->
-            }
+                <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
 
-            @Html.ValidationMessageFor(model => model.ProductSizeCategories)
+                    @{var i = 0;}
+                    @foreach (var size in ViewBag.MySize)
+                    {
+                        <div class="size-container input-group">
+                            <input name="[@(i)].SizeCategoryID" type="text" hidden="hidden" value="@size.SizeCategoryID">
+                            <span class="input-group-addon label-size">
+                                <input id="[@(i)].checklab" type="checkbox" name="[@(i)].check" ng-model="checkedSize[@(i)]" ng-click="showsize.reinit(@(i))">
+                                &nbsp;&nbsp;@size.SizeCategoryInitial
+                            </span>
+                            <input name="[@(i)].Quantity" type="number" class="form-control" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-disabled="!checkedSize[@(i)]" autocomplete="off" required>
+                            <span ng-show="checkedSize[@(i)]" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+                        </div>
+                            <!-- /input-group -->
+                    }
+
+                    @Html.ValidationMessageFor(model => model.ProductSizeCategories)
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductDiscontinued)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ProductDiscontinued)
+                    @Html.ValidationMessageFor(model => model.ProductDiscontinued)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CategoryID, "Category"@*, new object { @class="" }*@)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownList("CategoryID", (IEnumerable<SelectListItem>)(ViewBag.MyCategories))
+                    @Html.ValidationMessageFor(model => model.CategoryID)
+                </div>
+
+                <div class="editor-label">
+                    <label>Price</label>
+                </div>
+                <div class="editor-field">
+                    <input id="PriceValue" name="PriceValue" autocomplete="off" required />
+                    <span class="field-validation-valid" data-valmsg-for="PriceValue" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
         </div>
-        <div class="editor-label">
-            <label>Price</label>
-        </div>
-        <div class="editor-field">
-            <input id="PriceValue" name="PriceValue" autocomplete="off" required />
-            <span class="field-validation-valid" data-valmsg-for="PriceValue" data-valmsg-replace="true"></span>
-        </div>
+      
+
         <br />
         <p>
             <input type="submit" value="Create" />
@@ -124,10 +157,14 @@
         $("#ProductAddingDate").val(new Date().toISOString()).hide();
         var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope) {
             $scope.Qty = {};
+            $scope.checkedSize = {};
             this.changed = function (i) {
                 if ($scope.Qty[i] <= 0) {
                     $scope.Qty[i] = 0;
                 }
+            }
+            this.reinit = function (i) {
+                if ($scope.checkedSize[i]) $scope.Qty[i] = '';
             }
         });
     </script>
