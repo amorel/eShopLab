@@ -294,6 +294,7 @@
     <Content Include="images\product-7.jpg" />
     <Content Include="images\product-8.jpg" />
     <Content Include="images\product-9.jpg" />
+    <Content Include="Queries\CreateDB.sql" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-cookies.js" />

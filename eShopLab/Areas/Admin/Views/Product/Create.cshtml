@@ -96,7 +96,7 @@
                                 &nbsp;&nbsp;@size.SizeCategoryInitial
                             </span>
                             <input name="[@(i)].Quantity" type="number" class="form-control" style="width:80px;" ng-change="showsize.changed(@(i))" ng-model="Qty[@(i)]" ng-disabled="!checkedSize[@(i)]" autocomplete="off" required>
-                            <span ng-show="checkedSize[@(i)]" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true"></span>
+                            <span ng-show="checkedSize[@(i)]" class="field-validation-valid" data-valmsg-for="[@(i++)].Quantity" data-valmsg-replace="true" ng-init="showsize.reinit(@(i))"></span>
                         </div>
                             <!-- /input-group -->
                     }

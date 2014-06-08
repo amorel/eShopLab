@@ -130,6 +130,7 @@ namespace eShopLab.Areas.Admin.Controllers
                 else
                 {
                     var fullPath = string.Empty;
+                    Directory.CreateDirectory(Server.MapPath("~/Uploads/Product/" + ProductID));
                     do
                     {
                         index++;
@@ -149,7 +150,6 @@ namespace eShopLab.Areas.Admin.Controllers
 
                     db.Media.Add(medium);
                     product.Media.Add(medium);
-                    db.Products.Add(product);
                     db.SaveChanges();
                 }
             }
