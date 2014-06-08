@@ -16,6 +16,8 @@ eShopLab is an eShopping website to sell clothes. This project covers back end a
 -	Bootstrap
 -	[Dropzone.js](http://www.dropzonejs.com)
 -	[JQuery-Mask-Plugin](https://github.com/igorescobar/jQuery-Mask-Plugin)
+-	[WYSIWYG](https://github.com/schnawel007/bootstrap3-wysihtml5)
+-	[selectBoxIt](https://github.com/gfranko/jquery.selectBoxIt.js)
 
 
 [README](https://github.com/amorel/eShopLab).

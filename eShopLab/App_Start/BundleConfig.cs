@@ -27,6 +27,8 @@ namespace eShopLab.App_Start
                 "~/Content/animate.css",
                 "~/Scripts/wysiwyg/bootstrap-wysihtml5.css",
                 "~/Scripts/wysiwyg/bootstrap3-wysiwyg5-color.css",
+                "~/Content/jquery-ui-1.8.23.custom.css",
+                "~/Content/jquery.selectBoxIt.css",
                 "~/Content/admin.css"
                 ));
 
@@ -36,19 +38,21 @@ namespace eShopLab.App_Start
                 "~/Scripts/jquery.validate.js",
                 "~/Scripts/jquery.validate.unobtrusive.js",
                 "~/Scripts/mask/jquery.mask.js",
+                "~/Scripts/jquery-ui-1.10.4.js",
+                "~/Scripts/jquery.selectBoxIt.js",
                 "~/Scripts/modernizr-2.7.2.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/wysiwyg/wysihtml5-0.3.0.js",
                 "~/Scripts/wysiwyg/bootstrap3-wysihtml5.js",
                 "~/Scripts/angular.js",
                 "~/Scripts/admin.js",
-                 "~/Scripts/smoothproducts.min.js",
-                 "~/Scripts/eshop.js",
-                  "~/Scripts/Catalog.js",
-                 "~/Scripts/jquery.bxslider.min.js",
-                 "~/Scripts/jquery.blImageCenter.js",
-                  "~/Scripts/knockout-2.1.0.js",
-                 "~/Scripts/knockout.mapping-latest.js"
+                "~/Scripts/smoothproducts.min.js",
+                "~/Scripts/eshop.js",
+                "~/Scripts/Catalog.js",
+                "~/Scripts/jquery.bxslider.min.js",
+                "~/Scripts/jquery.blImageCenter.js",
+                "~/Scripts/knockout-2.1.0.js",
+                "~/Scripts/knockout.mapping-latest.js"
                 ));
         }
     }

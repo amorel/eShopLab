@@ -11,7 +11,7 @@ var app = function () {
         togglePanel();
         closePanel();
         dropzone();
-        mask();
+        goodies();
     };
 
     var tooltips = function () {
@@ -23,7 +23,6 @@ var app = function () {
             $(this).parent().parent().next().slideToggle('fast');
             $(this).toggleClass('fa-chevron-down fa-chevron-up');
         });
-
     };
 
     var toggleMenuLeft = function () {
@@ -101,8 +100,15 @@ var app = function () {
         });
     }
 
-    var mask = function () {
+    var goodies = function () {
+        //Money mask on price
         $("#PriceValue").mask('000000000000000,00', { reverse: true });
+        //WYSIWYG on Long description
+        $('#textareadescription').wysihtml5();
+        //Custom SelectBox
+        $("select").selectBoxIt({
+            //theme: "jqueryui"
+        });
     }
     //End {
 
@@ -116,6 +122,6 @@ var app = function () {
 $(document).ready(function () {
     Dropzone.autoDiscover = false;
     app.init();
-    $('#textareadescription').wysihtml5();
+    
 
 });
