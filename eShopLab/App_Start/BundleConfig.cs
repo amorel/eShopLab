@@ -48,11 +48,8 @@ namespace eShopLab.App_Start
                 "~/Scripts/admin.js",
                 "~/Scripts/smoothproducts.min.js",
                 "~/Scripts/eshop.js",
-                "~/Scripts/Catalog.js",
                 "~/Scripts/jquery.bxslider.min.js",
-                "~/Scripts/jquery.blImageCenter.js",
-                "~/Scripts/knockout-2.1.0.js",
-                "~/Scripts/knockout.mapping-latest.js"
+                "~/Scripts/jquery.blImageCenter.js"
                 ));
         }
     }

@@ -11,7 +11,7 @@ var app = function () {
         togglePanel();
         closePanel();
         dropzone();
-        goodies();
+        controls();
     };
 
     var tooltips = function () {
@@ -100,14 +100,14 @@ var app = function () {
         });
     }
 
-    var goodies = function () {
+    var controls = function () {
         //Money mask on price
         $("#PriceValue").mask('000000000000000,00', { reverse: true });
         //WYSIWYG on Long description
         $('#textareadescription').wysihtml5();
         //Custom SelectBox
         $("select").selectBoxIt({
-            //theme: "jqueryui"
+            theme: "jqueryui"
         });
     }
     //End {
