@@ -10,13 +10,30 @@ namespace eShopLab.App_Start
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            
+
             bundles.Add(new ScriptBundle("~/bundles/css").Include(
                 "~/Content/style.css",
                 "~/Content/font-awesome.min.css",
-                "~/Content/bootstrap.css" ,
+                "~/Content/bootstrap.css",
+                "~/Content/jquery-ui-1.8.23.custom.css",
+                "~/Content/jquery.selectBoxIt.css",
                 "~/Content/smoothproducts.css",
                 "~/Content/jquery.bxslider.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery.validate.js",
+                "~/Scripts/jquery.validate.unobtrusive.js",
+                "~/Scripts/jquery-ui-1.10.4.js",
+                "~/Scripts/jquery.selectBoxIt.js",
+                "~/Scripts/modernizr-2.7.2.js",
+                "~/Scripts/bootstrap.js",
+                "~/Scripts/angular.js",
+                "~/Scripts/smoothproducts.min.js",
+                "~/Scripts/eshop.js",
+                "~/Scripts/jquery.bxslider.min.js",
+                "~/Scripts/jquery.blImageCenter.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/cssadmin").Include(
@@ -32,25 +49,21 @@ namespace eShopLab.App_Start
                 "~/Content/admin.css"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/script").Include(
-                "~/Scripts/jquery-{version}.js",
-                "~/Scripts/dropzone/dropzone.js",
-                "~/Scripts/jquery.validate.js",
-                "~/Scripts/jquery.validate.unobtrusive.js",
-                "~/Scripts/mask/jquery.mask.js",
-                "~/Scripts/jquery-ui-1.10.4.js",
-                "~/Scripts/jquery.selectBoxIt.js",
-                "~/Scripts/modernizr-2.7.2.js",
-                "~/Scripts/bootstrap.js",
-                "~/Scripts/wysiwyg/wysihtml5-0.3.0.js",
-                "~/Scripts/wysiwyg/bootstrap3-wysihtml5.js",
-                "~/Scripts/angular.js",
-                "~/Scripts/admin.js",
-                "~/Scripts/smoothproducts.min.js",
-                "~/Scripts/eshop.js",
-                "~/Scripts/jquery.bxslider.min.js",
-                "~/Scripts/jquery.blImageCenter.js"
-                ));
+            bundles.Add(new ScriptBundle("~/bundles/scriptadmin").Include(
+                    "~/Scripts/jquery-{version}.js",
+                    "~/Scripts/dropzone/dropzone.js",
+                    "~/Scripts/jquery.validate.js",
+                    "~/Scripts/jquery.validate.unobtrusive.js",
+                    "~/Scripts/mask/jquery.mask.js",
+                    "~/Scripts/jquery-ui-1.10.4.js",
+                    "~/Scripts/jquery.selectBoxIt.js",
+                    "~/Scripts/modernizr-2.7.2.js",
+                    "~/Scripts/bootstrap.js",
+                    "~/Scripts/wysiwyg/wysihtml5-0.3.0.js",
+                    "~/Scripts/wysiwyg/bootstrap3-wysihtml5.js",
+                    "~/Scripts/angular.js",
+                    "~/Scripts/admin.js"
+                    ));
         }
     }
 }

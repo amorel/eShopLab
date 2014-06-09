@@ -79,7 +79,7 @@
     </section>
 
 
-    @Scripts.Render("~/bundles/script")
+    @Scripts.Render("~/bundles/scriptadmin")
     @RenderSection("scripts", false)
     <script type="text/javascript">
         @switch (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()) {

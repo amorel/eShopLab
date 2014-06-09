@@ -1,6 +1,6 @@
 $.fn.exist = function () { return $(this).length > 0; }
 
-var app = function () {
+var appeshop = function () {
 
     var init = function () {
         bxslider();
@@ -57,5 +57,5 @@ var app = function () {
 
 //Load global functions
 $(document).ready(function () {
-    app.init();
+    appeshop.init();
 });
