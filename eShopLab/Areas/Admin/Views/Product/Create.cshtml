@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.CategoryID, "Category"@*, new object { @class="" }*@)
+                    @Html.LabelFor(model => model.CategoryID, "Category")
                 </div>
                 <div class="editor-field">
                     @Html.DropDownList("CategoryID", (IEnumerable<SelectListItem>)(ViewBag.MyCategories))
@@ -153,8 +153,6 @@
 @section scripts{
     <script>
         $(".title").html("Create Product");
-        $(".product-menu").addClass("active");
-        $("#product-submenu").addClass("active");
         $("#ProductAddingDate").val(new Date().toISOString()).hide();
         var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope) {
             $scope.Qty = {};

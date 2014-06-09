@@ -1,6 +1,6 @@
 # eShopLab (under construction)
 
-##DEMO
+##** DEMO **
 
 This is a professional .NET C# project, a DEMO site made with ASP.NET MVC 4.
 

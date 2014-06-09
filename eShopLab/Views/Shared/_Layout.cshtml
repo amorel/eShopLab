@@ -86,10 +86,10 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="catalogue.html">Catalogue</a></li>
-                    <li><a href="cart.html">Shopping Cart</a></li>
-                    <li><a href="checkout.html">Checkout</a></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { Area = "" }, new { id="home-link" })</li>
+                    <li>@Html.ActionLink("Catalogue", "Index", "Catlg", new { Area = "" }, new { id="Catlg-link" })</li>
+                    <li>@Html.ActionLink("Shopping Cart", "Index", "Cart", new { Area = "" }, new { id="Cart-link" })</li>
+                    <li>@Html.ActionLink("Checkout", "Index", "Checkout", new { Area = "" }, new { id="Checkout-link" })</li>
                     <li class="nav-dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span>
                         </a>
@@ -285,7 +285,29 @@
     <a href="#top" class="back-top text-center" onclick="$('body,html').animate({scrollTop:0},500); return false">
         <i class="fa fa-angle-double-up"></i>
     </a>
+
     @Scripts.Render("~/bundles/script")
     @RenderSection("scripts", false)
+    <script type="text/javascript">
+        $(function () {
+            @switch (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()) {
+                case "Home":
+                    <text>$("#home-link").addClass("active");</text>
+                    break;
+                case "Catlg":
+                    <text>$("#Catlg-link").addClass("active");</text>
+                    break;
+                case "Cart":
+                    <text>$("#Cart-link").addClass("active");</text>
+                    break;
+                case "Checkout":
+                    <text>$("#Checkout-link").addClass("active");</text>
+                    break;
+                default:
+                    <text>$("#home-link").addClass("active");</text>
+                    break;
+            }
+        });
+    </script>
 </body>
 </html>

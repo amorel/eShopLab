@@ -142,6 +142,7 @@
     <Compile Include="Areas\Admin\Models\SizeProd_Qty.cs" />
     <Compile Include="Areas\Admin\Models\ProduSizeCat.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCatalogController.cs" />
     <Compile Include="Extension\Globals.cs" />
@@ -216,7 +217,7 @@
     <Compile Include="Models\Validation\ValidationUnitType.cs" />
     <Compile Include="Models\Validation\ValidationCategory.cs" />
     <Compile Include="Models\Partial\Medium.cs" />
-    <Compile Include="ProductCatalog.cs" />
+    <Compile Include="Models\ProductCatalog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\CustomMembershipProvider.cs" />
   </ItemGroup>
@@ -751,6 +752,7 @@
     <Content Include="Views\ProductCatalog\_Catalog.cshtml" />
     <Content Include="Views\ProductCatalog\Details.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

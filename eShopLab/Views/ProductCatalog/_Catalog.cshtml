@@ -17,10 +17,10 @@
                         <select name="tri" onchange="location = this.options[this.selectedIndex].value;">
                             <option value=""></option>
                             <option value="@Url.Action("getProductCatalogView", "Home", new { Category = ViewBag.Category, sortOrder = "Name_asc"})">Nom de produits ascendant</option>
-                            <option value="@Url.Action("getProductCatalogView", "Home", new { Category = ViewBag.Category, sortOrder = "Price_asc"})">Prx ascendant</option>
+                            <option value="@Url.Action("getProductCatalogView", "Home", new { Category = ViewBag.Category, sortOrder = "Price_asc"})">Prix ascendant</option>
                             <option value="@Url.Action("getProductCatalogView", "Home", new { Category = ViewBag.Category, sortOrder = "Name_desc"})">Nom de produits descendant</option>
-                            <option value="@Url.Action("getProductCatalogView", "Home", new { Category = ViewBag.Category, sortOrder = "Price_desc"})">Prx descendant</option>
-                        </select>
+                            <option value="@Url.Action("getProductCatalogView", "Home", new { Category = ViewBag.Category, sortOrder = "Price_desc"})">Prix descendant</option>
+                        </select> 
      
            
         </div>

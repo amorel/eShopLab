@@ -53,11 +53,14 @@
                     <li class="sub-menu product-menu">
                         <a href="javascript:void(0);"><i class="fa fa-cogs"></i><span>Products</span><i class="arrow fa fa-angle-right pull-right"></i></a>
                         <ul>
-                            <li id="category-submenu">@Html.ActionLink("Category", "Index", "Category")
+                            <li id="category-submenu">
+                                @Html.ActionLink("Category", "Index", "Category")
                             </li>
-                            <li id="product-submenu">@Html.ActionLink("Product", "Index", "Product")
+                            <li id="product-submenu">
+                                @Html.ActionLink("Product", "Index", "Product")
                             </li>
-                            <li id="sizecategory-submenu">@Html.ActionLink("Category size", "Index", "SizeCategory")
+                            <li id="sizecategory-submenu">
+                                @Html.ActionLink("Category size", "Index", "SizeCategory")
                             </li>
                         </ul>
                     </li>
@@ -75,7 +78,40 @@
         <!--main content end-->
     </section>
 
+
+    @Scripts.Render("~/bundles/script")
+    @RenderSection("scripts", false)
+    <script type="text/javascript">
+        @switch (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()) {
+            case "Home":
+                <text>
+        $(".dashboard-menu").addClass("active");
+                </text>
+                break;
+            case "Category":
+                <text>
+                $(".product-menu").addClass("active");
+                $("#category-submenu").addClass("active");
+                </text>
+                break;
+            case "Product":
+                <text>
+                $(".product-menu").addClass("active");
+                $("#product-submenu").addClass("active");
+                </text>
+                break;
+            case "SizeCategory":
+                <text>
+                $(".product-menu").addClass("active");
+                $("#sizecategory-submenu").addClass("active");
+                </text>
+                break;
+            default:
+                <text>
+        $(".dashboard-menu").addClass("active");
+                </text>
+                break;
+        }
+    </script>
 </body>
-@Scripts.Render("~/bundles/script")
-@RenderSection("scripts", false)
 </html>
