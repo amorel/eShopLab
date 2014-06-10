@@ -240,33 +240,33 @@ INSERT INTO Price VALUES('02/05/2014', 75.00, 7);
 use eShopDB
 go
 DELETE FROM Media;
-INSERT INTO Media VALUES('China', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('China', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('China', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('China', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('China', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('China', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Cachos', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Cachos', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Cachos', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Ciudad Flores', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Ciudad Flores', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Ciudad Flores', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Miguelito', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Miguelito', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Miguelito', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Divin', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Divin', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Divin', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Imporahi', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Imporahi', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Imporahi', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Sigula', '', '~/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Sigula', '', '~/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Sigula', '', '~/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/1/1.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/1/2.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/1/3.jpg', null);
 
 use eShopDB
 go

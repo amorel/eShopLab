@@ -42,6 +42,10 @@ namespace eShopLab.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            string[] filePaths = Directory.GetFiles(Server.MapPath(@"~\Uploads\SandBox"));
+            foreach (string filePath in filePaths)
+                System.IO.File.Delete(filePath);
+
             ViewBag.MyCategories = new SelectList(db.Categories, "CategoryID", "CategoryName");
             ViewBag.MySize = db.SizeCategories;
             return View();
@@ -87,6 +91,7 @@ namespace eShopLab.Areas.Admin.Controllers
                 if (filesName.Count > 0)
                 {
                     var path = Server.MapPath("~/Uploads/Product/" + product.ProductID);
+                    if (Directory.Exists(path)) Directory.Delete(path, true);
                     Directory.CreateDirectory(path);
                     int i = 1;
                     foreach (var fileName in filesName)
@@ -145,11 +150,11 @@ namespace eShopLab.Areas.Admin.Controllers
                     {
                         MediaName = product.ProductName,
                         MediaAlt = product.ProductName,
-                        MediaUrl = fullPath
+                        MediaUrl = "~/Uploads/Product/" + ProductID + "/" + index + Path.GetExtension(file.FileName)
                     };
 
-                    db.Media.Add(medium);
                     product.Media.Add(medium);
+                    db.Entry(product).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             }
@@ -306,7 +311,7 @@ namespace eShopLab.Areas.Admin.Controllers
             {
                 db.ProductSizeCategories.Remove(pSC);
             }
-            
+
             var path = Server.MapPath("~/Uploads/Product/" + ProductID);
             if (Directory.Exists(path)) Directory.Delete(path, true);
 

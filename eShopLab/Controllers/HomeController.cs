@@ -14,10 +14,10 @@ namespace eShopLab.Controllers
 {
     public class HomeController : Controller
     {
+        private eShopDBEntities db = new eShopDBEntities();
+
         //
         // GET: /Home/
-
-        private eShopDBEntities db = new eShopDBEntities();
 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
