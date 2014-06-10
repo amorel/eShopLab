@@ -16,7 +16,7 @@ namespace eShopLab.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Categories = db.Categories.Where(c=>c.CategoryIsMenu == true);;
+            ViewBag.Categories = db.Categories.Where(c=>c.CategoryIsMenu == true);
             return View(db.Products);
         }
 

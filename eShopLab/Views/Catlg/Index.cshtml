@@ -44,142 +44,31 @@
             </div>
         </div>
         <div class="ajusting"></div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-3.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Classic Laundry Green Graphic T-Shirt</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 628.96</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
+        bool first = true;
+        foreach (var product in Model)
+        {
+            if(!first)
+            {
+                <div class="vignette hero-feature text-center">
+                    <div class="thumbnail">
+                        <a href="detail.html" class="link-p">
+                            <img src="@Url.Content(product.Media.First().MediaUrl)" alt="">
+                        </a>
+                        <div class="caption prod-caption">
+                            <h4><a href="detail.html">@product.ProductName</a></h4>
+                            <p>@product.ProductDescription</p>
+                            <p>
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-default">@String.Format("{0:C}", product.Prices.Where(p => p.PriceDate == product.Prices.Max(d => d.PriceDate)).First().PriceValue)</a>
+                                    <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
+                                </div>
+                            </p>
                         </div>
-                    </p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-4.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Disc Jockey Print T-Shirt</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 394.64</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-5.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Live Nation 3 Days of Peace and Music Carbon</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 428.96</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-6.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Live Nation ACDC Gray T-Shirt</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 428.96</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-7.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Live Nation Aerosmith Ivory T-Shirt</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 632.15</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-10.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Adidas Men Blue &amp; Red Striped Polo T-shirt </a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 22.22</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-11.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Adidas Men Flame Black T-shirt</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 15.47</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="vignette hero-feature text-center">
-            <div class="thumbnail">
-                <a href="detail.html" class="link-p">
-                    <img src="images/product-12.jpg" alt="">
-                </a>
-                <div class="caption prod-caption">
-                    <h4><a href="detail.html">Adidas Men Red Printed T-shirt</a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, minima!</p>
-                    <p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default">$ 20.63</a>
-                            <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Buy</a>
-                        </div>
-                    </p>
-                </div>
-            </div>
-        </div>
+            }
+            first = false;
+        }
 
         <div class="clearfix"></div>
 

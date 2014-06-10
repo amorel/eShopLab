@@ -194,6 +194,9 @@ INSERT INTO Product VALUES('Miguelito', 'Desigual Miguelito', 'Desigual men’s Mi
 INSERT INTO Product VALUES('Divin', 'Desigual Divin', 'Desigual men’s Divin T-shirt. Short-sleeved.', 'DIVIND25FD254', 'DESIGUAL45SDF4', '3246315874', '02/03/2014', 0, 2 );
 INSERT INTO Product VALUES('Imporahi', 'Desigual Imporahi', 'Desigual men''s Imporahi blazer. A plain, very simple blazer that reflects the essence of Desigual thanks to the handwritten messages and doodles.', 'IMPORAHIFD254', 'DESIGUAL45SDF4', '3452178965', '02/04/2014', 0, 3 );
 INSERT INTO Product VALUES('Sigula', 'Desigual Sigula', 'MAN WOVEN OVERCOAT BLAZER LONG SLEEVE.', 'SIGULAHIFD254', 'DESIGUAL45SDF4', '31524785421', '06/04/2014', 0, 3 );
+INSERT INTO Product VALUES('Flores', 'Desigual Flores', 'Desigual men’s Flores short-sleeved shirt. An item for the boldest Desigual men who prefer their garments with more graphics so they don’t go unnoticed.', 'FLORESFD254', 'DESIGUAL45SDF4', '1565465668', '02/02/2014', 0, 1 );
+INSERT INTO Product VALUES('David', 'Desigual David', 'Desigual men''s David shirt. This T-shirt was worn by the best international models on the catwalk at New York Fashion Week.', 'DAVIDFD254', 'DESIGUAL45SDF4', '1565465668', '02/02/2014', 0, 1 );
+INSERT INTO Product VALUES('Cucumis', 'Desigual Cucumis', 'Desigual men''s Cucumis shirt, in a naval style for a very original sporty look.', 'CUCUMIS254', 'DESIGUAL45SDF4', '1565465668', '02/02/2014', 0, 1 );
 
 use eShopDB
 go
@@ -222,6 +225,15 @@ INSERT INTO ProductSizeCategory VALUES(7, 1, 35);
 INSERT INTO ProductSizeCategory VALUES(7, 3, 45);
 INSERT INTO ProductSizeCategory VALUES(7, 4, 78);
 
+INSERT INTO ProductSizeCategory VALUES(8, 1, 14);
+INSERT INTO ProductSizeCategory VALUES(8, 3, 4);
+INSERT INTO ProductSizeCategory VALUES(8, 4, 102);
+INSERT INTO ProductSizeCategory VALUES(9, 1, 14);
+INSERT INTO ProductSizeCategory VALUES(9, 2, 4);
+INSERT INTO ProductSizeCategory VALUES(9, 3, 102);
+INSERT INTO ProductSizeCategory VALUES(10, 1, 15);
+INSERT INTO ProductSizeCategory VALUES(10, 2, 43);
+INSERT INTO ProductSizeCategory VALUES(10, 3, 12);
 
 use eShopDB
 go
@@ -236,6 +248,10 @@ INSERT INTO Price VALUES('02/02/2014', 25.00, 5);
 INSERT INTO Price VALUES('02/02/2014', 123.00, 6);
 INSERT INTO Price VALUES('02/02/2014', 60.00, 7);
 INSERT INTO Price VALUES('02/05/2014', 75.00, 7);
+INSERT INTO Price VALUES('02/02/2014', 68.00, 8);
+INSERT INTO Price VALUES('02/05/2014', 102.00, 8);
+INSERT INTO Price VALUES('02/05/2014', 86.00, 9);
+INSERT INTO Price VALUES('02/05/2014', 96.00, 10);
 
 use eShopDB
 go
@@ -244,29 +260,41 @@ INSERT INTO Media VALUES('China', '', '~/Uploads/Product/1/1.jpg', null);
 INSERT INTO Media VALUES('China', '', '~/Uploads/Product/1/2.jpg', null);
 INSERT INTO Media VALUES('China', '', '~/Uploads/Product/1/3.jpg', null);
 
-INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/2/1.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/2/2.jpg', null);
+INSERT INTO Media VALUES('Cachos', '', '~/Uploads/Product/2/3.jpg', null);
 
-INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/3/1.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/3/2.jpg', null);
+INSERT INTO Media VALUES('Ciudad Flores', '', '~/Uploads/Product/3/3.jpg', null);
 
-INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/4/1.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/4/2.jpg', null);
+INSERT INTO Media VALUES('Miguelito', '', '~/Uploads/Product/4/3.jpg', null);
 
-INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/5/1.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/5/2.jpg', null);
+INSERT INTO Media VALUES('Divin', '', '~/Uploads/Product/5/3.jpg', null);
 
-INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/6/1.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/6/2.jpg', null);
+INSERT INTO Media VALUES('Imporahi', '', '~/Uploads/Product/6/3.jpg', null);
 
-INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/1/1.jpg', null);
-INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/1/2.jpg', null);
-INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/1/3.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/7/1.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/7/2.jpg', null);
+INSERT INTO Media VALUES('Sigula', '', '~/Uploads/Product/7/3.jpg', null);
+
+INSERT INTO Media VALUES('Flores', '', '~/Uploads/Product/8/1.jpg', null);
+INSERT INTO Media VALUES('Flores', '', '~/Uploads/Product/8/2.jpg', null);
+INSERT INTO Media VALUES('Flores', '', '~/Uploads/Product/8/3.jpg', null);
+
+INSERT INTO Media VALUES('David', '', '~/Uploads/Product/9/1.jpg', null);
+INSERT INTO Media VALUES('David', '', '~/Uploads/Product/9/2.jpg', null);
+INSERT INTO Media VALUES('David', '', '~/Uploads/Product/9/3.jpg', null);
+
+INSERT INTO Media VALUES('Cucumis', '', '~/Uploads/Product/10/1.jpg', null);
+INSERT INTO Media VALUES('Cucumis', '', '~/Uploads/Product/10/2.jpg', null);
+INSERT INTO Media VALUES('Cucumis', '', '~/Uploads/Product/10/3.jpg', null);
 
 use eShopDB
 go
@@ -299,3 +327,14 @@ INSERT INTO MediaProduct VALUES(7, 19);
 INSERT INTO MediaProduct VALUES(7, 20);
 INSERT INTO MediaProduct VALUES(7, 21);
 
+INSERT INTO MediaProduct VALUES(8, 22);
+INSERT INTO MediaProduct VALUES(8, 23);
+INSERT INTO MediaProduct VALUES(8, 24);
+
+INSERT INTO MediaProduct VALUES(9, 25);
+INSERT INTO MediaProduct VALUES(9, 26);
+INSERT INTO MediaProduct VALUES(9, 27);
+
+INSERT INTO MediaProduct VALUES(10, 28);
+INSERT INTO MediaProduct VALUES(10, 29);
+INSERT INTO MediaProduct VALUES(10, 30);
