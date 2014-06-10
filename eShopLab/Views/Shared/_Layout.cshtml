@@ -26,10 +26,11 @@
                 <!-- Search Form -->
                 <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12">
                     <div class="well">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("Index", "Catlg", FormMethod.Get))
                         { 
                             <div class="input-group">
-                                <input name="searchString" type="text" class="form-control input-search" placeholder="Enter something to search" />
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                                @*<input name="searchString" type="text" class="form-control input-search" placeholder="Enter something to search" />*@
                                 <span class="input-group-btn">
                                     <button class="btn btn-default no-border-left" type="submit"><i class="fa fa-search"></i></button>
                                 </span>

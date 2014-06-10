@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace eShopLab.Controllers
 {
@@ -14,19 +15,53 @@ namespace eShopLab.Controllers
         //
         // GET: /Catlg/
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+
             ViewBag.Categories = db.Categories.Where(c => c.CategoryIsMenu == true);
 
-            var products = (dynamic)null;
+            IEnumerable<Product> products = db.Products;
             if (!String.IsNullOrEmpty(searchString))
             {
-                products = db.Products.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper())
+                products = products.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper())
                                        || s.ProductDescription.ToUpper().Contains(searchString.ToUpper()));
             }
-            else { products = db.Products; }
 
-            return View(products);
+            //switch (sortOrder)
+            //{
+            //    case "Name_desc":
+            //        products = products.OrderByDescending(s => s.ProductName);
+            //        break;
+            //    case "Price_asc":
+            //        products = products.OrderBy(s => s.Prices.Where(p=>p.PriceDate == );
+            //        break;
+            //    case "Price_desc":
+            //        products = products.OrderByDescending(s => s.ProductPrice);
+            //        break;
+            //    default:
+            //        products = products.OrderBy(s => s.ProductName);
+            //        break;
+            //}
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            //products = products.OrderBy(p => p.ProductName);
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(products.ToPagedList(pageNumber, pageSize));
         }
 
     }
