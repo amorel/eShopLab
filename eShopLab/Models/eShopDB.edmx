@@ -312,7 +312,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MediaProduct_Media">
-          <End Role="Media" Type="Self.Media" Multiplicity="1" />
+          <End Role="Media" Type="Self.Media" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="MediaProduct" Type="Self.MediaProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Media">
@@ -324,7 +326,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_MediaProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="MediaProduct" Type="Self.MediaProduct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -336,7 +340,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Price_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Price" Type="Self.Price" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -360,7 +366,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SizeCategory_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ProductSizeCategory" Type="Self.ProductSizeCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -372,7 +380,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SizeCategory_SizeCategory">
-          <End Role="SizeCategory" Type="Self.SizeCategory" Multiplicity="1" />
+          <End Role="SizeCategory" Type="Self.SizeCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ProductSizeCategory" Type="Self.ProductSizeCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SizeCategory">
@@ -823,7 +833,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Price_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Price" Type="Self.Price" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -835,7 +847,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SizeCategory_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ProductSizeCategory" Type="Self.ProductSizeCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -847,7 +861,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SizeCategory_SizeCategory">
-          <End Role="SizeCategory" Type="Self.SizeCategory" Multiplicity="1" />
+          <End Role="SizeCategory" Type="Self.SizeCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ProductSizeCategory" Type="Self.ProductSizeCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SizeCategory">

@@ -19,35 +19,9 @@ namespace eShopLab.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
         {
-            ViewBag.Category = "FEATURED PRODUCTS";
-            ViewBag.Categories = db.Categories.ToList();
-            var products = db.Products.Include(c => c.Media).Include(p => p.Prices);
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                products = products.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper()));
-            }
-
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-            int pageSize = 6;
-            int pageNumber = (page ?? 1);
-
-            return View(products.OrderBy(o => o.ProductName).ToPagedList(pageNumber, pageSize));
-
+            return View();
         }
-
-      
-
     }
 }
