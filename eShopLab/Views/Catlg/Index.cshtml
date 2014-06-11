@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<eShopLab.Models.Product>
 @using PagedList.Mvc;
+@using eShopLab.Helper;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
@@ -25,7 +26,7 @@
                 }
             </div>
         </div>
-        <select name="tri" onchange="location = this.options[this.selectedIndex].value;">
+        <select id="sort-select" onchange="location = this.options[this.selectedIndex].value;">
             <option value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "", currentFilter = ViewBag.CurrentFilter })"></option>
             <option @if (ViewBag.CurrentSort == "Name_desc") { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "Name_desc", currentFilter = ViewBag.CurrentFilter })">Descending name</option>
             <option @if (ViewBag.CurrentSort == "Price_asc") { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "Price_asc", currentFilter = ViewBag.CurrentFilter })">Ascending price</option>
@@ -41,9 +42,7 @@
 
             <div class="vignette hero-feature text-center">
                 <div class="thumbnail">
-                    <a href="detail.html" class="link-p">
-                        <img src="@Url.Content(Model.First().Media.First().MediaUrl)" alt="">
-                    </a>
+                    @Html.ActionImageCatlg("Details", "Catlg", Model.First().Media.First().MediaUrl, "")
                     <div class="caption prod-caption">
                         <h4><a href="detail.html">@Model.First().ProductName</a></h4>
                         <p>@Model.First().ProductDescription</p>
@@ -65,9 +64,7 @@
             {
                 <div class="vignette hero-feature text-center">
                     <div class="thumbnail">
-                        <a href="detail.html" class="link-p">
-                            <img src="@Url.Content(product.Media.First().MediaUrl)" alt="">
-                        </a>
+                        @Html.ActionImageCatlg("Details", "Catlg", product.Media.First().MediaUrl, "")
                         <div class="caption prod-caption">
                             <h4><a href="detail.html">@product.ProductName</a></h4>
                             <p>@product.ProductDescription</p>

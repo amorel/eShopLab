@@ -146,6 +146,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImageHelper.cs" />
     <Compile Include="Models\Address.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
@@ -744,6 +745,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Catlg\Index.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Catlg\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

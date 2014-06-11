@@ -7,6 +7,7 @@ var appeshop = function () {
         touchspine();
         centerimage();
         scroll();
+        controls();
     };
 
     var bxslider = function () {
@@ -46,6 +47,9 @@ var appeshop = function () {
                 $('.back-top').fadeOut();
             }
         });
+    }
+    var controls = function () {
+        $("select").selectBoxIt({autoWidth: false});
     }
     //End {
 

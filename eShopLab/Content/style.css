@@ -396,3 +396,7 @@ footer {
     width: 100%;
     height: 62px;
 }
+
+#sort-selectSelectBoxIt {
+    width: 215px!important;
+}

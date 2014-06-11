@@ -73,5 +73,9 @@ namespace eShopLab.Controllers
             return View(products.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult Details(int ProductID)
+        {
+            return View();
+        }
     }
 }
