@@ -192,6 +192,7 @@
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Partial\Category.cs" />
+    <Compile Include="Models\Partial\Price.cs" />
     <Compile Include="Models\Partial\Product.cs" />
     <Compile Include="Models\Partial\SizeCategory.cs" />
     <Compile Include="Models\Price.cs">

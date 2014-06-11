@@ -9,5 +9,13 @@ namespace eShopLab.Models
     public partial class Product
     {
         public HttpPostedFileBase[] File { get; set; }
+
+        public Price LastPrice
+        {
+            get
+            {
+                return this.Prices.OrderByDescending(p => p.PriceDate).FirstOrDefault();
+            }
+        }
     }
 }

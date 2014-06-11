@@ -29,8 +29,7 @@
                         @using (Html.BeginForm("Index", "Catlg", FormMethod.Get))
                         { 
                             <div class="input-group">
-                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                                @*<input name="searchString" type="text" class="form-control input-search" placeholder="Enter something to search" />*@
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control input-search", placeholder = "Enter something to search" })
                                 <span class="input-group-btn">
                                     <button class="btn btn-default no-border-left" type="submit"><i class="fa fa-search"></i></button>
                                 </span>

@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<eShopLab.Models.Product>*@
-@model PagedList.IPagedList<eShopLab.Models.Product>
+﻿@model PagedList.IPagedList<eShopLab.Models.Product>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
@@ -19,6 +18,17 @@
                 }
             </div>
         </div>
+        <select name="tri" onchange="location = this.options[this.selectedIndex].value;">
+            <option value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "" })"></option>
+            <option @if (ViewBag.CurrentSort == "")
+                    { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "" })">Ascending name</option>
+            <option @if (ViewBag.CurrentSort == "Name_desc")
+                    { <text> selected </text>  } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "Name_desc" })">Descending name</option>
+            <option @if (ViewBag.CurrentSort == "Price_asc")
+                    { <text> selected </text>  } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "Price_asc" })">Ascending price</option>
+            <option @if (ViewBag.CurrentSort == "Price_desc")
+                    { <text> selected </text>  } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "Price_desc" })">Descending price</option>
+        </select> 
     </div>
     <!-- End Categories -->
     <!-- Catalogue -->
@@ -75,23 +85,16 @@
         <div class="clearfix"></div>
 
         <div class="text-center">
-            <ul class="pagination catalogue-pagination">
-                <li class="disabled"><a>First</a></li>
-                <li class="disabled"><a>Prev</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
-                <li><a href="#">Last</a></li>
-            </ul>
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
         </div>
     <!-- End Catalogue -->
-
     }
     <br />
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
+
+<a href="#top" class="back-top text-center" onclick="$('body,html').animate({scrollTop:0},500); return false">
+    <i class="fa fa-angle-double-up"></i>
+</a>

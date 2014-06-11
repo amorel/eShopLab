@@ -15,11 +15,11 @@ namespace eShopLab.Controllers
         //
         // GET: /Catlg/
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string currentFilter, string searchString, int? page, string sortOrder)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price_desc" : "Price";
 
             ViewBag.Categories = db.Categories.Where(c => c.CategoryIsMenu == true);
 
@@ -30,21 +30,21 @@ namespace eShopLab.Controllers
                                        || s.ProductDescription.ToUpper().Contains(searchString.ToUpper()));
             }
 
-            //switch (sortOrder)
-            //{
-            //    case "Name_desc":
-            //        products = products.OrderByDescending(s => s.ProductName);
-            //        break;
-            //    case "Price_asc":
-            //        products = products.OrderBy(s => s.Prices.Where(p=>p.PriceDate == );
-            //        break;
-            //    case "Price_desc":
-            //        products = products.OrderByDescending(s => s.ProductPrice);
-            //        break;
-            //    default:
-            //        products = products.OrderBy(s => s.ProductName);
-            //        break;
-            //}
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    products = products.OrderByDescending(s => s.ProductName);
+                    break;
+                case "Price_asc":
+                    products = products.OrderBy(p => p.LastPrice);
+                    break;
+                case "Price_desc":
+                    products = products.OrderByDescending(p => p.LastPrice);
+                    break;
+                default:
+                    products = products.OrderBy(s => s.ProductName);
+                    break;
+            }
 
             if (searchString != null)
             {
@@ -57,9 +57,7 @@ namespace eShopLab.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            //products = products.OrderBy(p => p.ProductName);
-
-            int pageSize = 3;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             return View(products.ToPagedList(pageNumber, pageSize));
         }
