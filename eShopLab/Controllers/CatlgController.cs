@@ -15,15 +15,37 @@ namespace eShopLab.Controllers
         //
         // GET: /Catlg/
 
-        public ActionResult Index(string currentFilter, string searchString, int? page, string sortOrder)
+        public ActionResult Index(int? categoryID, string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.categoryID = categoryID;
+
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "Price_desc" : "Price";
 
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             ViewBag.Categories = db.Categories.Where(c => c.CategoryIsMenu == true);
 
-            IEnumerable<Product> products = db.Products;
+            IEnumerable<Product> products;
+            if (categoryID != null)
+            {
+                products = db.Products.Where(p=>p.CategoryID == categoryID);
+            }
+            else
+            {
+                products = db.Products;
+            }
+            
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper())
@@ -45,17 +67,6 @@ namespace eShopLab.Controllers
                     products = products.OrderBy(s => s.ProductName);
                     break;
             }
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
 
             int pageSize = 4;
             int pageNumber = (page ?? 1);

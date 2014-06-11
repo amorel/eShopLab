@@ -14,21 +14,23 @@
             <div class="list-group list-categ">
                 @foreach (var cat in ViewBag.Categories)
                 {
-                    @Html.ActionLink((string)cat.CategoryName, "Index", new { id = cat.CategoryID }, new { @class = "list-group-item" });
+                    if (cat.CategoryID == ViewBag.categoryID)
+                    { 
+                        @Html.ActionLink((string)cat.CategoryName, "Index", new { categoryID = cat.CategoryID }, new { @class = "list-group-item active" });
+                    }
+                    else
+                    {
+                        @Html.ActionLink((string)cat.CategoryName, "Index", new { categoryID = cat.CategoryID }, new { @class = "list-group-item" });
+                    }
                 }
             </div>
         </div>
         <select name="tri" onchange="location = this.options[this.selectedIndex].value;">
-            <option value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "" })"></option>
-            <option @if (ViewBag.CurrentSort == "")
-                    { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "" })">Ascending name</option>
-            <option @if (ViewBag.CurrentSort == "Name_desc")
-                    { <text> selected </text>  } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "Name_desc" })">Descending name</option>
-            <option @if (ViewBag.CurrentSort == "Price_asc")
-                    { <text> selected </text>  } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "Price_asc" })">Ascending price</option>
-            <option @if (ViewBag.CurrentSort == "Price_desc")
-                    { <text> selected </text>  } value="@Url.Action("Index", "Catlg", new { Category = ViewBag.Category, sortOrder = "Price_desc" })">Descending price</option>
-        </select> 
+            <option value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "", currentFilter = ViewBag.CurrentFilter })"></option>
+            <option @if (ViewBag.CurrentSort == "Name_desc") { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "Name_desc", currentFilter = ViewBag.CurrentFilter })">Descending name</option>
+            <option @if (ViewBag.CurrentSort == "Price_asc") { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "Price_asc", currentFilter = ViewBag.CurrentFilter })">Ascending price</option>
+            <option @if (ViewBag.CurrentSort == "Price_desc") { <text> selected </text> } value="@Url.Action("Index", "Catlg", new { categoryID = ViewBag.categoryID, sortOrder = "Price_desc", currentFilter = ViewBag.CurrentFilter })">Descending price</option>
+        </select>
     </div>
     <!-- End Categories -->
     <!-- Catalogue -->
@@ -59,7 +61,7 @@
         bool first = true;
         foreach (var product in Model)
         {
-            if(!first)
+            if (!first)
             {
                 <div class="vignette hero-feature text-center">
                     <div class="thumbnail">
@@ -88,7 +90,7 @@
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
             @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            new { page, categoryID = ViewBag.categoryID, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
         </div>
     <!-- End Catalogue -->
     }
