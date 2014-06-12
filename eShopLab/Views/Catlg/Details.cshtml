@@ -76,7 +76,8 @@
                         <option>@ProdSize.SizeCategory.SizeCategoryInitial</option>
                     }
                 </select>
-                <button id="addToCart" class="btn btn-primary pull-left">add to cart</button>
+                <button id="addToCart" class="btn btn-primary">Add to Cart</button>
+                @Html.ActionLink("Go to Shopping Cart", "Index", "Cart", null, new { @class = "btn btn-success", id = "GoToCart" })
             </div>
             <br />
             <hr />

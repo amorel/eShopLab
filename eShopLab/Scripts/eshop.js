@@ -63,5 +63,5 @@ var appeshop = function () {
 //Load global functions
 $(document).ready(function () {
     appeshop.init();
-    $("#addToCart").on("click", function () { $(".input-qty").val(1) })
+    $("#addToCart").on("click", function () { $(".input-qty").val(1); $("#GoToCart").css("display", "inline-block"); })
 });

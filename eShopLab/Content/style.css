@@ -419,6 +419,7 @@ footer {
     max-width: 270px;
 }
 
-#addToCart {
-    float: none!important;
+#GoToCart {
+    display:none;
+    height:34px;
 }
