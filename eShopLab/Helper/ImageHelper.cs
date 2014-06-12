@@ -28,7 +28,7 @@ namespace eShopLab.Helper
             return MvcHtmlString.Create(anchorHtml);
         }
 
-        public static MvcHtmlString Image(this HtmlHelper html, string imagePath, string alt)
+        public static MvcHtmlString ActionImageDetails(this HtmlHelper html, string action, string controller, string imagePath, string alt)
         {
             var url = new UrlHelper(html.ViewContext.RequestContext);
 
@@ -36,10 +36,15 @@ namespace eShopLab.Helper
             var imgBuilder = new TagBuilder("img");
             imgBuilder.MergeAttribute("src", url.Content(imagePath));
             imgBuilder.MergeAttribute("alt", alt);
-            imgBuilder.MergeAttribute("style", "width:100px; height:100px");
             string imgHtml = imgBuilder.ToString(TagRenderMode.SelfClosing);
 
-            return MvcHtmlString.Create(imgHtml);
+            // build the <a> tag
+            var anchorBuilder = new TagBuilder("a");
+            anchorBuilder.MergeAttribute("href", url.Action(action, controller));
+            anchorBuilder.InnerHtml = imgHtml; // include the <img> tag inside
+            string anchorHtml = anchorBuilder.ToString(TagRenderMode.Normal);
+
+            return MvcHtmlString.Create(anchorHtml);
         }
     }
 }

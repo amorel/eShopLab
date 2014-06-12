@@ -30,10 +30,11 @@ namespace eShopLab.App_Start
                 "~/Scripts/modernizr-2.7.2.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/angular.js",
-                "~/Scripts/smoothproducts.min.js",
                 "~/Scripts/eshop.js",
                 "~/Scripts/jquery.bxslider.min.js",
-                "~/Scripts/jquery.blImageCenter.js"
+                "~/Scripts/jquery.blImageCenter.js",
+                "~/Scripts/smoothproducts.js",
+                "~/Scripts/bootstrap.touchspin.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/cssadmin").Include(

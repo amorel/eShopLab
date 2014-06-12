@@ -17,5 +17,13 @@ namespace eShopLab.Models
                 return this.Prices.OrderByDescending(p => p.PriceDate).FirstOrDefault();
             }
         }
+
+        public int TotalQuantity
+        {
+            get
+            {
+                return this.ProductSizeCategories.Sum(s => s.Quantity);
+            }
+        }
     }
 }

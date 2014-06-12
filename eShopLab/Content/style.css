@@ -397,6 +397,23 @@ footer {
     height: 62px;
 }
 
-#sort-selectSelectBoxIt {
+.sort-select {
     width: 215px!important;
+}
+
+.size-select {
+    width: 50px!important;
+}
+
+.size-select-color {
+    width: 80px!important;
+}
+
+.smoothimg {
+    max-height: 300px!important;
+}
+
+.sp-large {
+    text-align: center;
+    max-width: 270px;
 }

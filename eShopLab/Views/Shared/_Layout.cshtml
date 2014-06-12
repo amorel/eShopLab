@@ -16,18 +16,18 @@
                 <!-- Logo -->
                 <div class="col-lg-4 col-md-3 hidden-sm hidden-xs">
                     <div class="well logo">
-                        <a href="index.html">eShop <span>Online Shop</span>
+                        <a href="index.html">
+                            eShop <span>Online Shop</span>
                         </a>
                         <div>Your online Shop !</div>
                     </div>
                 </div>
                 <!-- End Logo -->
-
                 <!-- Search Form -->
                 <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12">
                     <div class="well">
                         @using (Html.BeginForm("Index", "Catlg", FormMethod.Get))
-                        { 
+                        {
                             <div class="input-group">
                                 @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control input-search", placeholder = "Enter something to search" })
                                 <span class="input-group-btn">
@@ -38,7 +38,6 @@
                     </div>
                 </div>
                 <!-- End Search Form -->
-
                 <!-- Shopping Cart List -->
                 <div class="col-lg-3 col-md-4 col-sm-5">
                     <div class="well">
@@ -87,12 +86,13 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { Area = "" }, new { id="home-link" })</li>
-                    <li>@Html.ActionLink("Catalogue", "Index", "Catlg", new { Area = "" }, new { id="Catlg-link" })</li>
-                    <li>@Html.ActionLink("Shopping Cart", "Index", "Cart", new { Area = "" }, new { id="Cart-link" })</li>
-                    <li>@Html.ActionLink("Checkout", "Index", "Checkout", new { Area = "" }, new { id="Checkout-link" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { Area = "" }, new { id = "home-link" })</li>
+                    <li>@Html.ActionLink("Catalogue", "Index", "Catlg", new { Area = "" }, new { id = "Catlg-link" })</li>
+                    <li>@Html.ActionLink("Shopping Cart", "Index", "Cart", new { Area = "" }, new { id = "Cart-link" })</li>
+                    <li>@Html.ActionLink("Checkout", "Index", "Checkout", new { Area = "" }, new { id = "Checkout-link" })</li>
                     <li class="nav-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Pages <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="about.html">About Us</a></li>
@@ -106,15 +106,14 @@
         </div>
     </nav>
     <!-- End Navigation -->
-
     @*@User.Identity.Name
-    @User.Identity.IsAuthenticated*@
+        @User.Identity.IsAuthenticated*@
 
     <div class="container main-container">
         <div class="container main-container">
-                @RenderBody()
+            @RenderBody()
         </div>
-        
+
     </div>
     <footer>
         <div class="container">
@@ -181,7 +180,8 @@
                     <text>$("#home-link").addClass("active");</text>
                     break;
                 case "Catlg":
-                    <text>$("#Catlg-link").addClass("active");</text>
+                    if (HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString() != "Details") {
+                    <text>$("#Catlg-link").addClass("active");</text>}
                     break;
                 case "Cart":
                     <text>$("#Cart-link").addClass("active");</text>

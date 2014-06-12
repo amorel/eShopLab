@@ -376,6 +376,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap.touchspin.js" />
     <Content Include="Scripts\dropzone\css\basic.css" />
     <Content Include="Scripts\dropzone\css\dropzone.css" />
     <Content Include="Scripts\dropzone\css\stylus\dropzone.styl" />
@@ -708,6 +709,7 @@
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.selectBoxIt.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
@@ -722,11 +724,11 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\smoothproducts.js" />
     <Content Include="Scripts\wysiwyg\bootstrap-wysihtml5.css" />
     <Content Include="Scripts\wysiwyg\bootstrap3-wysihtml5.js" />
     <Content Include="Scripts\wysiwyg\bootstrap3-wysiwyg5-color.css" />
     <Content Include="Scripts\wysiwyg\wysihtml5-0.3.0.js" />
-    <Content Include="Scripts\smoothproducts.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

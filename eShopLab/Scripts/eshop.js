@@ -49,7 +49,8 @@ var appeshop = function () {
         });
     }
     var controls = function () {
-        $("select").selectBoxIt({autoWidth: false});
+        $("select").selectBoxIt({ autoWidth: false });
+        $('.sp-wrap').smoothproducts();
     }
     //End {
 

@@ -75,6 +75,7 @@ namespace eShopLab.Controllers
 
         public ActionResult Details(int id)
         {
+            ViewBag.product = db.Products.Find(id);
             return View();
         }
     }
