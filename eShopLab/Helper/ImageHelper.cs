@@ -8,7 +8,7 @@ namespace eShopLab.Helper
 {
     public static class ImageHelper
     {
-        public static MvcHtmlString ActionImageCatlg(this HtmlHelper html, string action, object routeValues, string imagePath, string alt)
+        public static MvcHtmlString ActionImageCatlg(this HtmlHelper html, string action, string controller, int routeValues, string imagePath, string alt)
         {
             var url = new UrlHelper(html.ViewContext.RequestContext);
 
@@ -20,7 +20,7 @@ namespace eShopLab.Helper
 
             // build the <a> tag
             var anchorBuilder = new TagBuilder("a");
-            anchorBuilder.MergeAttribute("href", url.Action(action, routeValues));
+            anchorBuilder.MergeAttribute("href", url.Action(action, controller, new { id = routeValues }));
             anchorBuilder.MergeAttribute("class", "link-p");
             anchorBuilder.InnerHtml = imgHtml; // include the <img> tag inside
             string anchorHtml = anchorBuilder.ToString(TagRenderMode.Normal);
