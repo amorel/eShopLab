@@ -106,9 +106,7 @@ var app = function () {
         //WYSIWYG on Long description
         $('#textareadescription').wysihtml5();
         //Custom SelectBox
-        $("select").selectBoxIt({
-            theme: "jqueryui"
-        });
+        $("select").selectBoxIt();
     }
     //End {
 
