@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
+<div class="row" ng-app="appDetails">
     <div class="col-lg-3 col-md-3 col-sm-12">
 
         <!-- Best Seller -->
@@ -51,7 +51,7 @@
     <div class="clearfix visible-sm"></div>
 
     <!-- Product Detail -->
-    <div class="col-lg-9 col-md-9 col-sm-12">
+    <div class="col-lg-9 col-md-9 col-sm-12" ng-controller="btn">
         <div class="col-lg-12 col-sm-12">
             <span class="title">@ViewBag.product.ProductName</span>
         </div>
@@ -59,7 +59,7 @@
             <div class="sp-wrap">
                 @foreach (var media in ((eShopLab.Models.Product)@ViewBag.product).Media.Take(5))
                 {
-                    <a href="@Url.Content(media.MediaUrl)"><img class="smoothimg" src="@Url.Content(media.MediaUrl)" alt=""></a>
+                    <a href="@Url.Content(media.MediaUrl)"><img class="smoothimg prod-detail" src="@Url.Content(media.MediaUrl)" alt=""></a>
                 }
             </div>
             <h4>@ViewBag.product.ProductDescription</h4>
@@ -70,14 +70,16 @@
             <h3>@String.Format("{0:C}", ((eShopLab.Models.Product)ViewBag.product).Prices.Where(p => p.PriceDate == ((eShopLab.Models.Product)ViewBag.product).Prices.Max(d => d.PriceDate)).First().PriceValue)</h3>
             <div class="input-qty-detail">
                 <input type="text" class="form-control input-qty text-center" value="1">
-                <select class="size-select">
-                    @foreach(var ProdSize in ((eShopLab.Models.Product)ViewBag.product).ProductSizeCategories)
-                    {
-                        <option>@ProdSize.SizeCategory.SizeCategoryInitial</option>
-                    }
+
+                <select class="size-select" name="SizeCategory" ng-init="setSize(@ViewBag.SizeCategoryJson)">
+                    <option value="{{ size.SizeCategoryID }}" ng-selected="{{ size.selected }}" ng-repeat="size in sizeScope">{{ size.SizeCategoryInitial }}</option>
                 </select>
-                <button id="addToCart" class="btn btn-primary">Add to Cart</button>
-                @Html.ActionLink("Go to Shopping Cart", "Index", "Cart", null, new { @class = "btn btn-success", id = "GoToCart" })
+
+                <button id="addToCart" class="btn btn-primary"
+                        ng-click="addItem(@ViewBag.product.ProductID, '@ViewBag.product.ProductName' )"
+                        onclick="toastr.success('You just added article in your shopping cart !')">
+                    Add to Cart
+                </button>
             </div>
             <br />
             <hr />

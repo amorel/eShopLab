@@ -202,17 +202,17 @@ use eShopDB
 go
 DELETE FROM ProductSizeCategory;
 INSERT INTO ProductSizeCategory VALUES(1, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(1, 2, 85);
 INSERT INTO ProductSizeCategory VALUES(1, 3, 45);
 INSERT INTO ProductSizeCategory VALUES(1, 4, 147);
-INSERT INTO ProductSizeCategory VALUES(1, 2, 85);
 INSERT INTO ProductSizeCategory VALUES(2, 1, 35);
 INSERT INTO ProductSizeCategory VALUES(2, 3, 45);
 INSERT INTO ProductSizeCategory VALUES(2, 4, 78);
 
 INSERT INTO ProductSizeCategory VALUES(3, 1, 35);
+INSERT INTO ProductSizeCategory VALUES(3, 2, 85);
 INSERT INTO ProductSizeCategory VALUES(3, 3, 45);
 INSERT INTO ProductSizeCategory VALUES(3, 4, 147);
-INSERT INTO ProductSizeCategory VALUES(3, 2, 85);
 INSERT INTO ProductSizeCategory VALUES(4, 1, 35);
 INSERT INTO ProductSizeCategory VALUES(4, 3, 45);
 INSERT INTO ProductSizeCategory VALUES(4, 4, 78);

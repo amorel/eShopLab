@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace eShopLab.Controllers
 {
@@ -75,6 +77,18 @@ namespace eShopLab.Controllers
 
         public ActionResult Details(int id)
         {
+            var size = db.Products.Find(id).ProductSizeCategories.Select(s=>new {
+                SizeCategoryID = s.SizeCategoryID,
+                SizeCategoryInitial = s.SizeCategory.SizeCategoryInitial,
+                selected = false
+            });
+
+            string json = JsonConvert.SerializeObject(size, Formatting.Indented);
+
+            json = json.Replace("false", "true");
+
+            ViewBag.SizeCategoryJson = json;
+
             ViewBag.product = db.Products.Find(id);
             return View();
         }

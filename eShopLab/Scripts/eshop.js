@@ -63,7 +63,6 @@ var appeshop = function () {
 //Load global functions
 $(document).ready(function () {
     appeshop.init();
-    $("#addToCart").on("click", function () { $(".input-qty").val(1); $("#GoToCart").css("display", "inline-block"); })
 
 });
 
@@ -73,15 +72,12 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
 
     $scope.invoice = {};
 
-    //alert($window.sessionStorage.getItem("cart"));
-
-    if ($window.sessionStorage.getItem("cart") != null) {
-        $scope.invoice = angular.fromJson($window.sessionStorage.getItem("cart"));
+    if ($window.localStorage.getItem("cart") != null) {
+        $scope.invoice = angular.fromJson($window.localStorage.getItem("cart"));
     }
 
     //$scope.invoice = {
     //    items: [{
-    //        ID: "0",
     //        ProductID: "1",
     //        MediaUrl: "/Uploads/Product/1/1.jpg",
     //        ProductName: "China",
@@ -93,7 +89,6 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
     //        Quantity: 10,
     //        Price: 9.95
     //    }, {
-    //        ID: "1",
     //        ProductID: "2",
     //        MediaUrl: "/Uploads/Product/2/1.jpg",
     //        ProductName: "Cachos",
@@ -107,9 +102,9 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
     //    }]
     //};
 
-    //$window.sessionStorage.setItem("cart", angular.toJson($scope.invoice));
+    //$window.localStorage.setItem("cart", angular.toJson($scope.invoice));
 
-    
+
 
     $scope.total = function () {
         var total = 0;
@@ -121,6 +116,41 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
 
     $scope.removeItem = function (index) {
         $scope.invoice.items.splice(index, 1);
-        $window.sessionStorage.setItem("cart", angular.toJson($scope.invoice));
+        $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
     }
+});
+
+
+var SizeCatModule = angular.module('appDetails', []).controller("btn", function ($scope, $window) {
+
+    $scope.invoice = {};
+
+    $scope.sizeScope = {};
+
+    if ($window.localStorage.getItem("cart") != null) {
+        $scope.invoice = angular.fromJson($window.localStorage.getItem("cart"));
+    }
+
+    $scope.setSize = function (data) {
+        $scope.sizeScope = data;
+    }
+
+    $scope.addItem = function (productID, productName) {
+
+        alert(angular.toJson($scope.sizeScope  ));
+
+        $scope.invoice.items.push({
+            ProductID: productID,
+            MediaUrl: $(".prod-detail").first().attr("src"),
+            ProductName: productName,
+            SizeCategory: $scope.sizeScope,
+            Quantity: 10,
+            Price: 9.95
+        });
+
+        $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
+    }
+
+
+
 });
