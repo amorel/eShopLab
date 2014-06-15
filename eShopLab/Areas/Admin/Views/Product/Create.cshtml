@@ -84,7 +84,7 @@
                 <div class="editor-label">
                     <label style="width: 90px;">Size</label><label style="width: 80px;">Quantity</label>
                 </div>
-                <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeController as showsize">
+                <div class="editor-field" ng-app="SizeCat" ng-controller="ShowSizeCtrl as showsize">
 
                     @{var i = 0;}
                     @foreach (var size in ViewBag.MySize)
@@ -154,17 +154,5 @@
     <script>
         $(".title").html("Create Product");
         $("#ProductAddingDate").val(new Date().toISOString()).hide();
-        var SizeCatModule = angular.module('SizeCat', []).controller("ShowSizeController", function ($scope) {
-            $scope.Qty = {};
-            $scope.checkedSize = {};
-            this.changed = function (i) {
-                if ($scope.Qty[i] <= 0) {
-                    $scope.Qty[i] = 0;
-                }
-            }
-            this.reinit = function (i) {
-                if ($scope.checkedSize[i]) $scope.Qty[i] = '';
-            }
-        });
     </script>
 }

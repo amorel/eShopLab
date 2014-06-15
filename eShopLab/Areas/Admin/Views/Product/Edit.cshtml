@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<div ng-app="apps">
+<div ng-app="SizeCat">
 
     @using (Html.BeginForm())
     {
@@ -154,11 +154,11 @@
     }
 
 
-    <div class="panel-group" id="accordion" ng-controller="GalleryCtrl">
+    <div class="panel-group" id="accordion" ng-controller="GalleryCtrl" ng-init="getGallery(@Model.ProductID)">
         <div class="panel panel-default">
             <div class="panel-heading fonce">
                 <h4 class="panel-title">
-                    <a id="tabImage" ng-click="getGallery()" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                    <a id="tabImage" ng-click="getGallery(@Model.ProductID)" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
                         IMAGES
                     </a>
                 </h4>
@@ -204,46 +204,5 @@
 @section scripts{
     <script>
         $(".title").html("Edit Product");
-
-        var appsModule = angular.module('apps', []);
-
-        appsModule.controller("ShowSizeCtrl", function ($scope) {
-            $scope.Qty = {};
-            $scope.checkedSize = {};
-            this.changed = function (i) {
-                if ($scope.Qty[i] <= 0) {
-                    $scope.Qty[i] = 0;
-                }
-            }
-            this.reinit = function (i) {
-                if ($scope.checkedSize[i]) $scope.Qty[i] = '';
-            }
-        });
-
-        appsModule.controller("GalleryCtrl", function ($scope, $http) {
-            $scope.VirtualPath = new Array();
-
-            $scope.getGallery = function () {
-                $http({ method: "POST", url: "/Admin/Product/GetImage", data: { ProductID: "@Model.ProductID" } }).
-                    success(function (data, status) {
-                        $scope.VirtualPath = data;
-                    }).
-                    error(function (data, status) {
-                    });
-            };
-            $scope.getGallery();
-
-            $scope.deleteImg = function (filePath) {
-                var index = $scope.VirtualPath.indexOf(filePath)
-                $scope.VirtualPath.splice(index, 1);
-
-                var filePathClean = /(.*)\?/.exec(filePath);
-                $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: filePathClean[1] } }).
-                    success(function (data, status) {
-                    }).
-                    error(function (data, status) {
-                    });
-            };
-        });
     </script>
 }

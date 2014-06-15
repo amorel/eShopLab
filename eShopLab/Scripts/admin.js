@@ -123,3 +123,45 @@ $(document).ready(function () {
     
 
 });
+
+
+//Angular.js
+var appsModule = angular.module('SizeCat', []);
+
+        appsModule.controller("ShowSizeCtrl", function ($scope) {
+            $scope.Qty = {};
+            $scope.checkedSize = {};
+            this.changed = function (i) {
+                if ($scope.Qty[i] <= 0) {
+                    $scope.Qty[i] = 0;
+                }
+            }
+            this.reinit = function (i) {
+                if ($scope.checkedSize[i]) $scope.Qty[i] = '';
+            }
+        });
+
+        appsModule.controller("GalleryCtrl", function ($scope, $http) {
+            $scope.VirtualPath = new Array();
+
+            $scope.getGallery = function (productID) {
+                $http({ method: "POST", url: "/Admin/Product/GetImage", data: { ProductID: productID } }).
+                    success(function (data, status) {
+                        $scope.VirtualPath = data;
+                    }).
+                    error(function (data, status) {
+                    });
+            };
+
+            $scope.deleteImg = function (filePath) {
+                var index = $scope.VirtualPath.indexOf(filePath)
+                $scope.VirtualPath.splice(index, 1);
+
+                var filePathClean = /(.*)\?/.exec(filePath);
+                $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: filePathClean[1] } }).
+                    success(function (data, status) {
+                    }).
+                    error(function (data, status) {
+                    });
+            };
+        });
