@@ -8,7 +8,6 @@ var appeshop = function () {
         centerimage();
         scroll();
         controls();
-        angular();
     };
 
     var bxslider = function () {
@@ -53,11 +52,6 @@ var appeshop = function () {
         $("select").selectBoxIt({ autoWidth: false });
         $('.sp-wrap').smoothproducts();
     }
-    var angular = function () {
-
-
-
-    }
     //End {
 
     //return functions
@@ -77,43 +71,45 @@ $(document).ready(function () {
 //Angular.js
 var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", function ($scope, $window) {
 
-    //if ($window.localStorage.getItem("items") == null) {
-    //    $window.localStorage.setItem("items", "value");
-    //    $scope.invoice = $window.localStorage.getItem("items");
-    //} else {
-    //    $scope.invoice = $window.localStorage.getItem("items");
-    //    //$document.write("ok");
-    //    //$document.write($scope.invoice);
-    //    console.log($scope.invoice);
-    //}
+    $scope.invoice = {};
 
-    $scope.invoice = {
-        items: [{
-            ID: "0",
-            ProductID: "1",
-            MediaUrl: "/Uploads/Product/1/1.jpg",
-            ProductName: "China",
-            SizeCategory: [
-                { SizeCategoryID: "1", SizeCategoryInitial: "S", selected: false },
-                { SizeCategoryID: "2", SizeCategoryInitial: "L", selected: true, },
-                { SizeCategoryID: "3", SizeCategoryInitial: "XL", selected: false, }
-            ],
-            Quantity: 10,
-            Price: 9.95
-        }, {
-            ID: "1",
-            ProductID: "2",
-            MediaUrl: "/Uploads/Product/2/1.jpg",
-            ProductName: "Cachos",
-            SizeCategory: [
-                { SizeCategoryID: "1", SizeCategoryInitial: "S", selected: false },
-                { SizeCategoryID: "2", SizeCategoryInitial: "XL", selected: true, },
-                { SizeCategoryID: "3", SizeCategoryInitial: "XXL", selected: false, }
-            ],
-            Quantity: 3,
-            Price: 19.95
-        }]
-    };
+    //alert($window.sessionStorage.getItem("cart"));
+
+    if ($window.sessionStorage.getItem("cart") != null) {
+        $scope.invoice = angular.fromJson($window.sessionStorage.getItem("cart"));
+    }
+
+    //$scope.invoice = {
+    //    items: [{
+    //        ID: "0",
+    //        ProductID: "1",
+    //        MediaUrl: "/Uploads/Product/1/1.jpg",
+    //        ProductName: "China",
+    //        SizeCategory: [
+    //            { SizeCategoryID: "1", SizeCategoryInitial: "S", selected: false },
+    //            { SizeCategoryID: "2", SizeCategoryInitial: "L", selected: true, },
+    //            { SizeCategoryID: "3", SizeCategoryInitial: "XL", selected: false, }
+    //        ],
+    //        Quantity: 10,
+    //        Price: 9.95
+    //    }, {
+    //        ID: "1",
+    //        ProductID: "2",
+    //        MediaUrl: "/Uploads/Product/2/1.jpg",
+    //        ProductName: "Cachos",
+    //        SizeCategory: [
+    //            { SizeCategoryID: "1", SizeCategoryInitial: "S", selected: false },
+    //            { SizeCategoryID: "2", SizeCategoryInitial: "XL", selected: true, },
+    //            { SizeCategoryID: "3", SizeCategoryInitial: "XXL", selected: false, }
+    //        ],
+    //        Quantity: 3,
+    //        Price: 19.95
+    //    }]
+    //};
+
+    //$window.sessionStorage.setItem("cart", angular.toJson($scope.invoice));
+
+    
 
     $scope.total = function () {
         var total = 0;
@@ -125,5 +121,6 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
 
     $scope.removeItem = function (index) {
         $scope.invoice.items.splice(index, 1);
+        $window.sessionStorage.setItem("cart", angular.toJson($scope.invoice));
     }
 });

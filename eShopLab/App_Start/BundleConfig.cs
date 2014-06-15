@@ -12,13 +12,14 @@ namespace eShopLab.App_Start
         {
 
             bundles.Add(new ScriptBundle("~/bundles/css").Include(
-                "~/Content/style.css",
                 "~/Content/font-awesome.min.css",
                 "~/Content/bootstrap.css",
                 "~/Content/jquery-ui-1.8.23.custom.css",
                 "~/Content/jquery.selectBoxIt.css",
                 "~/Content/smoothproducts.css",
-                "~/Content/jquery.bxslider.css"
+                "~/Content/jquery.bxslider.css",
+                "~/Content/toastr.css",
+                "~/Content/style.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/script").Include(
@@ -34,7 +35,8 @@ namespace eShopLab.App_Start
                 "~/Scripts/jquery.bxslider.min.js",
                 "~/Scripts/jquery.blImageCenter.js",
                 "~/Scripts/smoothproducts.js",
-                "~/Scripts/bootstrap.touchspin.js"
+                "~/Scripts/bootstrap.touchspin.js",
+                "~/Scripts/toastr.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/cssadmin").Include(
