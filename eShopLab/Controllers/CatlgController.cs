@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using PagedList;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace eShopLab.Controllers
 {
@@ -41,13 +42,13 @@ namespace eShopLab.Controllers
             IEnumerable<Product> products;
             if (categoryID != null)
             {
-                products = db.Products.Where(p=>p.CategoryID == categoryID);
+                products = db.Products.Where(p => p.CategoryID == categoryID);
             }
             else
             {
                 products = db.Products;
             }
-            
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(s => s.ProductName.ToUpper().Contains(searchString.ToUpper())
@@ -77,15 +78,15 @@ namespace eShopLab.Controllers
 
         public ActionResult Details(int id)
         {
-            var size = db.Products.Find(id).ProductSizeCategories.Select(s=>new {
-                SizeCategoryID = s.SizeCategoryID,
-                SizeCategoryInitial = s.SizeCategory.SizeCategoryInitial,
-                selected = false
-            });
+            List<string> size = db.Products.Find(id).ProductSizeCategories.Select(s => s.SizeCategory.SizeCategoryInitial).ToList();
 
-            string json = JsonConvert.SerializeObject(size, Formatting.Indented);
+            SizeC sizeC = new SizeC()
+            {
+                SizeCategoryList = size,
+                choice = size.FirstOrDefault()
+            };
 
-            json = json.Replace("false", "true");
+            string json = JsonConvert.SerializeObject(sizeC, Formatting.Indented);
 
             ViewBag.SizeCategoryJson = json;
 

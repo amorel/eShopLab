@@ -68,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in invoice.items">
+                        <tr ng-repeat="item in invoice">
                             <td class="hidden-xs">
                                 <a href="/Catlg/Details/{{ item.ProductID }}">
                                     <img ng-src="{{ item.MediaUrl }}" alt="{{ item.ProductName }}" title="" width="47" height="47" />
@@ -78,9 +78,7 @@
                                 <a href="/Catlg/Details/{{ item.ProductID }}">{{ item.ProductName }}</a>
                             </td>
                             <td>
-                                <select class="size-select" name="SizeCategory">
-                                    <option value="{{ size.SizeCategoryID }}" ng-selected="{{ size.selected }}" ng-repeat="size in item.SizeCategory">{{ size.SizeCategoryInitial }}</option>
-                                </select>
+                                <select class="size-select" name="SizeCategory" ng-model="item.choice" ng-options="size for size in item.SizeCategory"></select>
                             </td>
                             <td>
                                 <input type="text" name="" ng-model="item.Quantity" ng-value="{{ item.Quantity }}" class="input-qty form-control text-center" />

@@ -98,7 +98,7 @@ CONSTRAINT FK_Category_Media FOREIGN KEY (MediaID) REFERENCES Media(MediaID)
 CREATE TABLE SizeCategory( 
 SizeCategoryID INT IDENTITY(1,1) NOT NULL, 
 SizeCategoryName NVARCHAR(64) NOT NULL,
-SizeCategoryInitial CHAR(4) NOT NULL,
+SizeCategoryInitial NVARCHAR(4) NOT NULL,
 CONSTRAINT PK_SizeCategoryID PRIMARY KEY (SizeCategoryID) 
 )
  

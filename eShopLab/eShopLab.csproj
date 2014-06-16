@@ -205,6 +205,7 @@
     <Compile Include="Models\ProductSizeCategory.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SizeC.cs" />
     <Compile Include="Models\SizeCategory.cs">
       <DependentUpon>eShopDB.tt</DependentUpon>
     </Compile>
@@ -403,6 +404,8 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Content\jquery.selectBoxIt.css" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <EntityDeploy Include="Models\eShopDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>eShopDB.Designer.cs</LastGenOutput>
@@ -420,8 +423,6 @@
       <DependentUpon>eShopDB.edmx</DependentUpon>
       <LastGenOutput>eShopDB.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\toastr.scss" />
-    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

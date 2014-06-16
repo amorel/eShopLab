@@ -70,52 +70,43 @@ $(document).ready(function () {
 //Angular.js
 var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", function ($scope, $window) {
 
-    $scope.invoice = {};
+    $scope.invoice = [];
+
+    //$scope.invoice = [{
+    //    ProductID: "1",
+    //    MediaUrl: "/Uploads/Product/1/1.jpg",
+    //    ProductName: "China",
+    //    SizeCategory: ["S", "L", "XL"],
+    //    Quantity: 10,
+    //    Price: 9.95,
+    //    choice: "L"
+    //}, {
+    //    ProductID: "2",
+    //    MediaUrl: "/Uploads/Product/2/1.jpg",
+    //    ProductName: "Cachos",
+    //    SizeCategory: ["M", "XL", "XXL"],
+    //    Quantity: 3,
+    //    Price: 19.95,
+    //    choice: "M"
+    //}];
+
+
+    //$window.localStorage.setItem("cart", angular.toJson($scope.invoice));
 
     if ($window.localStorage.getItem("cart") != null) {
         $scope.invoice = angular.fromJson($window.localStorage.getItem("cart"));
     }
 
-    //$scope.invoice = {
-    //    items: [{
-    //        ProductID: "1",
-    //        MediaUrl: "/Uploads/Product/1/1.jpg",
-    //        ProductName: "China",
-    //        SizeCategory: [
-    //            { SizeCategoryID: "1", SizeCategoryInitial: "S", selected: false },
-    //            { SizeCategoryID: "2", SizeCategoryInitial: "L", selected: true, },
-    //            { SizeCategoryID: "3", SizeCategoryInitial: "XL", selected: false, }
-    //        ],
-    //        Quantity: 10,
-    //        Price: 9.95
-    //    }, {
-    //        ProductID: "2",
-    //        MediaUrl: "/Uploads/Product/2/1.jpg",
-    //        ProductName: "Cachos",
-    //        SizeCategory: [
-    //            { SizeCategoryID: "1", SizeCategoryInitial: "S", selected: false },
-    //            { SizeCategoryID: "2", SizeCategoryInitial: "XL", selected: true, },
-    //            { SizeCategoryID: "3", SizeCategoryInitial: "XXL", selected: false, }
-    //        ],
-    //        Quantity: 3,
-    //        Price: 19.95
-    //    }]
-    //};
-
-    //$window.localStorage.setItem("cart", angular.toJson($scope.invoice));
-
-
-
     $scope.total = function () {
         var total = 0;
-        angular.forEach($scope.invoice.items, function (item, key) {
+        angular.forEach($scope.invoice, function (item, key) {
             total += item.Price * item.Quantity;
         });
         return total;
     }
 
     $scope.removeItem = function (index) {
-        $scope.invoice.items.splice(index, 1);
+        $scope.invoice.splice(index, 1);
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
     }
 });
@@ -123,7 +114,7 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
 
 var SizeCatModule = angular.module('appDetails', []).controller("btn", function ($scope, $window) {
 
-    $scope.invoice = {};
+    $scope.invoice = [];
 
     $scope.sizeScope = {};
 
@@ -135,17 +126,15 @@ var SizeCatModule = angular.module('appDetails', []).controller("btn", function 
         $scope.sizeScope = data;
     }
 
-    $scope.addItem = function (productID, productName) {
-
-        alert(angular.toJson($scope.sizeScope  ));
-
-        $scope.invoice.items.push({
+    $scope.addItem = function (productID, productName, price) {
+        $scope.invoice.push({
             ProductID: productID,
             MediaUrl: $(".prod-detail").first().attr("src"),
             ProductName: productName,
-            SizeCategory: $scope.sizeScope,
-            Quantity: 10,
-            Price: 9.95
+            SizeCategory: $scope.sizeScope.SizeCategoryList,
+            Quantity: $(".input-qty").val(),
+            Price: price.replace(",","."),
+            choice: $scope.sizeScope.choice
         });
 
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));

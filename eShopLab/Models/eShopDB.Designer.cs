@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'I:\CreaSite-SAV\11_eShopLab\eShopLab\Models\eShopDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Admin.PC-CZC1213R5T\Documents\Arnaud\eshoplab\eShopLab\Models\eShopDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

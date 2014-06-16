@@ -69,14 +69,11 @@
             <hr />
             <h3>@String.Format("{0:C}", ((eShopLab.Models.Product)ViewBag.product).Prices.Where(p => p.PriceDate == ((eShopLab.Models.Product)ViewBag.product).Prices.Max(d => d.PriceDate)).First().PriceValue)</h3>
             <div class="input-qty-detail">
-                <input type="text" class="form-control input-qty text-center" value="1">
+                <input type="text" class="form-control input-qty text-center" value="1" ng-init="setSize(@ViewBag.SizeCategoryJson)">
 
-                <select class="size-select" name="SizeCategory" ng-init="setSize(@ViewBag.SizeCategoryJson)">
-                    <option value="{{ size.SizeCategoryID }}" ng-selected="{{ size.selected }}" ng-repeat="size in sizeScope">{{ size.SizeCategoryInitial }}</option>
-                </select>
-
+                <select class="size-select" name="SizeCategory" ng-model="sizeScope.choice" ng-options="size for size in sizeScope.SizeCategoryList"></select>
                 <button id="addToCart" class="btn btn-primary"
-                        ng-click="addItem(@ViewBag.product.ProductID, '@ViewBag.product.ProductName' )"
+                        ng-click="addItem(@ViewBag.product.ProductID, '@ViewBag.product.ProductName', '@String.Format("{0:0.00}", ((eShopLab.Models.Product)ViewBag.product).Prices.Where(p => p.PriceDate == ((eShopLab.Models.Product)ViewBag.product).Prices.Max(d => d.PriceDate)).First().PriceValue)' )"
                         onclick="toastr.success('You just added article in your shopping cart !')">
                     Add to Cart
                 </button>
