@@ -97,6 +97,46 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
         $scope.invoice = angular.fromJson($window.localStorage.getItem("cart"));
     }
 
+    $scope.change = function (productID) {
+
+
+        //function countFilter(category, index, array) {
+        //    return (category.count != 0);
+        //}
+        //$scope.categories = $scope.categories.filter(countFilter);
+        
+        var map = {};
+
+        angular.forEach($scope.invoice, function (value, key) {
+            if (value.ProductID == productID) {
+
+                if (value.choice in map)
+                {
+                    map[value.choice] = map[value.choice] + 1;
+                }else{
+                    map[value.choice] = 1;
+                }
+
+            console.log(value.choice);
+            }
+            //console.log(key);
+        });
+
+        angular.forEach(map, function (value, key) {
+            if (value > 1) {
+                angular.forEach($scope.invoice, function (value2, key2) {
+                    alert(value2);
+                });
+                alert(key);
+            }
+        });
+
+        console.log(map);
+
+        $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
+
+    }
+
     $scope.total = function () {
         var total = 0;
         angular.forEach($scope.invoice, function (item, key) {
