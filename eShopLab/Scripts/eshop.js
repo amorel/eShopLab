@@ -85,12 +85,26 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
     //    MediaUrl: "/Uploads/Product/2/1.jpg",
     //    ProductName: "Cachos",
     //    SizeCategory: ["M", "XL", "XXL"],
-    //    Quantity: 3,
+    //    Quantity: 2,
     //    Price: 19.95,
     //    choice: "M"
+    //}, {
+    //    ProductID: "1",
+    //    MediaUrl: "/Uploads/Product/1/1.jpg",
+    //    ProductName: "China",
+    //    SizeCategory: ["S", "L", "XL"],
+    //    Quantity: 3,
+    //    Price: 9.95,
+    //    choice: "S"
+    //}, {
+    //    ProductID: "1",
+    //    MediaUrl: "/Uploads/Product/1/1.jpg",
+    //    ProductName: "China",
+    //    SizeCategory: ["S", "L", "XL"],
+    //    Quantity: 5,
+    //    Price: 9.95,
+    //    choice: "XL"
     //}];
-
-
     //$window.localStorage.setItem("cart", angular.toJson($scope.invoice));
 
     if ($window.localStorage.getItem("cart") != null) {
@@ -98,12 +112,6 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
     }
 
     $scope.change = function (productID) {
-
-
-        //function countFilter(category, index, array) {
-        //    return (category.count != 0);
-        //}
-        //$scope.categories = $scope.categories.filter(countFilter);
         
         var map = {};
 
@@ -117,21 +125,30 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
                     map[value.choice] = 1;
                 }
 
-            console.log(value.choice);
             }
-            //console.log(key);
         });
 
-        angular.forEach(map, function (value, key) {
-            if (value > 1) {
-                angular.forEach($scope.invoice, function (value2, key2) {
-                    alert(value2);
+        var quantity;
+        var indexKey;
+        var first = true;
+        angular.forEach(map, function (somme, sizeKey) {
+            if (somme > 1) {
+                angular.forEach($scope.invoice, function (cartLine, index) {
+                    if (cartLine.choice == sizeKey)
+                    {
+                        if (first)
+                        {
+                            indexKey = index;
+                            quantity = cartLine.Quantity;
+                        } else {
+                            $scope.invoice[index].Quantity = $scope.invoice[index].Quantity + quantity;
+                        }
+                        first = false;
+                    }
                 });
-                alert(key);
             }
         });
-
-        console.log(map);
+        if(!first) $scope.invoice.splice(indexKey, 1);
 
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
 
