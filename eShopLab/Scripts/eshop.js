@@ -68,7 +68,7 @@ $(document).ready(function () {
 
 
 // ANGULARJS
-var appsModule = angular.module('angularApps', []);
+var appsModule = angular.module('angularApps', ['ngAnimate']);
 
 /*************************************
 * Management of shopping cart
@@ -80,40 +80,40 @@ appsModule.controller("AngularCtrl", function ($scope, $window) {
 
     $scope.invoice = [];
 
-    //$scope.invoice = [{
-    //    ProductID: "1",
-    //    MediaUrl: "/Uploads/Product/1/1.jpg",
-    //    ProductName: "China",
-    //    SizeCategory: ["S", "L", "XL"],
-    //    Quantity: 10,
-    //    Price: 9.95,
-    //    choice: "L"
-    //}, {
-    //    ProductID: "2",
-    //    MediaUrl: "/Uploads/Product/2/1.jpg",
-    //    ProductName: "Cachos",
-    //    SizeCategory: ["M", "XL", "XXL"],
-    //    Quantity: 2,
-    //    Price: 19.95,
-    //    choice: "M"
-    //}, {
-    //    ProductID: "1",
-    //    MediaUrl: "/Uploads/Product/1/1.jpg",
-    //    ProductName: "China",
-    //    SizeCategory: ["S", "L", "XL"],
-    //    Quantity: 3,
-    //    Price: 9.95,
-    //    choice: "S"
-    //}, {
-    //    ProductID: "1",
-    //    MediaUrl: "/Uploads/Product/1/1.jpg",
-    //    ProductName: "China",
-    //    SizeCategory: ["S", "L", "XL"],
-    //    Quantity: 5,
-    //    Price: 9.95,
-    //    choice: "XL"
-    //}];
-    //$window.localStorage.setItem("cart", angular.toJson($scope.invoice));
+    $scope.invoice = [{
+        ProductID: "1",
+        MediaUrl: "/Uploads/Product/1/1.jpg",
+        ProductName: "China",
+        SizeCategory: ["S", "L", "XL"],
+        Quantity: 10,
+        Price: 9.95,
+        choice: "L"
+    }, {
+        ProductID: "2",
+        MediaUrl: "/Uploads/Product/2/1.jpg",
+        ProductName: "Cachos",
+        SizeCategory: ["M", "XL", "XXL"],
+        Quantity: 2,
+        Price: 19.95,
+        choice: "M"
+    }, {
+        ProductID: "1",
+        MediaUrl: "/Uploads/Product/1/1.jpg",
+        ProductName: "China",
+        SizeCategory: ["S", "L", "XL"],
+        Quantity: 3,
+        Price: 9.95,
+        choice: "S"
+    }, {
+        ProductID: "1",
+        MediaUrl: "/Uploads/Product/1/1.jpg",
+        ProductName: "China",
+        SizeCategory: ["S", "L", "XL"],
+        Quantity: 5,
+        Price: 9.95,
+        choice: "XL"
+    }];
+    $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
 
     if ($window.localStorage.getItem("cart") != null) {
         $scope.invoice = angular.fromJson($window.localStorage.getItem("cart"));

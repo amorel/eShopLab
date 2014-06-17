@@ -19,6 +19,7 @@ namespace eShopLab.App_Start
                 "~/Content/smoothproducts.css",
                 "~/Content/jquery.bxslider.css",
                 "~/Content/toastr.css",
+                "~/Content/animate.css",
                 "~/Content/style.css"
                 ));
 
@@ -31,6 +32,7 @@ namespace eShopLab.App_Start
                 "~/Scripts/modernizr-2.7.2.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/angular.js",
+                "~/Scripts/angular-animate.js",
                 "~/Scripts/eshop.js",
                 "~/Scripts/jquery.bxslider.min.js",
                 "~/Scripts/jquery.blImageCenter.js",
