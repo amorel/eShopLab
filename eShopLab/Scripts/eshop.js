@@ -67,7 +67,10 @@ $(document).ready(function () {
 });
 
 
-//Angular.js
+/*************************************
+* Management of shopping cart
+*
+**************************************/
 var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", function ($scope, $window) {
 
     $scope.invoice = [];
@@ -113,42 +116,7 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
 
     $scope.change = function (productID) {
         
-        var map = {};
-
-        angular.forEach($scope.invoice, function (value, key) {
-            if (value.ProductID == productID) {
-
-                if (value.choice in map)
-                {
-                    map[value.choice] = map[value.choice] + 1;
-                }else{
-                    map[value.choice] = 1;
-                }
-
-            }
-        });
-
-        var quantity;
-        var indexKey;
-        var first = true;
-        angular.forEach(map, function (somme, sizeKey) {
-            if (somme > 1) {
-                angular.forEach($scope.invoice, function (cartLine, index) {
-                    if (cartLine.choice == sizeKey)
-                    {
-                        if (first)
-                        {
-                            indexKey = index;
-                            quantity = cartLine.Quantity;
-                        } else {
-                            $scope.invoice[index].Quantity = $scope.invoice[index].Quantity + quantity;
-                        }
-                        first = false;
-                    }
-                });
-            }
-        });
-        if(!first) $scope.invoice.splice(indexKey, 1);
+        deleteDouble($scope, productID);
 
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
 
@@ -168,7 +136,10 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
     }
 });
 
-
+/*************************************
+* Adding item in shopping cart
+*
+**************************************/
 var SizeCatModule = angular.module('appDetails', []).controller("btn", function ($scope, $window) {
 
     $scope.invoice = [];
@@ -194,9 +165,50 @@ var SizeCatModule = angular.module('appDetails', []).controller("btn", function 
             choice: $scope.sizeScope.choice
         });
 
+        deleteDouble($scope, productID);
+
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
     }
-
-
-
 });
+
+
+/*************************************
+* deletDouble($scope, productID):
+* Remove double size by product in shopping cart.
+* parameter: $scope of Angular, productID
+**************************************/
+var deleteDouble = function ($scope, productID)
+{
+    var map = {};
+
+    angular.forEach($scope.invoice, function (value, key) {
+        if (value.ProductID == productID) {
+
+            if (value.choice in map) {
+                map[value.choice] = map[value.choice] + 1;
+            } else {
+                map[value.choice] = 1;
+            }
+
+        }
+    });
+    var quantity;
+    var indexKey;
+    var first = true;
+    angular.forEach(map, function (somme, sizeKey) {
+        if (somme > 1) {
+            angular.forEach($scope.invoice, function (cartLine, index) {
+                if (cartLine.choice == sizeKey) {
+                    if (first) {
+                        indexKey = index;
+                        quantity = cartLine.Quantity;
+                    } else {
+                        $scope.invoice[index].Quantity = parseFloat($scope.invoice[index].Quantity) + parseFloat(quantity);
+                    }
+                    first = false;
+                }
+            });
+        }
+    });
+    if (!first) $scope.invoice.splice(indexKey, 1);
+}
