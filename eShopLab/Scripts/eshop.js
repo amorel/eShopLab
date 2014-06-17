@@ -67,11 +67,16 @@ $(document).ready(function () {
 });
 
 
+// ANGULARJS
+var appsModule = angular.module('angularApps', []);
+
 /*************************************
 * Management of shopping cart
 *
 **************************************/
-var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", function ($scope, $window) {
+appsModule.controller("AngularCtrl", function ($scope, $window) {
+
+    $scope.sizeScope = {};
 
     $scope.invoice = [];
 
@@ -134,21 +139,6 @@ var SizeCatModule = angular.module('ShoppingCart', []).controller("CartForm", fu
         $scope.invoice.splice(index, 1);
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
     }
-});
-
-/*************************************
-* Adding item in shopping cart
-*
-**************************************/
-var SizeCatModule = angular.module('appDetails', []).controller("btn", function ($scope, $window) {
-
-    $scope.invoice = [];
-
-    $scope.sizeScope = {};
-
-    if ($window.localStorage.getItem("cart") != null) {
-        $scope.invoice = angular.fromJson($window.localStorage.getItem("cart"));
-    }
 
     $scope.setSize = function (data) {
         $scope.sizeScope = data;
@@ -161,7 +151,7 @@ var SizeCatModule = angular.module('appDetails', []).controller("btn", function 
             ProductName: productName,
             SizeCategory: $scope.sizeScope.SizeCategoryList,
             Quantity: $(".input-qty").val(),
-            Price: price.replace(",","."),
+            Price: price.replace(",", "."),
             choice: $scope.sizeScope.choice
         });
 
@@ -169,11 +159,11 @@ var SizeCatModule = angular.module('appDetails', []).controller("btn", function 
 
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
     }
+
 });
 
-
 /*************************************
-* deletDouble($scope, productID):
+* deleteDouble($scope, productID):
 * Remove double size by product in shopping cart.
 * parameter: $scope of Angular, productID
 **************************************/

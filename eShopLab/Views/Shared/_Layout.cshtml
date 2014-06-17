@@ -9,7 +9,7 @@
     <title>eShop Lab</title>
     @Styles.Render("~/bundles/css")
 </head>
-<body>
+<body ng-app="angularApps" ng-controller="AngularCtrl">
     <header>
         <div class="container">
             <div class="row">
@@ -44,24 +44,18 @@
                         <div class="btn-group btn-group-cart">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <span class="pull-left"><i class="fa fa-shopping-cart icon-cart"></i></span>
-                                <span class="pull-left">Shopping Cart: 2 item(s)</span>
+                                <span class="pull-left">Shopping Cart: {{ invoice.length }} item(s)</span>
                                 <span class="pull-right"><i class="fa fa-caret-down"></i></span>
                             </button>
                             <ul class="dropdown-menu cart-content" role="menu">
-                                <li>
-                                    <a href="detail.html">
-                                        <b>Penn State College T-Shirt</b>
-                                        <span>x1 $528.96</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="detail.html">
-                                        <b>Live Nation ACDC Gray T-Shirt</b>
-                                        <span>x1 $428.96</span>
+                                <li ng-repeat="cartLine in invoice">
+                                    <a href="/Catlg/Details/{{ cartLine.ProductID }}">
+                                        <b>{{ cartLine.ProductName }}</b>
+                                        <span>x{{ cartLine.Quantity }} {{ cartLine.Price |  currency:"€" }}</span>
                                     </a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="cart.html">Total: $957.92</a></li>
+                                <li><a href="@Url.Action("Index", "Cart")">Total: {{ total() | currency:"€ " }}</a></li>
                             </ul>
                         </div>
                     </div>
