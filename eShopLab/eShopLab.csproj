@@ -724,6 +724,8 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Catlg\Details.cshtml" />
     <Content Include="Scripts\toastr.min.js.map" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

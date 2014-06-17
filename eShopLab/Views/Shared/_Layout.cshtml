@@ -49,7 +49,7 @@
                             </button>
                             <ul class="dropdown-menu cart-content" role="menu">
                                 <li ng-repeat="cartLine in invoice">
-                                    <a href="/Catlg/Details/{{ cartLine.ProductID }}">
+                                    <a href="@Url.Action("Index", "Cart")">
                                         <b>{{ cartLine.ProductName }}</b>
                                         <span>x{{ cartLine.Quantity }} {{ cartLine.Price |  currency:"€" }}</span>
                                     </a>
@@ -89,9 +89,8 @@
                             Pages <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="typography.html">Typography</a></li>
+                            <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                         </ul>
                     </li>
                     <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, null)</li>
