@@ -28,12 +28,12 @@
                     <div class="well">
                         @using (Html.BeginForm("Index", "Catlg", FormMethod.Get))
                         {
-                        <div class="input-group">
-                            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control input-search", placeholder = "Enter something to search" })
-                            <span class="input-group-btn">
-                                <button class="btn btn-default no-border-left" type="submit"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
+                            <div class="input-group">
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control input-search", placeholder = "Enter something to search" })
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default no-border-left" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
                         }
                     </div>
                 </div>
@@ -95,7 +95,9 @@
                     </li>
                     <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, null)</li>
                 </ul>
-                    @Html.Partial("_LoginPartial")
+
+                @Html.Partial("_LoginPartial")
+
             </div>
         </div>
     </nav>

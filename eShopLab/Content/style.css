@@ -428,3 +428,10 @@ footer {
   -webkit-animation-name: flipOutX;
   animation-name: flipOutX;
 }
+
+.content_account {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 70px;
+    width: 600px;
+}
