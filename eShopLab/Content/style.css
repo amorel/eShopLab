@@ -420,8 +420,8 @@ footer {
 }
 
 .ng-enter {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
+  -webkit-animation-name: rollIn;
+  animation-name: rollIn;
 }
 
 .ng-leave {

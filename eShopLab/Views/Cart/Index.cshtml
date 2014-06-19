@@ -68,7 +68,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in invoice" ng-animate="{leave}" class="animated">
+                        <tr ng-repeat="item in invoice" ng-animate="{enter: 'ng-enter', leave: 'ng-leave'}" class="animated">
                             <td class="hidden-xs">
                                 <a href="/Catlg/Details/{{ item.ProductID }}">
                                     <img ng-src="{{ item.MediaUrl }}" alt="{{ item.ProductName }}" title="" width="47" height="47" />
