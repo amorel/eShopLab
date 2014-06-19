@@ -28,12 +28,12 @@
                     <div class="well">
                         @using (Html.BeginForm("Index", "Catlg", FormMethod.Get))
                         {
-                            <div class="input-group">
-                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control input-search", placeholder = "Enter something to search" })
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default no-border-left" type="submit"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
+                        <div class="input-group">
+                            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control input-search", placeholder = "Enter something to search" })
+                            <span class="input-group-btn">
+                                <button class="btn btn-default no-border-left" type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
                         }
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- text logo on mobile view -->
-                <a class="navbar-brand visible-xs" href="index.html">Mimity Online Shop</a>
+                @Html.ActionLink("Online Shop", "Index", "Home", new { Area = "" }, new { @class = "navbar-brand visible-xs" })
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
@@ -95,6 +95,7 @@
                     </li>
                     <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, null)</li>
                 </ul>
+                    @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
