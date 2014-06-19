@@ -28,9 +28,15 @@ namespace eShopLab.Provider
         {
             using (eShopDBEntities db = new eShopDBEntities())
             {
-                db.Users.Add(newUser);
-                db.SaveChanges();
-                return true;
+                try
+                {
+                    db.Users.Add(newUser);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception e){
+                    return false;
+                }
             }
         }
 

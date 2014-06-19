@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="eShopDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="eShopDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
@@ -153,7 +153,7 @@
           </Key>
           <Property Name="SizeCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SizeCategoryName" Type="nvarchar" MaxLength="64" Nullable="false" />
-          <Property Name="SizeCategoryInitial" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="SizeCategoryInitial" Type="nvarchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -483,8 +483,7 @@
             <End Role="ProductSizeCategory" EntitySet="ProductSizeCategory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eShopDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -660,7 +659,7 @@
           </Key>
           <Property Name="SizeCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SizeCategoryName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SizeCategoryInitial" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SizeCategoryInitial" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProductSizeCategories" Relationship="Self.FK_SizeCategory_SizeCategory" FromRole="SizeCategory" ToRole="ProductSizeCategory" />
         </EntityType>
         <EntityType Name="User">

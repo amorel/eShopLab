@@ -49,6 +49,13 @@ namespace eShopLab.Controllers
         {
             if (ModelState.IsValid)
             {
+                User user = new User()
+                {
+                    UserUsername = model.UserName,
+                    UserPassword = model.Password,
+                    UserEmail = model.Email
+                };
+                var result = membershipProvider.CreateAccount(user);
             }
 
             return View(model);
