@@ -34,11 +34,22 @@ namespace eShopLab.Provider
                     db.SaveChanges();
                     return true;
                 }
-                catch (Exception e){
+                catch (Exception e)
+                {
                     return false;
                 }
             }
         }
+
+        public string GeneratePassword()
+        {
+            int lng = 10;
+            string salt = Guid.NewGuid().ToString();
+            if(lng >= salt.Length)
+                return salt;
+            return salt.Substring(salt.Length - lng);
+        }
+
 
         public override string CreateUserAndAccount(string userName, string password, bool requireConfirmation, IDictionary<string, object> values)
         {
@@ -165,6 +176,21 @@ namespace eShopLab.Provider
         public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
         {
             throw new NotImplementedException();
+        }
+
+        public User GetUser(string username)
+        {
+            using(eShopDBEntities db = new eShopDBEntities())
+            {
+                return db.Users.Where(u => u.UserUsername == username).FirstOrDefault();
+            }
+        }
+        public User GetEmail(string email)
+        {
+            using (eShopDBEntities db = new eShopDBEntities())
+            {
+                return db.Users.Where(u => u.UserEmail == email).FirstOrDefault();
+            }
         }
 
         public override System.Web.Security.MembershipUser GetUser(object providerUserKey, bool userIsOnline)

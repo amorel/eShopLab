@@ -49,13 +49,32 @@ namespace eShopLab.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User()
+                bool valid = true;
+                if (membershipProvider.GetUser(model.UserName) != null)
                 {
-                    UserUsername = model.UserName,
-                    UserPassword = model.Password,
-                    UserEmail = model.Email
-                };
-                var result = membershipProvider.CreateAccount(user);
+                    ModelState.AddModelError("", "The user name " + model.UserName + " exists !");
+                    valid = false;
+                }
+                if (membershipProvider.GetEmail(model.Email) != null)
+                {
+                    ModelState.AddModelError("", "The email " + model.Email + " exists !");
+                    valid = false;
+                }
+
+                if (valid)
+                {
+                    string salt = membershipProvider.GeneratePassword();
+                    User user = new User()
+                    {
+                        UserUsername = model.UserName.Trim(),
+                        UserPassword = Encryptor.MD5Hash(model.Password + salt),
+                        UserEmail = model.Email,
+                        UserRegisterDate = DateTime.Now,
+                        UserLastLoginDate = DateTime.Now,
+                        UserSalt = salt
+                    };
+                    var result = membershipProvider.CreateAccount(user);
+                }
             }
 
             return View(model);

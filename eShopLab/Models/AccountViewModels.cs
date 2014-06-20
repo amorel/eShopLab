@@ -46,6 +46,7 @@ namespace eShopLab.Models
     public class RegisterViewModel
     {
         [Required]
+        [RegularExpression(@"[^\s]+", ErrorMessage = "The user name can't have whitespace !")]
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
