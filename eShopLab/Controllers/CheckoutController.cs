@@ -10,7 +10,7 @@ namespace eShopLab.Controllers
     {
         //
         // GET: /Checkout/
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();

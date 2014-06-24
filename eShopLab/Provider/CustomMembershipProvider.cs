@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using WebMatrix.WebData;
 
@@ -24,15 +26,47 @@ namespace eShopLab.Provider
             throw new NotImplementedException();
         }
 
-        public bool CreateAccount(User newUser)
+        /// <summary>
+        /// Create an account
+        /// </summary>
+        /// <param name="newUser">New user to create</param>
+        /// <param name="errors">list of errors</param>
+        /// <returns></returns>
+        public bool CreateAccount(RegisterViewModel newUser, out List<string> errors, out User user)
         {
             using (eShopDBEntities db = new eShopDBEntities())
             {
+                user = new User();
+                errors = new List<string>();
                 try
                 {
-                    db.Users.Add(newUser);
-                    db.SaveChanges();
-                    return true;
+                    bool valid = true;
+                    if (GetUser(newUser.UserName) != null)
+                    {
+                        errors.Add("The user name " + newUser.UserName + " exists !");
+                        valid = false;
+                    }
+                    if (GetEmail(newUser.Email) != null)
+                    {
+                        errors.Add("The email " + newUser.Email + " exists !");
+                        valid = false;
+                    }
+                    if (valid)
+                    {
+                        string salt = GenerateSalt();
+                        user = new User()
+                        {
+                            UserUsername = newUser.UserName.Trim(),
+                            UserPassword = MD5Hash(newUser.Password + salt),
+                            UserEmail = newUser.Email,
+                            UserRegisterDate = DateTime.Now,
+                            UserLastLoginDate = DateTime.Now,
+                            UserSalt = salt
+                        };
+                        db.Users.Add(user);
+                        db.SaveChanges();
+                    }
+                    return valid;
                 }
                 catch (Exception e)
                 {
@@ -41,15 +75,44 @@ namespace eShopLab.Provider
             }
         }
 
-        public string GeneratePassword()
+        /// <summary>
+        /// Generate salt
+        /// </summary>
+        /// <returns></returns>
+        public string GenerateSalt()
         {
             int lng = 10;
             string salt = Guid.NewGuid().ToString();
-            if(lng >= salt.Length)
+            if (lng >= salt.Length)
                 return salt;
             return salt.Substring(salt.Length - lng);
         }
 
+        /// <summary>
+        /// Generate MD5 hash
+        /// </summary>
+        /// <param name="text">text to hash</param>
+        /// <returns>MD5 hash</returns>
+        public string MD5Hash(string text)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+
+            //compute hash from the bytes of text
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(text));
+
+            //get hash result after compute it
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits
+                //for each byte
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
 
         public override string CreateUserAndAccount(string userName, string password, bool requireConfirmation, IDictionary<string, object> values)
         {
@@ -178,13 +241,24 @@ namespace eShopLab.Provider
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Return the user with certain user name if exists.
+        /// </summary>
+        /// <param name="username">user name</param>
+        /// <returns>user found</returns>
         public User GetUser(string username)
         {
-            using(eShopDBEntities db = new eShopDBEntities())
+            using (eShopDBEntities db = new eShopDBEntities())
             {
                 return db.Users.Where(u => u.UserUsername == username).FirstOrDefault();
             }
         }
+
+        /// <summary>
+        /// Return the user with certain email if exists. 
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <returns>user found</returns>
         public User GetEmail(string email)
         {
             using (eShopDBEntities db = new eShopDBEntities())
@@ -263,14 +337,31 @@ namespace eShopLab.Provider
             throw new NotImplementedException();
         }
 
-        public bool ValidateUser(User userOrigin, out User user)
+        /// <summary>
+        /// Return if user exists or not
+        /// </summary>
+        /// <param name="userOrigin">user to validate</param>
+        /// <param name="user">user found</param>
+        /// <returns></returns>
+        public bool ValidateUser(LoginViewModel userOrigin, out User user)
         {
             using (eShopDBEntities db = new eShopDBEntities())
             {
-                if (db.Users.Any(a => a.UserUsername == userOrigin.UserUsername && a.UserPassword == userOrigin.UserPassword))
+                user = db.Users.Where(u => u.UserUsername == userOrigin.UserName).FirstOrDefault();
+                if (user != null)
                 {
-                    user = db.Users.First(a => a.UserUsername == userOrigin.UserUsername && a.UserPassword == userOrigin.UserPassword);
-                    return true;
+                    string salt = user.UserSalt;
+                    string password = MD5Hash(userOrigin.Password + salt);
+                    if (db.Users.Any(a => a.UserUsername == userOrigin.UserName && a.UserPassword == password))
+                    {
+                        user = db.Users.First(a => a.UserUsername == userOrigin.UserName && a.UserPassword == password);
+                        return true;
+                    }
+                    else
+                    {
+                        user = new User();
+                        return false;
+                    }
                 }
                 else
                 {

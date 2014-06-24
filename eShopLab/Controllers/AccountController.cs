@@ -22,12 +22,27 @@ namespace eShopLab.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Login(User user)
+        public ActionResult Login(string returnUrl)
         {
-            if (membershipProvider.ValidateUser(user, out user))
+            ReturnUrlViewBag(returnUrl);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginViewModel loginViewModel, string returnUrl)
+        {
+            User user = new User();
+            if (membershipProvider.ValidateUser(loginViewModel, out user))
             {
-                FormsAuthentication.SetAuthCookie(user.UserUsername, true); 
+                FormsAuthentication.SetAuthCookie(loginViewModel.UserName, true);
+                if (!string.IsNullOrEmpty(returnUrl) && returnUrl.Length > 1)
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
             return View();
         }
@@ -35,8 +50,9 @@ namespace eShopLab.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string returnUrl)
         {
+            ReturnUrlViewBag(returnUrl);
             return View();
         }
 
@@ -45,39 +61,60 @@ namespace eShopLab.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
+        public ActionResult Register(RegisterViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                bool valid = true;
-                if (membershipProvider.GetUser(model.UserName) != null)
+                User user;
+                List<string> errors;
+                if (membershipProvider.CreateAccount(model, out errors, out user))
                 {
-                    ModelState.AddModelError("", "The user name " + model.UserName + " exists !");
-                    valid = false;
-                }
-                if (membershipProvider.GetEmail(model.Email) != null)
-                {
-                    ModelState.AddModelError("", "The email " + model.Email + " exists !");
-                    valid = false;
-                }
-
-                if (valid)
-                {
-                    string salt = membershipProvider.GeneratePassword();
-                    User user = new User()
+                    FormsAuthentication.SetAuthCookie(model.UserName, true);
+                    if (!string.IsNullOrEmpty(returnUrl) && returnUrl.Length > 1)
                     {
-                        UserUsername = model.UserName.Trim(),
-                        UserPassword = Encryptor.MD5Hash(model.Password + salt),
-                        UserEmail = model.Email,
-                        UserRegisterDate = DateTime.Now,
-                        UserLastLoginDate = DateTime.Now,
-                        UserSalt = salt
-                    };
-                    var result = membershipProvider.CreateAccount(user);
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
-            }
 
+                AddErrors(errors);
+            }
             return View(model);
+        }
+
+        public ActionResult Logout(string returnUrl)
+        {
+            FormsAuthentication.SignOut();
+            if (!string.IsNullOrEmpty(returnUrl) && returnUrl.Length > 1)
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        private void AddErrors(List<string> errors)
+        {
+            foreach (string error in errors)
+            {
+                ModelState.AddModelError("", error);
+            }
+        }
+
+        private void ReturnUrlViewBag(string returnUrl)
+        {
+            if (string.IsNullOrEmpty(returnUrl) && Request.UrlReferrer != null)
+                returnUrl = Server.UrlEncode(Request.UrlReferrer.PathAndQuery);
+
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                ViewBag.ReturnURL = returnUrl;
+            }
         }
     }
 }

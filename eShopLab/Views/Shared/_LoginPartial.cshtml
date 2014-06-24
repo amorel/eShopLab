@@ -7,11 +7,10 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    "Hello " + @User.Identity.Name + "!" <span class="caret"></span>
+                    Welcome @User.Identity.Name ! <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Manage", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    <li>@Html.ActionLink("Log off", "Logout", "Account", new { returnUrl = Request.Url.AbsoluteUri }, null)</li>
                 </ul>
             </li>
         </ul>
@@ -23,8 +22,8 @@ else
         <li class="nav-dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Account<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                <li>@Html.ActionLink("Register", "Register", "Account", new { returnUrl = Request.Url.AbsoluteUri }, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", new {returnUrl = Request.Url.AbsoluteUri}, htmlAttributes: new { id = "loginLink" })</li>
             </ul>
         </li>
     </ul>
