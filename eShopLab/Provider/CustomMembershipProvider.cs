@@ -355,6 +355,7 @@ namespace eShopLab.Provider
                     if (db.Users.Any(a => a.UserUsername == userOrigin.UserName && a.UserPassword == password))
                     {
                         user = db.Users.First(a => a.UserUsername == userOrigin.UserName && a.UserPassword == password);
+                        user.UserLastLoginDate = DateTime.Now;  
                         return true;
                     }
                     else

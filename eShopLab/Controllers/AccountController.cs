@@ -22,9 +22,9 @@ namespace eShopLab.Controllers
             return View();
         }
 
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ReturnUrlViewBag(returnUrl);
+            ReturnUrlViewBag((string)TempData["returnUrl"]);
             return View();
         }
 
@@ -34,7 +34,7 @@ namespace eShopLab.Controllers
             User user = new User();
             if (membershipProvider.ValidateUser(loginViewModel, out user))
             {
-                FormsAuthentication.SetAuthCookie(loginViewModel.UserName, true);
+                FormsAuthentication.SetAuthCookie(loginViewModel.UserName, loginViewModel.RememberMe);
                 if (!string.IsNullOrEmpty(returnUrl) && returnUrl.Length > 1)
                 {
                     return Redirect(returnUrl);

@@ -1,4 +1,8 @@
-﻿@if (@User.Identity.IsAuthenticated)
+﻿@{
+    TempData["returnUrl"] = Request.Url.AbsoluteUri;
+}
+
+@if (@User.Identity.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
@@ -10,7 +14,7 @@
                     Welcome @User.Identity.Name ! <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Log off", "Logout", "Account", new { returnUrl = Request.Url.AbsoluteUri }, null)</li>
+                    <li>@Html.ActionLink("Log off", "Logout", "Account")</li>
                 </ul>
             </li>
         </ul>
@@ -22,8 +26,8 @@ else
         <li class="nav-dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Your Account<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li>@Html.ActionLink("Register", "Register", "Account", new { returnUrl = Request.Url.AbsoluteUri }, htmlAttributes: new { id = "registerLink" })</li>
-                <li>@Html.ActionLink("Log in", "Login", "Account", new {returnUrl = Request.Url.AbsoluteUri}, htmlAttributes: new { id = "loginLink" })</li>
+                <li>@Html.ActionLink("Register", "Register", "Account", null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Log in", "Login", "Account", null, htmlAttributes: new { id = "loginLink" })</li>
             </ul>
         </li>
     </ul>
