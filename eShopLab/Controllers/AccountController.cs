@@ -25,12 +25,21 @@ namespace eShopLab.Controllers
         public ActionResult Login()
         {
             ReturnUrlViewBag((string)TempData["returnUrl"]);
+            ViewBag.username = Request.Cookies["eShopLab"] != null ? Request.Cookies["eShopLab"].Values["username"] : "";
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(LoginViewModel loginViewModel, string returnUrl)
         {
+            if (loginViewModel.RememberMe)
+            {
+                HttpCookie cookie = new HttpCookie("eShopLab");
+                cookie.Values.Add("username", loginViewModel.UserName);
+                cookie.Expires = DateTime.Now.AddDays(15);
+                Response.Cookies.Add(cookie);
+            }
+
             User user = new User();
             if (membershipProvider.ValidateUser(loginViewModel, out user))
             {
