@@ -6,6 +6,13 @@ Create database eShopDB
 go
 use eShopDB
 go
+ 
+CREATE TABLE [Role]( 
+RoleID INT IDENTITY(1,1) NOT NULL, 
+RoleName NVARCHAR(128) NOT NULL, 
+CONSTRAINT PK_RoleID PRIMARY KEY (RoleID)
+)
+
 CREATE TABLE [User]( 
 UserID INT IDENTITY(1,1) NOT NULL, 
 UserUsername NVARCHAR(128) NOT NULL UNIQUE, 
@@ -14,9 +21,17 @@ UserEmail NVARCHAR(160) NOT NULL UNIQUE,
 UserSalt NVARCHAR(32) NOT NULL, 
 UserRegisterDate DATETIME NOT NULL, 
 UserLastLoginDate DATETIME NULL, 
-CONSTRAINT PK_UserID PRIMARY KEY (UserID) 
+CONSTRAINT PK_UserID PRIMARY KEY (UserID),
+) 
+
+CREATE TABLE UsersInRoles(
+UsersInRolesUserID INT NOT NULL,
+UsersInRolesRoleID INT NOT NULL,
+CONSTRAINT PKUsersInRoles PRIMARY KEY (UsersInRolesUserID, UsersInRolesRoleID),
+CONSTRAINT FK_UsersInRoles_Role FOREIGN KEY (UsersInRolesRoleID) REFERENCES [Role](RoleID),
+CONSTRAINT FK_User_UsersInRoles FOREIGN KEY (UsersInRolesUserID) REFERENCES [User](UserID)
 )
- 
+
 CREATE TABLE DeliverableCountry( 
 DeliverableCountryID INT IDENTITY(1,1) NOT NULL, 
 DeliverableCountryName NVARCHAR(48) NOT NULL, 
@@ -167,6 +182,22 @@ CONSTRAINT PK_CommandLineID PRIMARY KEY (CommandLineID),
 CONSTRAINT FK_CommandLine_Command FOREIGN KEY (CommandID) REFERENCES Command(CommandID), 
 CONSTRAINT FK_CommandLine_Product FOREIGN KEY (ProductID) REFERENCES PRoduct(ProductID) 
 ) 
+
+use eShopDB
+go
+DELETE FROM [User];
+INSERT INTO [User] VALUES('admin', '63d9b16ce049763fc9d600b94daaa784', 'admin@prov.com', '791e30428f', '2014-06-25', '2014-06-25');
+INSERT INTO [User] VALUES('user1', '34938585126483e176e87ee97320f236', 'user1@prov.com', '6fa7bcc595', '2014-06-26', '2014-06-26');
+
+use eShopDB
+go
+DELETE FROM [Role];
+INSERT INTO [Role] VALUES('Admin');
+
+use eShopDB
+go
+DELETE FROM UsersInRoles;
+INSERT INTO UsersInRoles VALUES(1, 1);
 
 use eShopDB
 go

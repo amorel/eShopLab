@@ -17,6 +17,7 @@ namespace eShopLab.Models
         public User()
         {
             this.Customers = new HashSet<Customer>();
+            this.Roles = new HashSet<Role>();
         }
     
         public int UserID { get; set; }
@@ -28,5 +29,6 @@ namespace eShopLab.Models
         public Nullable<System.DateTime> UserLastLoginDate { get; set; }
     
         public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

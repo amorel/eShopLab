@@ -1,5 +1,12 @@
 ﻿@{
-    TempData["returnUrl"] = Request.Url.AbsoluteUri;
+    if (Request.Url.AbsolutePath != "/Account/Login" && Request.Url.AbsolutePath != "/Account/Register")
+    {
+        TempData["returnUrl"] = Request.Url.AbsoluteUri;
+    }
+    else
+    {
+        TempData["returnUrl"] = ViewBag.ReturnURL;
+    }
 }
 
 @if (@User.Identity.IsAuthenticated)

@@ -32,17 +32,22 @@ namespace eShopLab.Controllers
         [HttpPost]
         public ActionResult Login(LoginViewModel loginViewModel, string returnUrl)
         {
-            if (loginViewModel.RememberMe)
-            {
-                HttpCookie cookie = new HttpCookie("eShopLab");
-                cookie.Values.Add("username", loginViewModel.UserName);
-                cookie.Expires = DateTime.Now.AddDays(15);
-                Response.Cookies.Add(cookie);
-            }
-
             User user = new User();
             if (membershipProvider.ValidateUser(loginViewModel, out user))
             {
+                HttpCookie cookie = new HttpCookie("eShopLab");
+                if (loginViewModel.RememberMe)
+                {
+                    cookie.Values.Add("username", loginViewModel.UserName);
+                    cookie.Expires = DateTime.Now.AddDays(15);
+                    Response.Cookies.Add(cookie);
+                }
+                else
+                {
+                    cookie.Values.Add("username", "");
+                    Response.Cookies.Add(cookie);
+                }
+
                 FormsAuthentication.SetAuthCookie(loginViewModel.UserName, loginViewModel.RememberMe);
                 if (!string.IsNullOrEmpty(returnUrl) && returnUrl.Length > 1)
                 {
@@ -53,15 +58,20 @@ namespace eShopLab.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
+            else
+            {
+                ModelState.AddModelError("", "The username or/and the password are incorrect");
+            }
             return View();
         }
 
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register(string returnUrl)
+        public ActionResult Register()
         {
-            ReturnUrlViewBag(returnUrl);
+            ReturnUrlViewBag((string)TempData["returnUrl"]);
+            ViewBag.username = Request.Cookies["eShopLab"] != null ? Request.Cookies["eShopLab"].Values["username"] : "";
             return View();
         }
 
@@ -94,9 +104,10 @@ namespace eShopLab.Controllers
             return View(model);
         }
 
-        public ActionResult Logout(string returnUrl)
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            string returnUrl = (string)TempData["returnUrl"];
             if (!string.IsNullOrEmpty(returnUrl) && returnUrl.Length > 1)
             {
                 return Redirect(returnUrl);

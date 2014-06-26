@@ -147,6 +147,13 @@
           <Property Name="SizeCategoryID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
         <EntityType Name="SizeCategory">
           <Key>
             <PropertyRef Name="SizeCategoryID" />
@@ -166,6 +173,14 @@
           <Property Name="UserSalt" Type="nvarchar" MaxLength="32" Nullable="false" />
           <Property Name="UserRegisterDate" Type="datetime" Nullable="false" />
           <Property Name="UserLastLoginDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UsersInRoles">
+          <Key>
+            <PropertyRef Name="UsersInRolesUserID" />
+            <PropertyRef Name="UsersInRolesRoleID" />
+          </Key>
+          <Property Name="UsersInRolesUserID" Type="int" Nullable="false" />
+          <Property Name="UsersInRolesRoleID" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Address_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -393,6 +408,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_UsersInRoles">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UsersInRolesUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInRoles_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UsersInRolesRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="eShopDBModelStoreContainer">
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -408,8 +447,10 @@
           <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSizeCategory" EntityType="Self.ProductSizeCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SizeCategory" EntityType="Self.SizeCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Address_Customer" Association="Self.FK_Address_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Address" EntitySet="Address" />
@@ -482,6 +523,14 @@
             <End Role="SizeCategory" EntitySet="SizeCategory" />
             <End Role="ProductSizeCategory" EntitySet="ProductSizeCategory" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_UsersInRoles" Association="Self.FK_User_UsersInRoles">
+            <End Role="User" EntitySet="User" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInRoles_Role" Association="Self.FK_UsersInRoles_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -501,6 +550,7 @@
           <EntitySet Name="Prices" EntityType="eShopDBModel.Price" />
           <EntitySet Name="Products" EntityType="eShopDBModel.Product" />
           <EntitySet Name="ProductSizeCategories" EntityType="eShopDBModel.ProductSizeCategory" />
+          <EntitySet Name="Roles" EntityType="eShopDBModel.Role" />
           <EntitySet Name="SizeCategories" EntityType="eShopDBModel.SizeCategory" />
           <EntitySet Name="Users" EntityType="eShopDBModel.User" />
           <AssociationSet Name="FK_Address_Customer" Association="eShopDBModel.FK_Address_Customer">
@@ -570,6 +620,10 @@
           <AssociationSet Name="MediaProduct" Association="eShopDBModel.MediaProduct">
             <End Role="Medium" EntitySet="Media" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoles" Association="eShopDBModel.UsersInRoles">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Address">
@@ -738,6 +792,14 @@
           <NavigationProperty Name="Product" Relationship="eShopDBModel.FK_SizeCategory_Product" FromRole="ProductSizeCategory" ToRole="Product" />
           <NavigationProperty Name="SizeCategory" Relationship="eShopDBModel.FK_SizeCategory_SizeCategory" FromRole="ProductSizeCategory" ToRole="SizeCategory" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="eShopDBModel.UsersInRoles" FromRole="Role" ToRole="User" />
+        </EntityType>
         <EntityType Name="SizeCategory">
           <Key>
             <PropertyRef Name="SizeCategoryID" />
@@ -759,6 +821,7 @@
           <Property Name="UserRegisterDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserLastLoginDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customers" Relationship="eShopDBModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
+          <NavigationProperty Name="Roles" Relationship="eShopDBModel.UsersInRoles" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Address_Customer">
           <End Type="eShopDBModel.Customer" Role="Customer" Multiplicity="1" />
@@ -962,7 +1025,11 @@
           <End Type="eShopDBModel.Medium" Role="Medium" Multiplicity="*" />
           <End Type="eShopDBModel.Product" Role="Product" Multiplicity="*" />
         </Association>
-      </Schema>
+        <Association Name="UsersInRoles">
+          <End Type="eShopDBModel.User" Role="User" Multiplicity="*" />
+          <End Type="eShopDBModel.Role" Role="Role" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1114,6 +1181,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="eShopDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SizeCategories">
             <EntityTypeMapping TypeName="eShopDBModel.SizeCategory">
               <MappingFragment StoreEntitySet="SizeCategory">
@@ -1142,6 +1217,14 @@
             </EndProperty>
             <EndProperty Name="Medium">
               <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UsersInRoles" TypeName="eShopDBModel.UsersInRoles" StoreEntitySet="UsersInRoles">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="UsersInRolesRoleID" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UsersInRolesUserID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

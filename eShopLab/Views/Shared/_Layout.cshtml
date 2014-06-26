@@ -93,7 +93,10 @@
                             <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, null)</li>
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin", "Index", "Home", new { Area = "Admin" }, null)</li>
+                    }
                 </ul>
 
                 @Html.Partial("_LoginPartial")
