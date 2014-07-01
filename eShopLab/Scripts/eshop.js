@@ -74,7 +74,7 @@ var appsModule = angular.module('angularApps', ['ngAnimate']);
 * Management of shopping cart
 *
 **************************************/
-appsModule.controller("AngularCtrl", function ($scope, $window) {
+appsModule.controller("AngularCtrl", ['$scope', '$window', '$http', function ($scope, $window) {
 
     $scope.sizeScope = {};
 
@@ -125,7 +125,7 @@ appsModule.controller("AngularCtrl", function ($scope, $window) {
         $window.localStorage.setItem("cart", angular.toJson($scope.invoice));
     }
 
-});
+}]);
 
 /*************************************
 * deleteDouble($scope, productID):

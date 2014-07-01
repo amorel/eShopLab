@@ -11,8 +11,8 @@ namespace eShopLab.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
 
-            bundles.Add(new ScriptBundle("~/bundles/css").Include(
-                "~/Content/font-awesome.min.css",
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/font-awesome.css",
                 "~/Content/bootstrap.css",
                 "~/Content/jquery-ui-1.8.23.custom.css",
                 "~/Content/jquery.selectBoxIt.css",
@@ -23,7 +23,7 @@ namespace eShopLab.App_Start
                 "~/Content/style.css"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+            bundles.Add(new ScriptBundle("~/Scripts/script").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.validate.js",
                 "~/Scripts/jquery.validate.unobtrusive.js",
@@ -33,15 +33,15 @@ namespace eShopLab.App_Start
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/angular.js",
                 "~/Scripts/angular-animate.js",
-                "~/Scripts/eshop.js",
                 "~/Scripts/jquery.bxslider.min.js",
                 "~/Scripts/jquery.blImageCenter.js",
                 "~/Scripts/smoothproducts.js",
                 "~/Scripts/bootstrap.touchspin.js",
-                "~/Scripts/toastr.js"
+                "~/Scripts/toastr.js",
+                "~/Scripts/eshop.js"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/cssadmin").Include(
+            bundles.Add(new StyleBundle("~/Content/cssadmin").Include(
                 "~/Content/font-awesome.min.css",
                 "~/Scripts/dropzone/css/basic.css",
                 "~/Scripts/dropzone/css/dropzone.css",
@@ -54,7 +54,7 @@ namespace eShopLab.App_Start
                 "~/Content/admin.css"
                 ));
 
-            bundles.Add(new ScriptBundle("~/bundles/scriptadmin").Include(
+            bundles.Add(new ScriptBundle("~/Scripts/scriptadmin").Include(
                     "~/Scripts/jquery-{version}.js",
                     "~/Scripts/dropzone/dropzone.js",
                     "~/Scripts/jquery.validate.js",
