@@ -12,7 +12,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in. (in mode "Admin" username: 'admin', password: 'admin1')</h4>
+                <h4>Use a local account to log in.<br />(in mode "Admin" to see "Administration Panels" username: 'admin', password: 'admin1')</h4>
                 <hr />
                 @Html.ValidationSummary(true)
                 <div class="form-group">
