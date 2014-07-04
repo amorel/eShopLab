@@ -38,7 +38,7 @@ namespace eShopLab.App_Start
                 "~/Scripts/smoothproducts.js",
                 "~/Scripts/bootstrap.touchspin.js",
                 "~/Scripts/toastr.js",
-                "~/Scripts/eshop.js"
+                "~/Scripts/_eshop.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/cssadmin").Include(
@@ -67,7 +67,7 @@ namespace eShopLab.App_Start
                     "~/Scripts/wysiwyg/wysihtml5-0.3.0.js",
                     "~/Scripts/wysiwyg/bootstrap3-wysihtml5.js",
                     "~/Scripts/angular.js",
-                    "~/Scripts/admin.js"
+                    "~/Scripts/_admin.js"
                     ));
         }
     }
