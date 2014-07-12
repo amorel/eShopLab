@@ -12,7 +12,7 @@ eShopLab is an eShopping website to sell clothes. This project covers back end a
 -	Database First approach
 -	Custom Membership/Role Provider
 -	Area organization
--	Custom HtmlHelper
+-	Custom HtmlHelper (extension method)
 -	SQL Server
 -	Linq
 -	Data binding with [[Angular.js]](https://angularjs.org/)

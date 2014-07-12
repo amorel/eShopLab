@@ -105,10 +105,10 @@ namespace eShopLab.Areas.Admin.Controllers
                         {
                             MediaName = product.ProductName,
                             MediaAlt = "",
-                            MediaUrl = "~/Uploads/Product/" + i + Path.GetExtension(path + fileName)
+                            MediaUrl = "~/Uploads/Product/" + id + "/" + i + Path.GetExtension(path + fileName)
                         };
 
-                        db.Media.Add(medium);
+                        db.Products.Find(id).Media.Add(medium);
                         i++;
                     }
                     db.SaveChanges();
@@ -179,8 +179,15 @@ namespace eShopLab.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteFile(string filePath)
+        public ActionResult DeleteFile(string filePath, int ProductID)
         {
+            var product = db.Products.Find(ProductID);
+            var media = product.Media.Where(m => m.MediaUrl == "~/" + filePath).FirstOrDefault();
+            product.Media.Remove(media);
+            db.Media.Remove(media);
+            db.SaveChanges();
+
+
             var fullPath = Server.MapPath("~/" + filePath);
             if (System.IO.File.Exists(fullPath))
             {
@@ -316,6 +323,9 @@ namespace eShopLab.Areas.Admin.Controllers
             if (Directory.Exists(path)) Directory.Delete(path, true);
 
             Product product = db.Products.Find(ProductID);
+
+            product.Media.ToList().ForEach(item => db.Media.Remove(item));
+
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");

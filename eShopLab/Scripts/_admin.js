@@ -153,12 +153,12 @@ appsModule.controller("GalleryCtrl", ['$scope', '$http', function ($scope, $http
             });
     };
 
-    $scope.deleteImg = function (filePath) {
+    $scope.deleteImg = function (filePath, ProductID) {
         var index = $scope.VirtualPath.indexOf(filePath)
         $scope.VirtualPath.splice(index, 1);
 
         var filePathClean = /(.*)\?/.exec(filePath);
-        $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: filePathClean[1] } }).
+        $http({ method: "POST", url: "/Admin/Product/DeleteFile", data: { filePath: filePathClean[1], ProductID: ProductID } }).
             success(function (data, status) {
             }).
             error(function (data, status) {
